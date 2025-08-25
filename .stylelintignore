@@ -1,0 +1,20 @@
+# Ignore node modules and build output
+node_modules/
+dist/
+build/
+.build/
+
+# Ignore JS/TS source & config files (prevent stylelint from parsing them as CSS)
+**/*.js
+**/*.ts
+**/*.tsx
+
+# Keep CSS/SCSS files linted in src
+!src/**/*.css
+!src/**/*.scss
+!src/**/*.sass
+!src/**/*.scss
+
+# Ignore common config files explicitly
+vite.config.*
+*.config.*
