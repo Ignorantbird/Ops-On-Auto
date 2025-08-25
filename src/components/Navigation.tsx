@@ -159,7 +159,7 @@ const Navigation = () => {
             }`}>
               {/* Your Logo Image - Replace src with your logo path */}
               <img 
-                src="/src/assets/opsonauto-logo.png" 
+                src="/opsonauto-logo.png" 
                 alt="OpsOnAuto Logo" 
                 className="w-full h-full object-contain"
                 onError={(e) => {

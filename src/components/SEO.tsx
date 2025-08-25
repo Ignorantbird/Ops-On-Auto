@@ -15,7 +15,7 @@ export const SEO = ({
   keywords,
   canonical,
   ogType = "website",
-  ogImage = "/src/assets/logo-social.jpg"
+  ogImage = "/logo-social.png"
 }: SEOProps) => {
   const siteUrl = "https://opsonauto.com";
   const fullCanonical = canonical ? `${siteUrl}${canonical}` : siteUrl;
@@ -29,10 +29,10 @@ export const SEO = ({
       <link rel="canonical" href={fullCanonical} />
       
       {/* UPDATED: Multiple favicon formats for best compatibility */}
-      <link rel="icon" type="image/png" sizes="32x32" href="/src/assets/favicon.png" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/src/assets/favicon.png" />
-      <link rel="shortcut icon" href="/src/assets/favicon.png" />
-      <link rel="apple-touch-icon" href="/src/assets/opsonauto-logo.png" />
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
+      <link rel="shortcut icon" href="/favicon.png" />
+      <link rel="apple-touch-icon" href="/opsonauto-logo.png" />
       
       {/* Open Graph */}
       <meta property="og:title" content={fullTitle} />
