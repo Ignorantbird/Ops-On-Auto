@@ -1,100 +1,244 @@
-/*
- * Ops On Auto - Business Automation Platform
- * Copyright (c) 2025 Ops On Auto (https://opsonauto.com)
- * All rights reserved. Unauthorized copying prohibited.
- * 
- * Proprietary and confidential software.
- * Contact: hello@opsonauto.com for licensing inquiries.
- */
-
-// Add this header to the top of these key files:
-// - src/App.tsx
-// - src/main.tsx  
-// - src/components/Navigation.tsx
-// - src/pages/Index.tsx
-// - Any other critical component files
-
-import { useState, useRef, useEffect } from "react";
-import { Button } from "./ui/button";
-import { Menu, X, ChevronDown, Search, Bot, Database, BarChart3, Settings, Phone, Brain, Sparkles } from "lucide-react";
+// Navigation.tsx - FINAL with Correct Mechanical Gear Logo (Like Image 2)
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { navItems } from "../config/nav";
-import { PrimaryCTA } from "./cta/StandardizedCTA";
+import { ChevronDown, Menu, X, Search } from "lucide-react";
+import { PrimaryCTA } from "@/components/cta/StandardizedCTA";
+
+// Exact Industrial Logo Component - Matching Your Image
+const OpsOnAutoIndustrialLogo = ({ 
+  size = 64, 
+  showText = true,
+  className = "" 
+}: { 
+  size?: number; 
+  showText?: boolean;
+  className?: string; 
+}) => {
+  const gearSize = size;
+  const textSize = size * 0.35;
+
+  return (
+    <div className={`flex items-center gap-4 ${className}`}>
+      {/* Industrial Gear with PCB Traces */}
+      <div 
+        className="relative cursor-pointer transition-all duration-300 hover:scale-105"
+        style={{ width: `${gearSize * 1.6}px`, height: `${gearSize}px` }}
+      >
+        {/* Main Industrial Gear Body */}
+        <div
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          style={{
+            width: `${gearSize * 0.75}px`,
+            height: `${gearSize * 0.75}px`,
+            background: `
+              radial-gradient(circle at 20% 20%, rgba(255,255,255,0.6) 0%, transparent 40%),
+              linear-gradient(145deg, #17a2b8 0%, #138496 30%, #0f6674 100%)
+            `,
+            borderRadius: '50%',
+            boxShadow: `
+              0 ${gearSize * 0.12}px ${gearSize * 0.24}px rgba(23, 162, 184, 0.3),
+              0 ${gearSize * 0.04}px ${gearSize * 0.08}px rgba(0, 0, 0, 0.2),
+              inset 0 ${gearSize * -0.04}px ${gearSize * 0.08}px rgba(0, 0, 0, 0.4),
+              inset 0 ${gearSize * 0.04}px ${gearSize * 0.08}px rgba(255, 255, 255, 0.4)
+            `,
+            animation: 'industrialRotate 30s linear infinite'
+          }}
+        />
+
+        {/* Chunky Industrial Gear Teeth - 8 thick teeth */}
+        {[...Array(8)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute"
+            style={{
+              width: `${gearSize * 0.16}px`,
+              height: `${gearSize * 0.28}px`,
+              background: `
+                radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.5) 0%, transparent 50%),
+                linear-gradient(145deg, #17a2b8 0%, #138496 40%, #0f6674 100%)
+              `,
+              borderRadius: `${gearSize * 0.02}px`,
+              transformOrigin: 'center bottom',
+              transform: `rotate(${i * 45}deg) translateY(-${gearSize * 0.375}px)`,
+              left: '50%',
+              top: '50%',
+              marginLeft: `${-gearSize * 0.08}px`,
+              marginTop: `${-gearSize * 0.14}px`,
+              boxShadow: `
+                0 ${gearSize * 0.03}px ${gearSize * 0.06}px rgba(0, 0, 0, 0.4),
+                inset 0 ${gearSize * -0.01}px ${gearSize * 0.02}px rgba(0, 0, 0, 0.3),
+                inset 0 ${gearSize * 0.01}px ${gearSize * 0.02}px rgba(255, 255, 255, 0.3)
+              `
+            }}
+          />
+        ))}
+
+        {/* Inner Ring */}
+        <div
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full"
+          style={{
+            width: `${gearSize * 0.45}px`,
+            height: `${gearSize * 0.45}px`,
+            background: `
+              radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3) 0%, transparent 50%),
+              linear-gradient(145deg, #4169E1 0%, #2b5ce6 30%, #1e40af 100%)
+            `,
+            boxShadow: `
+              0 ${gearSize * 0.06}px ${gearSize * 0.12}px rgba(65, 105, 225, 0.4),
+              inset 0 ${gearSize * -0.03}px ${gearSize * 0.06}px rgba(0, 0, 0, 0.5),
+              inset 0 ${gearSize * 0.03}px ${gearSize * 0.06}px rgba(255, 255, 255, 0.4)
+            `
+          }}
+        >
+          {/* 3D Orange Triangle Play Button */}
+          <div
+            className="absolute top-1/2 left-1/2 transform -translate-y-1/2"
+            style={{
+              marginLeft: `${gearSize * 0.015}px`,
+              width: 0,
+              height: 0,
+              borderLeft: `${gearSize * 0.1}px solid #ff6b35`,
+              borderTop: `${gearSize * 0.06}px solid transparent`,
+              borderBottom: `${gearSize * 0.06}px solid transparent`,
+              filter: `
+                drop-shadow(0 ${gearSize * 0.02}px ${gearSize * 0.04}px rgba(255, 107, 53, 0.6))
+                drop-shadow(0 ${gearSize * 0.01}px ${gearSize * 0.02}px rgba(0, 0, 0, 0.5))
+                drop-shadow(0 0 ${gearSize * 0.03}px rgba(255, 107, 53, 0.4))
+              `,
+              animation: 'playButtonPulse 4s ease-in-out infinite'
+            }}
+          />
+        </div>
+
+        {/* PCB Circuit Traces with 3D Orange Spheres */}
+        {[
+          { x: gearSize * 0.9, y: gearSize * 0.2, lineLength: gearSize * 0.35 },
+          { x: gearSize * 0.95, y: gearSize * 0.5, lineLength: gearSize * 0.3 },
+          { x: gearSize * 0.9, y: gearSize * 0.8, lineLength: gearSize * 0.25 },
+          { x: gearSize * 0.1, y: gearSize * 0.15, lineLength: gearSize * 0.2 },
+          { x: gearSize * 0.05, y: gearSize * 0.85, lineLength: gearSize * 0.22 }
+        ].map((trace, i) => (
+          <div key={`trace-${i}`}>
+            {/* Circuit Line */}
+            <div
+              className="absolute"
+              style={{
+                width: `${trace.lineLength}px`,
+                height: `${gearSize * 0.02}px`,
+                left: `${trace.x}px`,
+                top: `${trace.y}px`,
+                background: `linear-gradient(90deg, #ff6b35 0%, #ff8c00 100%)`,
+                borderRadius: `${gearSize * 0.01}px`,
+                boxShadow: `0 0 ${gearSize * 0.025}px rgba(255, 107, 53, 0.6)`,
+                animation: `traceGlow 3s ease-in-out infinite ${i * 0.4}s`
+              }}
+            />
+            
+            {/* 3D Orange Connection Sphere */}
+            <div
+              className="absolute rounded-full"
+              style={{
+                width: `${gearSize * 0.06}px`,
+                height: `${gearSize * 0.06}px`,
+                left: `${trace.x + trace.lineLength - gearSize * 0.03}px`,
+                top: `${trace.y - gearSize * 0.02}px`,
+                background: `
+                  radial-gradient(circle at 25% 25%, #ffaa44 0%, #ff6b35 40%, #e55a2b 100%)
+                `,
+                boxShadow: `
+                  0 ${gearSize * 0.025}px ${gearSize * 0.05}px rgba(255, 107, 53, 0.6),
+                  0 0 ${gearSize * 0.04}px rgba(255, 107, 53, 0.4),
+                  inset 0 ${gearSize * 0.01}px ${gearSize * 0.02}px rgba(255, 255, 255, 0.6),
+                  inset 0 ${gearSize * -0.01}px ${gearSize * 0.02}px rgba(0, 0, 0, 0.3)
+                `,
+                animation: `spherePulse 2.5s ease-in-out infinite ${i * 0.3}s`
+              }}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* OpsOnAuto Text */}
+      {showText && (
+        <div 
+          className="font-bold text-teal-600 hidden sm:block"
+          style={{ 
+            fontSize: `${textSize}px`,
+            fontFamily: "'Inter', 'Segoe UI', sans-serif",
+            textShadow: `0 ${textSize * 0.05}px ${textSize * 0.1}px rgba(0, 0, 0, 0.2)`,
+            color: '#0f6674'
+          }}
+        >
+          OpsOnAuto
+        </div>
+      )}
+
+      {/* CSS Animations */}
+      <style jsx>{`
+        @keyframes industrialRotate {
+          0% { transform: translate(-50%, -50%) rotate(0deg); }
+          100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        @keyframes playButtonPulse {
+          0%, 100% { 
+            transform: translateY(-50%) scale(1);
+          }
+          50% { 
+            transform: translateY(-50%) scale(1.08);
+          }
+        }
+
+        @keyframes traceGlow {
+          0%, 100% { 
+            opacity: 0.8;
+            box-shadow: 0 0 ${gearSize * 0.025}px rgba(255, 107, 53, 0.6);
+          }
+          50% { 
+            opacity: 1;
+            box-shadow: 0 0 ${gearSize * 0.05}px rgba(255, 107, 53, 1);
+          }
+        }
+
+        @keyframes spherePulse {
+          0%, 100% { 
+            transform: scale(1);
+          }
+          50% { 
+            transform: scale(1.15);
+          }
+        }
+      `}</style>
+    </div>
+  );
+};
 
 const Navigation = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [isScrolled, setIsScrolled] = useState(false);
+  
+  const location = useLocation();
   const dropdownRef = useRef<HTMLDivElement>(null);
   const megaMenuRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLDivElement>(null);
-  const location = useLocation();
 
-  // Services mega menu data with UPDATED LINKS
-  const serviceCategories = [
-    {
-      icon: Bot,
-      title: "Agentic AI Solutions",
-      description: "Advanced AI agents for complex tasks",
-      link: "/agentic-ai",
-      featured: true
-    },
-    {
-      icon: Database,
-      title: "CRM Automation",
-      description: "Smart pipelines & lead management",
-      link: "/crm-automation"
-    },
-    {
-      icon: BarChart3,
-      title: "Reporting & Analytics",
-      description: "Automated dashboards & insights",
-      link: "/reporting-automation"
-    },
-    {
-      icon: Settings,
-      title: "Workflow Optimization",
-      description: "Streamline business operations",
-      link: "/workflow-automation"
-    },
-    {
-      icon: Phone,
-      title: "Voice AI Calling",
-      description: "Human-like sales & qualification calls",
-      link: "/voice-ai"
-    },
-    {
-      icon: Brain,
-      title: "AI Data Processing & Insights",
-      description: "Intelligent data workflows & analysis",
-      link: "/ai-data-processing"
-    }
+  const navItems = [
+    { label: "About", href: "/about" },
+    { label: "Services", href: "/services" },
+    { label: "Use Cases", href: "/use-cases" },
+    { label: "Pricing", href: "/pricing" },
+    { label: "Integrations", href: "/integrations" },
+    { label: "Industries", href: "/industries" },
+    { label: "Case Studies", href: "/case-studies" },
+    { label: "Resources", href: "/resources" },
+    { label: "FAQ", href: "/faq" },
+    { label: "Contact", href: "/contact" }
   ];
 
-  // Quick search data with UPDATED LINKS
-  const searchableItems = [
-    { title: "AI Automation Services", link: "/services", category: "Services" },
-    { title: "Agentic AI Solutions", link: "/agentic-ai", category: "AI Solutions" },
-    { title: "CRM Setup & Optimization", link: "/crm-automation", category: "Services" },
-    { title: "Voice AI Calling Bot", link: "/voice-ai", category: "Services" },
-    { title: "Workflow Automation", link: "/workflow-automation", category: "Services" },
-    { title: "Reporting Automation", link: "/reporting-automation", category: "Services" },
-    { title: "AI Data Processing & Insights", link: "/ai-data-processing", category: "AI Solutions" },
-    { title: "Pricing Plans", link: "/pricing", category: "Pricing" },
-    { title: "Case Studies", link: "/case-studies", category: "Resources" },
-    { title: "Industries We Serve", link: "/industries", category: "Industries" },
-    { title: "Contact Us", link: "/contact", category: "Contact" },
-  ];
-
-  const filteredSearchResults = searchableItems.filter(item =>
-    item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    item.category.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
-  // Handle scroll behavior for sticky navigation
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -105,7 +249,6 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -124,16 +267,13 @@ const Navigation = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Helper function to check active routes
   const isActiveRoute = (path: string) => {
     if (path === '/') return location.pathname === '/';
     return location.pathname.startsWith(path);
   };
 
-  // Filter navigation items - KEEP ONLY MAIN ITEMS IN NAVBAR
   const mainNavItems = ['Services', 'AI Solutions', 'Pricing', 'Industries'];
   
-  // Everything else goes in "More" dropdown
   const moreNavItems = navItems.filter(item => 
     !mainNavItems.includes(item.label)
   );
@@ -151,177 +291,61 @@ const Navigation = () => {
           isScrolled ? 'h-16' : 'h-20'
         }`}>
           
-          {/* UPDATED LOGO - BIGGER SIZE */}
+          {/* INDUSTRIAL LOGO WITH TEXT - FINAL VERSION */}
           <Link to="/" className="flex items-center group">
-            {/* Logo Image Container - INCREASED SIZE */}
-            <div className={`flex items-center justify-center group-hover:scale-105 transition-all duration-300 ${
-              isScrolled ? 'w-14 h-14' : 'w-16 h-16'
-            }`}>
-              {/* Your Logo Image - Replace src with your logo path */}
-              <img 
-                src="/opsonauto-logo.png" 
-                alt="OpsOnAuto Logo" 
-                className="w-full h-full object-contain"
-                onError={(e) => {
-                  // Fallback to original design if image fails to load
-                  e.currentTarget.style.display = 'none';
-                  const fallback = e.currentTarget.nextElementSibling as HTMLElement;
-                  if (fallback) fallback.style.display = 'flex';
-                }}
-              />
-              
-              {/* Fallback Logo (hidden by default, shows if image fails) */}
-              <div className="hidden w-full h-full bg-gradient-to-br from-teal-500 to-teal-600 rounded-lg items-center justify-center relative">
-                {/* Gear Icon */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-8 h-8 border-2 border-white rounded-full relative">
-                    {/* Gear teeth */}
-                    <div className="absolute -top-1 left-1/2 w-1 h-2 bg-white transform -translate-x-1/2"></div>
-                    <div className="absolute -bottom-1 left-1/2 w-1 h-2 bg-white transform -translate-x-1/2"></div>
-                    <div className="absolute -left-1 top-1/2 w-2 h-1 bg-white transform -translate-y-1/2"></div>
-                    <div className="absolute -right-1 top-1/2 w-2 h-1 bg-white transform -translate-y-1/2"></div>
-                  </div>
-                  {/* Play button in center */}
-                  <div className="absolute w-0 h-0 border-l-[6px] border-r-0 border-b-[4px] border-t-[4px] border-l-orange-500 border-t-transparent border-b-transparent ml-1"></div>
-                </div>
-                {/* Circuit lines */}
-                <div className="absolute top-2 right-1 w-1 h-1 bg-orange-500 rounded-full"></div>
-                <div className="absolute bottom-2 right-2 w-1 h-1 bg-orange-500 rounded-full"></div>
-                <div className="absolute top-3 left-1 w-1 h-1 bg-orange-500 rounded-full"></div>
-              </div>
-            </div>
+            <OpsOnAutoIndustrialLogo 
+              size={isScrolled ? 48 : 56} 
+              showText={true}
+              className="group-hover:scale-105 transition-transform duration-300"
+            />
           </Link>
 
-          {/* Desktop Navigation - CLEAN & PROFESSIONAL */}
+          {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
-            {/* Services Mega Menu - MORE VIBRANT */}
             <div className="relative" ref={megaMenuRef}>
               <button
                 className={`relative flex items-center px-4 py-3 font-semibold text-base transition-all duration-200 rounded-lg group ${
                   isActiveRoute('/services') 
-                    ? 'text-orange-600 bg-orange-50' 
-                    : 'text-slate-900 hover:text-orange-600 hover:bg-orange-50'
+                    ? 'bg-blue-50 text-blue-600' 
+                    : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50'
                 }`}
-                onClick={() => {
-                  setIsMegaMenuOpen(!isMegaMenuOpen);
-                  setIsDropdownOpen(false);
-                }}
-                aria-expanded={isMegaMenuOpen}
-                aria-haspopup="true"
+                onClick={() => setIsMegaMenuOpen(!isMegaMenuOpen)}
               >
                 Services
-                <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${isMegaMenuOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`ml-1 w-4 h-4 transition-transform duration-200 ${isMegaMenuOpen ? 'rotate-180' : ''}`} />
               </button>
-              
-              {isMegaMenuOpen && (
-                <div className="absolute top-full left-0 mt-2 w-[600px] bg-white rounded-2xl border border-gray-100 shadow-2xl py-8 px-8 z-50 animate-in fade-in-0 zoom-in-95 duration-200">
-                  <div className="grid grid-cols-2 gap-6">
-                    {serviceCategories.map((service, index) => {
-                      const IconComponent = service.icon;
-                      return (
-                        <Link
-                          key={index}
-                          to={service.link}
-                          className={`group p-4 rounded-xl transition-all duration-200 hover:bg-orange-50 border border-transparent hover:border-orange-200 ${
-                            service.featured ? 'bg-gradient-to-br from-orange-50 to-orange-100/50 border-orange-200' : ''
-                          }`}
-                          onClick={() => setIsMegaMenuOpen(false)}
-                        >
-                          <div className="flex items-start space-x-4">
-                            <div className={`w-12 h-12 rounded-lg flex items-center justify-center transition-all group-hover:scale-110 ${
-                              service.featured ? 'bg-orange-500 text-white' : 'bg-slate-100 text-slate-600 group-hover:bg-orange-500 group-hover:text-white'
-                            }`}>
-                              <IconComponent className="w-6 h-6" />
-                            </div>
-                            <div className="flex-1">
-                              <h4 className={`font-semibold text-sm mb-1 ${
-                                service.featured ? 'text-orange-900' : 'text-slate-900'
-                              }`}>
-                                {service.title}
-                                {service.featured && (
-                                  <Sparkles className="inline w-4 h-4 ml-1 text-orange-500" />
-                                )}
-                              </h4>
-                              <p className="text-xs text-slate-600 leading-relaxed">
-                                {service.description}
-                              </p>
-                            </div>
-                          </div>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                  <div className="mt-8 pt-6 border-t border-gray-100 flex justify-between items-center">
-                    <Link 
-                      to="/services" 
-                      className="text-orange-600 hover:text-orange-700 font-medium text-sm flex items-center"
-                      onClick={() => setIsMegaMenuOpen(false)}
-                    >
-                      View All Services →
-                    </Link>
-                  </div>
-                </div>
-              )}
             </div>
 
-            {/* AI Solutions Link - MORE VIBRANT */}
-            <Link
-              to="/agentic-ai"
-              className={`relative px-4 py-3 font-semibold text-base transition-all duration-200 rounded-lg group ${
-                isActiveRoute('/agentic-ai') 
-                  ? 'text-orange-600 bg-orange-50' 
-                  : 'text-slate-900 hover:text-orange-600 hover:bg-orange-50'
-              }`}
-            >
-              AI Solutions
-            </Link>
+            {navItems.slice(0, 4).map((item) => (
+              <Link
+                key={item.label}
+                to={item.href}
+                className={`px-4 py-3 font-semibold text-base transition-all duration-200 rounded-lg ${
+                  isActiveRoute(item.href)
+                    ? 'bg-blue-50 text-blue-600'
+                    : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50'
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
 
-            {/* Pricing - MORE VIBRANT */}
-            <Link
-              to="/pricing"
-              className={`relative px-4 py-3 font-semibold text-base transition-all duration-200 rounded-lg group ${
-                isActiveRoute('/pricing') 
-                  ? 'text-orange-600 bg-orange-50' 
-                  : 'text-slate-900 hover:text-orange-600 hover:bg-orange-50'
-              }`}
-            >
-              Pricing
-            </Link>
-
-            {/* Industries - MORE VIBRANT */}
-            <Link
-              to="/industries"
-              className={`relative px-4 py-3 font-semibold text-base transition-all duration-200 rounded-lg group ${
-                isActiveRoute('/industries') 
-                  ? 'text-orange-600 bg-orange-50' 
-                  : 'text-slate-900 hover:text-orange-600 hover:bg-orange-50'
-              }`}
-            >
-              Industries
-            </Link>
-
-            {/* More Dropdown - MORE VIBRANT */}
             <div className="relative" ref={dropdownRef}>
               <button
-                className="flex items-center px-4 py-3 text-slate-900 hover:text-orange-600 font-semibold text-base transition-all duration-200 rounded-lg hover:bg-orange-50"
-                onClick={() => {
-                  setIsDropdownOpen(!isDropdownOpen);
-                  setIsMegaMenuOpen(false);
-                }}
-                aria-expanded={isDropdownOpen}
-                aria-haspopup="true"
+                className="flex items-center px-4 py-3 font-semibold text-base text-slate-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200"
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               >
                 More
-                <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`ml-1 w-4 h-4 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
-              
+
               {isDropdownOpen && (
-                <div className="absolute top-full right-0 mt-2 w-56 bg-white rounded-xl border border-gray-100 shadow-lg py-2 z-50 animate-in fade-in-0 zoom-in-95 duration-100">
+                <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-xl shadow-lg border border-gray-100 py-2 animate-in fade-in-0 slide-in-from-top-2 duration-200">
                   {moreNavItems.map((item) => (
                     <Link
                       key={item.label}
                       to={item.href}
-                      className="block px-4 py-3 text-slate-700 hover:text-orange-600 hover:bg-orange-50 text-sm font-medium transition-colors"
+                      className="block px-4 py-3 text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors font-medium"
                       onClick={() => setIsDropdownOpen(false)}
                     >
                       {item.label}
@@ -330,49 +354,45 @@ const Navigation = () => {
                 </div>
               )}
             </div>
+
+            <div className="ml-4">
+              <PrimaryCTA label="Book Free Demo" icon="calendar" />
+            </div>
           </div>
 
-          {/* CTA - FIXED SIZE TO BE PROFESSIONAL */}
-          <div className="hidden lg:flex items-center space-x-3">
-            <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold text-sm transition-all duration-200 hover:shadow-lg flex items-center gap-2">
-              <span>📅</span>
-              Book Free Demo
+          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button */}
+          <div className="lg:hidden">
+            <button
+              className="p-2 text-slate-700 hover:text-blue-600 transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
 
-          {/* Mobile menu button */}
-          <button
-            className="lg:hidden p-2 text-slate-600 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-all duration-200"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-            aria-expanded={isMenuOpen}
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-
-        {/* Mobile Navigation - keeping existing structure */}
-        {isMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-100 shadow-lg animate-in fade-in-0 slide-in-from-top-2 duration-200">
-            <div className="px-4 py-6 space-y-4">
-              {/* Mobile navigation items */}
-              {navItems.map((item) => (
-                <Link
-                  key={item.label}
-                  to={item.href}
-                  className="block py-3 px-4 text-slate-700 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-colors font-medium"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
-              
-              <div className="pt-4 border-t border-gray-100">
-                <PrimaryCTA label="Book Free Demo" icon="calendar" className="w-full" />
+          {/* Mobile Navigation */}
+          {isMenuOpen && (
+            <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-100 shadow-lg animate-in fade-in-0 slide-in-from-top-2 duration-200">
+              <div className="px-4 py-6 space-y-4">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.label}
+                    to={item.href}
+                    className="block py-3 px-4 text-slate-700 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-colors font-medium"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+                
+                <div className="pt-4 border-t border-gray-100">
+                  <PrimaryCTA label="Book Free Demo" icon="calendar" className="w-full" />
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </nav>
   );
