@@ -1,12 +1,11 @@
-// Complete Navigation.tsx with Lovable 3D Logo Integration
+// src/components/Navigation.tsx - UPDATED WITH EXPANDED SERVICES
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { PrimaryCTA } from "@/components/cta/StandardizedCTA";
-// Import the Lovable 3D Logo component
 import Logo3D from "./Logo3D";
 
-// 3D Logo Wrapper Component
+// Logo component remains the same with fixed spacing
 const OpsOnAuto3DLogo = ({ 
   size = 64, 
   showText = true,
@@ -17,23 +16,20 @@ const OpsOnAuto3DLogo = ({
   className?: string; 
 }) => {
   return (
-    <div className={`flex items-center gap-2 ${className}`}>
-      {/* Lovable 3D Logo - INCREASED SIZE */}
+    <div className={`flex items-center gap-0 ${className}`}>
       <div className="transition-all duration-300 hover:scale-105">
         <Logo3D 
           width={size} 
           height={size} 
-          gearColor="#17a2b8"  // Teal color matching your brand
-          accentColor="#ff6b35" // Orange color for play button and circuits
+          gearColor="#17a2b8"
+          accentColor="#ff6b35"
         />
       </div>
-
-      {/* OpsOnAuto Text - REDUCED GAP */}
       {showText && (
         <div 
           className="font-bold text-teal-600 hidden sm:block"
           style={{ 
-            fontSize: `${size * 0.4}px`, // Slightly bigger text
+            fontSize: `${size * 0.4}px`,
             fontFamily: "'Inter', 'Segoe UI', sans-serif",
             textShadow: `0 ${size * 0.02}px ${size * 0.04}px rgba(0, 0, 0, 0.1)`,
             color: '#0f6674'
@@ -46,7 +42,6 @@ const OpsOnAuto3DLogo = ({
   );
 };
 
-// Fallback Component (in case 3D logo fails to load)
 const FallbackLogo = ({ 
   size = 64, 
   showText = true,
@@ -57,7 +52,7 @@ const FallbackLogo = ({
   className?: string; 
 }) => {
   return (
-    <div className={`flex items-center gap-3 ${className}`}>
+    <div className={`flex items-center gap-0 ${className}`}>
       <div 
         className="relative transition-all duration-300 hover:scale-105"
         style={{ width: `${size}px`, height: `${size}px` }}
@@ -93,7 +88,6 @@ const FallbackLogo = ({
           </div>
         </div>
       </div>
-      
       {showText && (
         <div 
           className="font-bold text-teal-600 hidden sm:block"
@@ -106,93 +100,74 @@ const FallbackLogo = ({
   );
 };
 
-// Logo with Error Boundary
 const SafeLogo = (props: { size?: number; showText?: boolean; className?: string }) => {
   const [hasError, setHasError] = useState(false);
-
-  useEffect(() => {
-    // Reset error state when props change
-    setHasError(false);
-  }, [props.size]);
 
   if (hasError) {
     return <FallbackLogo {...props} />;
   }
 
   try {
-    return (
-      <div onError={() => setHasError(true)}>
-        <OpsOnAuto3DLogo {...props} />
-      </div>
-    );
+    return <OpsOnAuto3DLogo {...props} />;
   } catch (error) {
+    setHasError(true);
     return <FallbackLogo {...props} />;
   }
 };
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  
   const location = useLocation();
-  const dropdownRef = useRef<HTMLDivElement>(null);
   const megaMenuRef = useRef<HTMLDivElement>(null);
 
-  const navItems = [
-    { label: "About", href: "/about" },
-    { label: "Services", href: "/services" },
-    { label: "Use Cases", href: "/use-cases" },
-    { label: "Pricing", href: "/pricing" },
-    { label: "Integrations", href: "/integrations" },
-    { label: "Industries", href: "/industries" },
-    { label: "Case Studies", href: "/case-studies" },
-    { label: "Resources", href: "/resources" },
-    { label: "FAQ", href: "/faq" },
-    { label: "Contact", href: "/contact" }
-  ];
-
-  // Scroll behavior for sticky navigation
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      setIsScrolled(scrollTop > 20);
+      setIsScrolled(window.scrollY > 50);
     };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsDropdownOpen(false);
-      }
       if (megaMenuRef.current && !megaMenuRef.current.contains(event.target as Node)) {
         setIsMegaMenuOpen(false);
       }
     };
-
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Helper function to check active routes
   const isActiveRoute = (path: string) => {
-    if (path === '/') return location.pathname === '/';
-    return location.pathname.startsWith(path);
+    return location.pathname === path || location.pathname.startsWith(path);
   };
 
-  // Filter navigation items for main nav and dropdown
-  const mainNavItems = ['Services', 'Pricing', 'Industries', 'Use Cases'];
-  const moreNavItems = navItems.filter(item => 
-    !mainNavItems.includes(item.label)
-  );
+  // EXPANDED SERVICE LINKS - Organized by Category
+  const serviceCategories = [
+    {
+      category: "AI Solutions",
+      services: [
+        { title: "Agentic AI", path: "/agentic-ai", description: "AI that thinks, plans & acts independently", badge: "🔥 Popular" },
+        { title: "Generative AI", path: "/generative-ai", description: "Custom AI that creates content & designs", badge: "✨ New" },
+        { title: "AI Sales Person", path: "/ai-sales-person", description: "24/7 AI sales team that never sleeps" },
+        { title: "AI Development", path: "/ai-development", description: "Custom ML models & AI integrations" }
+      ]
+    },
+    {
+      category: "Business Systems",
+      services: [
+        { title: "CRM Automation", path: "/crm-automation", description: "Smart pipelines & lead scoring" },
+        { title: "Business Consulting", path: "/business-consulting", description: "Strategic AI roadmap & transformation" },
+        { title: "Process Automation", path: "/process-automation", description: "Turn manual work into AI workflows" },
+        { title: "Data Analytics", path: "/data-analytics", description: "AI-driven insights & predictions" }
+      ]
+    }
+  ];
 
   return (
-    <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
       isScrolled 
         ? 'bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm' 
         : 'bg-white/90 backdrop-blur-sm'
@@ -204,7 +179,7 @@ const Navigation = () => {
           isScrolled ? 'h-16' : 'h-20'
         }`}>
           
-          {/* LOVABLE 3D LOGO - INCREASED SIZE */}
+          {/* LOGO - Fixed Spacing */}
           <Link to="/" className="flex items-center group">
             <SafeLogo 
               size={isScrolled ? 64 : 72} 
@@ -215,11 +190,12 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
-            {/* Services Dropdown */}
+            
+            {/* ENHANCED Services Mega Menu */}
             <div className="relative" ref={megaMenuRef}>
               <button
                 className={`relative flex items-center px-4 py-3 font-semibold text-base transition-all duration-200 rounded-lg group ${
-                  isActiveRoute('/services') 
+                  isActiveRoute('/services') || isActiveRoute('/agentic-ai') || isActiveRoute('/crm-automation')
                     ? 'bg-blue-50 text-blue-600' 
                     : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50'
                 }`}
@@ -229,119 +205,199 @@ const Navigation = () => {
                 <ChevronDown className={`ml-1 w-4 h-4 transition-transform duration-200 ${isMegaMenuOpen ? 'rotate-180' : ''}`} />
               </button>
 
+              {/* EXPANDED Mega Menu */}
               {isMegaMenuOpen && (
-                <div className="absolute left-0 top-full mt-2 w-64 bg-white rounded-xl shadow-lg border border-gray-100 py-2 animate-in fade-in-0 slide-in-from-top-2 duration-200">
-                  <Link
-                    to="/agentic-ai"
-                    className="block px-4 py-3 text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors font-medium"
-                    onClick={() => setIsMegaMenuOpen(false)}
-                  >
-                    Agentic AI
-                  </Link>
-                  <Link
-                    to="/workflow-automation"
-                    className="block px-4 py-3 text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors font-medium"
-                    onClick={() => setIsMegaMenuOpen(false)}
-                  >
-                    Workflow Automation
-                  </Link>
-                  <Link
-                    to="/crm-automation"
-                    className="block px-4 py-3 text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors font-medium"
-                    onClick={() => setIsMegaMenuOpen(false)}
-                  >
-                    CRM Automation
-                  </Link>
-                  <Link
-                    to="/voice-ai"
-                    className="block px-4 py-3 text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors font-medium"
-                    onClick={() => setIsMegaMenuOpen(false)}
-                  >
-                    Voice AI
-                  </Link>
+                <div className="absolute top-full left-0 mt-2 w-[600px] bg-white rounded-xl shadow-2xl border border-gray-200 p-6 z-50">
+                  <div className="grid grid-cols-2 gap-6">
+                    {serviceCategories.map((category, categoryIndex) => (
+                      <div key={categoryIndex}>
+                        <h3 className="font-bold text-slate-900 mb-4 text-sm uppercase tracking-wide">
+                          {category.category}
+                        </h3>
+                        <div className="space-y-2">
+                          {category.services.map((service, serviceIndex) => (
+                            <Link
+                              key={serviceIndex}
+                              to={service.path}
+                              className="block p-3 rounded-lg hover:bg-blue-50 transition-colors duration-200 group"
+                              onClick={() => setIsMegaMenuOpen(false)}
+                            >
+                              <div className="flex items-center justify-between mb-1">
+                                <div className="font-medium text-slate-900 group-hover:text-blue-600">
+                                  {service.title}
+                                </div>
+                                {service.badge && (
+                                  <span className="text-xs bg-orange-100 text-orange-600 px-2 py-1 rounded-full">
+                                    {service.badge}
+                                  </span>
+                                )}
+                              </div>
+                              <div className="text-sm text-slate-600">
+                                {service.description}
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  {/* Quick CTA in Mega Menu */}
+                  <div className="border-t border-gray-100 mt-6 pt-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="font-medium text-slate-900">Not sure which service you need?</div>
+                        <div className="text-sm text-slate-600">Get a free consultation to find the perfect solution</div>
+                      </div>
+                      <Link 
+                        to="/workflow-audit" 
+                        className="bg-orange-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-orange-600 transition-colors duration-200"
+                        onClick={() => setIsMegaMenuOpen(false)}
+                      >
+                        Free Audit
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               )}
             </div>
 
-            {/* Main Navigation Items */}
-            {navItems.filter(item => mainNavItems.includes(item.label)).map((item) => (
-              <Link
-                key={item.label}
-                to={item.href}
-                className={`px-4 py-3 font-semibold text-base transition-all duration-200 rounded-lg ${
-                  isActiveRoute(item.href)
-                    ? 'bg-blue-50 text-blue-600'
-                    : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50'
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
-
+            {/* Other navigation links remain the same */}
+            <Link 
+              to="/use-cases" 
+              className={`px-4 py-3 font-semibold text-base transition-all duration-200 rounded-lg ${
+                isActiveRoute('/use-cases') 
+                  ? 'bg-blue-50 text-blue-600' 
+                  : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50'
+              }`}
+            >
+              Use Cases
+            </Link>
+            <Link 
+              to="/pricing" 
+              className={`px-4 py-3 font-semibold text-base transition-all duration-200 rounded-lg ${
+                isActiveRoute('/pricing') 
+                  ? 'bg-blue-50 text-blue-600' 
+                  : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50'
+              }`}
+            >
+              Pricing
+            </Link>
+            <Link 
+              to="/industries" 
+              className={`px-4 py-3 font-semibold text-base transition-all duration-200 rounded-lg ${
+                isActiveRoute('/industries') 
+                  ? 'bg-blue-50 text-blue-600' 
+                  : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50'
+              }`}
+            >
+              Industries
+            </Link>
+            
             {/* More Dropdown */}
-            <div className="relative" ref={dropdownRef}>
-              <button
-                className="flex items-center px-4 py-3 font-semibold text-base text-slate-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200"
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              >
+            <div className="relative group">
+              <button className="flex items-center px-4 py-3 font-semibold text-base text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded-lg">
                 More
-                <ChevronDown className={`ml-1 w-4 h-4 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className="ml-1 w-4 h-4 group-hover:rotate-180 transition-transform duration-200" />
               </button>
-
-              {isDropdownOpen && (
-                <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-xl shadow-lg border border-gray-100 py-2 animate-in fade-in-0 slide-in-from-top-2 duration-200">
-                  {moreNavItems.map((item) => (
-                    <Link
-                      key={item.label}
-                      to={item.href}
-                      className="block px-4 py-3 text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors font-medium"
-                      onClick={() => setIsDropdownOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
+              
+              <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-gray-200 py-2 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 z-50">
+                <Link to="/about" className="block px-4 py-2 text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-200">About</Link>
+                <Link to="/integrations" className="block px-4 py-2 text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-200">Integrations</Link>
+                <Link to="/case-studies" className="block px-4 py-2 text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-200">Case Studies</Link>
+                <Link to="/resources" className="block px-4 py-2 text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-200">Resources</Link>
+                <Link to="/partnerships" className="block px-4 py-2 text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-200">Partnerships</Link>
+                <Link to="/faq" className="block px-4 py-2 text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-200">FAQ</Link>
+                <Link to="/contact" className="block px-4 py-2 text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-200">Contact</Link>
+              </div>
             </div>
+          </div>
 
-            {/* CTA Button */}
-            <div className="ml-4">
-              <PrimaryCTA label="Book Free Demo" icon="calendar" />
-            </div>
+          {/* CTA Button */}
+          <div className="hidden lg:block">
+            <PrimaryCTA 
+              label="Book Free Demo" 
+              icon="calendar"
+              className="font-bold px-6 py-3 text-base"
+            />
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="lg:hidden">
-            <button
-              className="p-2 text-slate-700 hover:text-blue-600 transition-colors"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
+          <button 
+            className="lg:hidden p-2 rounded-lg text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-200"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
 
-          {/* Mobile Navigation */}
-          {isMenuOpen && (
-            <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-100 shadow-lg animate-in fade-in-0 slide-in-from-top-2 duration-200">
-              <div className="px-4 py-6 space-y-4">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.label}
-                    to={item.href}
-                    className="block py-3 px-4 text-slate-700 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-colors font-medium"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-                
-                <div className="pt-4 border-t border-gray-100">
-                  <PrimaryCTA label="Book Free Demo" icon="calendar" className="w-full" />
-                </div>
+        {/* Mobile Menu - Enhanced with all services */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden absolute top-full left-0 w-full bg-white border-t border-gray-200 shadow-lg max-h-96 overflow-y-auto">
+            <div className="py-4 space-y-2">
+              {/* Services Section */}
+              <div className="px-6 py-2">
+                <div className="font-semibold text-slate-900 mb-3">Services</div>
+                {serviceCategories.map((category) =>
+                  category.services.map((service, index) => (
+                    <Link 
+                      key={index}
+                      to={service.path} 
+                      className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 text-sm transition-colors duration-200"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {service.title}
+                    </Link>
+                  ))
+                )}
+              </div>
+              
+              {/* Other Links */}
+              <Link 
+                to="/use-cases" 
+                className="block px-6 py-3 text-slate-700 hover:text-blue-600 hover:bg-blue-50 font-medium transition-colors duration-200"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Use Cases
+              </Link>
+              <Link 
+                to="/pricing" 
+                className="block px-6 py-3 text-slate-700 hover:text-blue-600 hover:bg-blue-50 font-medium transition-colors duration-200"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Pricing
+              </Link>
+              <Link 
+                to="/industries" 
+                className="block px-6 py-3 text-slate-700 hover:text-blue-600 hover:bg-blue-50 font-medium transition-colors duration-200"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Industries
+              </Link>
+              <Link 
+                to="/about" 
+                className="block px-6 py-3 text-slate-700 hover:text-blue-600 hover:bg-blue-50 font-medium transition-colors duration-200"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                About
+              </Link>
+              <Link 
+                to="/contact" 
+                className="block px-6 py-3 text-slate-700 hover:text-blue-600 hover:bg-blue-50 font-medium transition-colors duration-200"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Contact
+              </Link>
+              <div className="px-6 pt-4">
+                <PrimaryCTA 
+                  label="Book Free Demo" 
+                  icon="calendar"
+                  className="w-full justify-center"
+                />
               </div>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </nav>
   );

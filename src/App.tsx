@@ -1,19 +1,4 @@
-/*
- * Ops On Auto - Business Automation Platform
- * Copyright (c) 2025 Ops On Auto (https://opsonauto.com)
- * All rights reserved. Unauthorized copying prohibited.
- * 
- * Proprietary and confidential software.
- * Contact: hello@opsonauto.com for licensing inquiries.
- */
-
-// Add this header to the top of these key files:
-// - src/App.tsx
-// - src/main.tsx  
-// - src/components/Navigation.tsx
-// - src/pages/Index.tsx
-// - Any other critical component files
-
+// src/App.tsx - UPDATED WITH GENERATIVE AI ROUTE
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -39,10 +24,12 @@ import VoiceAI from "./pages/VoiceAI";
 import WorkflowAutomation from "./pages/WorkflowAutomation";
 import ReportingAutomation from "./pages/ReportingAutomation";
 import AIDataProcessing from "./pages/AIDataProcessing";
-import ProgrammaticSEO from "./pages/ProgrammaticSEO"; // FINAL SERVICE PAGE
+import ProgrammaticSEO from "./pages/ProgrammaticSEO";
 import OptimizedNotFound from "./pages/OptimizedNotFound";
 import OptimizedIndex from "./pages/OptimizedIndex";
 
+// NEW IMPORT - ADD THIS
+import GenerativeAI from "./pages/GenerativeAI";
 
 const queryClient = new QueryClient();
 
@@ -62,7 +49,11 @@ const App = () => (
           <Route path="/workflow-automation" element={<WorkflowAutomation />} />
           <Route path="/reporting-automation" element={<ReportingAutomation />} />
           <Route path="/ai-data-processing" element={<AIDataProcessing />} />
-          <Route path="/programmatic-seo" element={<ProgrammaticSEO />} /> {/* FINAL ROUTE */}
+          <Route path="/programmatic-seo" element={<ProgrammaticSEO />} />
+          
+          {/* NEW ROUTE - ADD THIS */}
+          <Route path="/generative-ai" element={<GenerativeAI />} />
+          
           <Route path="/use-cases" element={<UseCases />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/integrations" element={<Integrations />} />
