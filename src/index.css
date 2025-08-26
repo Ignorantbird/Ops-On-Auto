@@ -79,10 +79,19 @@
   .section-hero h2,
   .section-hero h3 {
     color: white !important;
+    /* ENHANCED TEXT SHADOW FOR BETTER VISIBILITY */
+    text-shadow: 
+      0 3px 6px rgba(0, 0, 0, 0.4),
+      0 6px 12px rgba(0, 0, 0, 0.3),
+      0 1px 3px rgba(0, 0, 0, 0.5);
   }
   
   .section-hero p {
     color: hsl(255deg 255% 255% / 90%) !important;
+    /* ENHANCED TEXT SHADOW FOR SUBTITLES */
+    text-shadow: 
+      0 2px 4px rgba(0, 0, 0, 0.3),
+      0 4px 8px rgba(0, 0, 0, 0.2);
   }
   
   /* White Sections - Dark text on white */
@@ -119,6 +128,38 @@
     color: hsl(var(--text-secondary)) !important;
   }
 
+  /* === ENHANCED HERO TEXT STYLES === */
+  
+  /* Main hero heading - maximum contrast */
+  .hero-heading-primary {
+    color: white !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.025em;
+    text-shadow: 
+      0 4px 8px rgba(0, 0, 0, 0.5),
+      0 8px 16px rgba(0, 0, 0, 0.3),
+      0 2px 4px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  /* Hero subtitle - enhanced readability */
+  .hero-subtitle-enhanced {
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 500;
+    text-shadow: 
+      0 2px 4px rgba(0, 0, 0, 0.4),
+      0 4px 8px rgba(0, 0, 0, 0.3),
+      0 1px 2px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  /* Alternative: Text with background overlay */
+  .hero-text-overlay {
+    background: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(2px);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
   /* === TYPOGRAPHY SYSTEM === */
   
   .heading-hero {
@@ -128,6 +169,10 @@
     margin-bottom: 1.5rem;
     letter-spacing: -0.02em;
     color: white;
+    /* ENHANCED HERO TEXT SHADOW */
+    text-shadow: 
+      0 3px 6px rgba(0, 0, 0, 0.4),
+      0 6px 12px rgba(0, 0, 0, 0.3);
   }
   
   .heading-section {
@@ -250,12 +295,12 @@
   
   .card-pricing {
     background: white;
-    border: 2px solid hsl(var(--border-medium));
+    border: 1px solid hsl(var(--border-light));
     border-radius: 1.5rem;
-    padding: 2.5rem 2rem;
-    box-shadow: var(--shadow-md);
-    position: relative;
+    padding: 3rem 2rem;
+    box-shadow: var(--shadow-base);
     transition: all 0.3s ease;
+    position: relative;
   }
   
   .card-pricing:hover {
@@ -263,92 +308,35 @@
     transform: translateY(-6px);
   }
   
-  .card-testimonial {
-    background: white;
-    border: 1px solid hsl(var(--border-light));
-    border-radius: 1rem;
-    padding: 2rem;
-    box-shadow: var(--shadow-base);
-    transition: all 0.3s ease;
-  }
-  
-  .card-testimonial:hover {
-    box-shadow: var(--shadow-md);
+  .card-pricing.featured {
+    border: 2px solid hsl(var(--cta-primary));
+    box-shadow: var(--shadow-lg), 0 0 0 1px hsl(var(--cta-primary) / 20%);
+    transform: scale(1.05);
   }
 
-  /* === UTILITY COMPONENTS === */
+  /* === CONTAINER SYSTEM === */
   
   .container-standard {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 0 2rem;
   }
   
-  .badge-feature {
-    background: hsl(var(--brand-primary) / 10%);
-    color: hsl(var(--brand-primary));
-    padding: 0.5rem 1rem;
-    border-radius: 2rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
+  .container-wide {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
   }
   
-  .badge-success {
-    background: hsl(var(--success) / 10%);
-    color: hsl(var(--success));
-    padding: 0.5rem 1rem;
-    border-radius: 2rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
+  .container-narrow {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
   }
-  
-  .divider-section {
-    height: 1px;
-    background: linear-gradient(90deg, transparent 0%, hsl(var(--border-medium)) 50%, transparent 100%);
-    margin: 4rem 0;
-  }
-  
-  .stats-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 1rem;
-    text-align: center;
-    border: 1px solid hsl(var(--border-light));
-    box-shadow: var(--shadow-sm);
-  }
-  
-  .trust-indicator {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: hsl(255deg 255% 255% / 90%);
-    font-size: 0.875rem;
-  }
-  
-  .stats-number {
-    font-size: 3rem;
-    font-weight: 700;
-    line-height: 1;
-    color: hsl(var(--brand-primary));
-  }
-  
-  .stats-label {
-    font-size: 0.875rem;
-    color: hsl(var(--text-muted));
-    margin-top: 0.5rem;
-  }
-}
 
-@layer utilities {
-  /* === REMOVE ONLY YELLOW COLORS (KEEP ORANGE) === */
+  /* === REMOVE ALL YELLOW, KEEP ORANGE === */
   
-  /* Remove yellow backgrounds but keep orange */
+  /* Replace yellow backgrounds with blue */
   .bg-yellow-50,
   .bg-yellow-100,
   .bg-yellow-200,
@@ -362,7 +350,7 @@
     background: hsl(var(--brand-primary)) !important;
   }
   
-  /* Remove yellow text but keep orange text */
+  /* Replace yellow text with blue */
   .text-yellow-50,
   .text-yellow-100,
   .text-yellow-200,
@@ -376,7 +364,7 @@
     color: hsl(var(--brand-primary)) !important;
   }
   
-  /* Remove yellow borders but keep orange borders */
+  /* Replace yellow borders with blue */
   .border-yellow-50,
   .border-yellow-100,
   .border-yellow-200,
@@ -390,7 +378,7 @@
     border-color: hsl(var(--brand-primary)) !important;
   }
   
-  /* Remove yellow gradients but keep orange gradients */
+  /* Replace yellow gradients with blue */
   [class*="from-yellow"] {
     --tw-gradient-from: hsl(var(--brand-primary)) !important;
   }
@@ -402,9 +390,6 @@
   [class*="via-yellow"] {
     --tw-gradient-via: hsl(var(--brand-primary)) !important;
   }
-
-  /* === KEEP ALL ORANGE COLORS INTACT === */
-  /* Orange colors (.bg-orange-*, .text-orange-*, .border-orange-*) remain unchanged */
 
   /* === UTILITY CLASSES === */
   

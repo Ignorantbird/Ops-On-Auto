@@ -22,13 +22,13 @@ const OptimizedHeroSection = () => {
         <div className="absolute bottom-20 left-10 w-40 h-40 bg-gradient-to-tr from-purple-400/10 to-transparent rounded-full blur-xl"></div>
         <div className="absolute top-1/2 left-1/3 w-20 h-20 bg-white/5 rounded-lg transform rotate-45 opacity-50"></div>
       </div>
-      
+
       {/* Main Content - Prioritized for LCP */}
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* OPTIMIZED Typography - Reduced animation complexity */}
           <div className="mb-8">
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight tracking-tight">
+            <h1 className="hero-heading-primary text-5xl md:text-7xl mb-6">
               Automate Repetitive Work.
               <span className="block mt-2 text-orange-300">
                 Focus on Growing Your Business.
