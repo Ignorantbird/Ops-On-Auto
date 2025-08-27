@@ -23,19 +23,19 @@ const AISolutions = () => {
     },
     {
       icon: Bot,
-      title: "Sales AI Assistants", 
-      description: "Handle objection management, upsell suggestions, and automated follow-up sequences — keeping your sales pipeline active 24/7.",
+      title: "AI Sales Person", 
+      description: "Complete AI sales team that handles objection management, lead qualification, and automated follow-up sequences — your 24/7 sales workforce.",
       benefits: [
+        "24/7 sales conversations",
         "Intelligent objection handling",
-        "Personalized upsell opportunities",
-        "Automated follow-up sequences", 
-        "Pipeline optimization"
+        "Automated pipeline management", 
+        "3-5x ROI in 90 days"
       ],
-      pricing: "₹55,000 - ₹150,000", // ENHANCED PRICING
-      timeline: "2-5 weeks",
-      gradient: "from-purple-500 to-pink-600",
-      badge: "✨ Revenue Boost",
-      link: "/agentic-ai" // EXISTING ROUTE (part of agentic AI)
+      pricing: "₹55,000 - ₹180,000", // UPDATED PRICING
+      timeline: "2-4 weeks",
+      gradient: "from-blue-500 to-indigo-600", // UPDATED GRADIENT
+      badge: "💰 Revenue Multiplier", // UPDATED BADGE
+      link: "/sales-ai" // NOW LINKS TO NEW PAGE!
     },
     {
       icon: UserCheck,

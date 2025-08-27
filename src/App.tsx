@@ -1,4 +1,4 @@
-// src/App.tsx - UPDATED WITH GENERATIVE AI ROUTE
+// src/App.tsx - UPDATED WITH DATA ANALYTICS ROUTE
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -28,8 +28,10 @@ import ProgrammaticSEO from "./pages/ProgrammaticSEO";
 import OptimizedNotFound from "./pages/OptimizedNotFound";
 import OptimizedIndex from "./pages/OptimizedIndex";
 
-// NEW IMPORT - ADD THIS
+// EXISTING + NEW IMPORTS
 import GenerativeAI from "./pages/GenerativeAI";
+import SalesAI from "./pages/SalesAI";
+import DataAnalytics from "./pages/DataAnalytics"; // NEW IMPORT
 
 const queryClient = new QueryClient();
 
@@ -51,8 +53,10 @@ const App = () => (
           <Route path="/ai-data-processing" element={<AIDataProcessing />} />
           <Route path="/programmatic-seo" element={<ProgrammaticSEO />} />
           
-          {/* NEW ROUTE - ADD THIS */}
+          {/* NEW SERVICE PAGES */}
           <Route path="/generative-ai" element={<GenerativeAI />} />
+          <Route path="/sales-ai" element={<SalesAI />} />
+          <Route path="/data-analytics" element={<DataAnalytics />} /> {/* NEW ROUTE */}
           
           <Route path="/use-cases" element={<UseCases />} />
           <Route path="/pricing" element={<Pricing />} />

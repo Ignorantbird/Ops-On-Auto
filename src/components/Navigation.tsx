@@ -1,11 +1,11 @@
-// src/components/Navigation.tsx - UPDATED WITH EXPANDED SERVICES
+// src/components/Navigation.tsx - FIXED WITH UPDATED MEGA MENU
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { PrimaryCTA } from "@/components/cta/StandardizedCTA";
 import Logo3D from "./Logo3D";
 
-// Logo component remains the same with fixed spacing
+// Logo components (keep your existing logo code)
 const OpsOnAuto3DLogo = ({ 
   size = 64, 
   showText = true,
@@ -144,24 +144,24 @@ const Navigation = () => {
     return location.pathname === path || location.pathname.startsWith(path);
   };
 
-  // EXPANDED SERVICE LINKS - Organized by Category
+  // UPDATED SERVICE CATEGORIES - FIXED WITH NEW SERVICES
   const serviceCategories = [
     {
       category: "AI Solutions",
       services: [
         { title: "Agentic AI", path: "/agentic-ai", description: "AI that thinks, plans & acts independently", badge: "🔥 Popular" },
         { title: "Generative AI", path: "/generative-ai", description: "Custom AI that creates content & designs", badge: "✨ New" },
-        { title: "AI Sales Person", path: "/ai-sales-person", description: "24/7 AI sales team that never sleeps" },
-        { title: "AI Development", path: "/ai-development", description: "Custom ML models & AI integrations" }
+        { title: "AI Sales Person", path: "/sales-ai", description: "24/7 AI sales team that never sleeps", badge: "💰 High ROI" }, // FIXED LINK!
+        { title: "AI Development", path: "/ai-data-processing", description: "Custom ML models & AI integrations" }
       ]
     },
     {
       category: "Business Systems",
       services: [
         { title: "CRM Automation", path: "/crm-automation", description: "Smart pipelines & lead scoring" },
-        { title: "Business Consulting", path: "/business-consulting", description: "Strategic AI roadmap & transformation" },
-        { title: "Process Automation", path: "/process-automation", description: "Turn manual work into AI workflows" },
-        { title: "Data Analytics", path: "/data-analytics", description: "AI-driven insights & predictions" }
+        { title: "Voice AI", path: "/voice-ai", description: "AI phone calls & customer service" },
+        { title: "Workflow Automation", path: "/workflow-automation", description: "Process optimization & task automation" },
+        { title: "Data Analytics", path: "/data-analytics", description: "AI-driven insights & predictions", badge: "📊 Premium" }
       ]
     }
   ];
@@ -191,11 +191,11 @@ const Navigation = () => {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
             
-            {/* ENHANCED Services Mega Menu */}
+            {/* FIXED Services Mega Menu */}
             <div className="relative" ref={megaMenuRef}>
               <button
                 className={`relative flex items-center px-4 py-3 font-semibold text-base transition-all duration-200 rounded-lg group ${
-                  isActiveRoute('/services') || isActiveRoute('/agentic-ai') || isActiveRoute('/crm-automation')
+                  isActiveRoute('/services') || isActiveRoute('/agentic-ai') || isActiveRoute('/crm-automation') || isActiveRoute('/sales-ai') || isActiveRoute('/generative-ai')
                     ? 'bg-blue-50 text-blue-600' 
                     : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50'
                 }`}
@@ -205,7 +205,7 @@ const Navigation = () => {
                 <ChevronDown className={`ml-1 w-4 h-4 transition-transform duration-200 ${isMegaMenuOpen ? 'rotate-180' : ''}`} />
               </button>
 
-              {/* EXPANDED Mega Menu */}
+              {/* UPDATED Mega Menu */}
               {isMegaMenuOpen && (
                 <div className="absolute top-full left-0 mt-2 w-[600px] bg-white rounded-xl shadow-2xl border border-gray-200 p-6 z-50">
                   <div className="grid grid-cols-2 gap-6">
@@ -262,7 +262,7 @@ const Navigation = () => {
               )}
             </div>
 
-            {/* Other navigation links remain the same */}
+            {/* Other navigation links */}
             <Link 
               to="/use-cases" 
               className={`px-4 py-3 font-semibold text-base transition-all duration-200 rounded-lg ${
