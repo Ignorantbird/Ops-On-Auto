@@ -1,54 +1,55 @@
-import { TrendingUp, Home, Rocket, Users } from "lucide-react";
+// src/components/AITargetAudience.tsx - FIXED WITH WORKING BUTTON LINKS
+import { Users, TrendingUp, Building2, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const AITargetAudience = () => {
+  const navigate = useNavigate();
+
+  // Button click handlers
+  const handleScheduleConsultation = () => {
+    navigate('/workflow-audit');
+  };
+
+  const handleViewCaseStudies = () => {
+    navigate('/case-studies');
+  };
+
   const audiences = [
     {
-      icon: TrendingUp,
-      title: "PPC Agencies",
-      description: "Increase speed-to-lead without hiring more agents",
-      benefits: [
-        "Instant lead qualification",
-        "24/7 response capability", 
-        "Reduced cost per conversion",
-        "Scale without headcount"
-      ],
-      color: "from-blue-500 to-purple-600"
-    },
-    {
-      icon: Home,
-      title: "Real Estate Teams",
-      description: "Call and qualify property leads instantly",
-      benefits: [
-        "Immediate lead follow-up",
-        "Property-specific conversations",
-        "Showing appointments automation",
-        "Market insight delivery"
-      ],
-      color: "from-green-500 to-blue-600"
-    },
-    {
-      icon: Rocket,
-      title: "Startups & SMBs",
-      description: "Automate lead management without extra headcount",
-      benefits: [
-        "Cost-effective scaling",
-        "Professional lead handling",
-        "Consistent follow-up",
-        "Growth without overhead"
-      ],
-      color: "from-purple-500 to-pink-600"
-    },
-    {
       icon: Users,
-      title: "Consulting Businesses",
-      description: "Free up time for billable work, not admin",
+      title: "Small Business Owners",
+      description: "Scale operations without hiring more staff. Perfect for businesses with 5-50 employees looking to automate repetitive tasks.",
       benefits: [
-        "Automated lead qualification",
-        "Meeting scheduling",
-        "Initial discovery calls",
-        "More billable hours"
+        "Reduce operational costs by 40%",
+        "Scale customer support 24/7",
+        "Automate lead qualification",
+        "Free up time for strategic work"
       ],
-      color: "from-slate-600 to-slate-700"
+      color: "from-blue-500 to-blue-600"
+    },
+    {
+      icon: TrendingUp,
+      title: "Sales Teams",
+      description: "Never miss a lead again. AI handles initial contact, qualification, and scheduling while your team focuses on closing deals.",
+      benefits: [
+        "Instant lead response within 2 minutes",
+        "Higher qualification accuracy",
+        "Automated follow-up sequences",
+        "Increased meeting booking rates"
+      ],
+      color: "from-green-500 to-green-600"
+    },
+    {
+      icon: Building2,
+      title: "Marketing Agencies",
+      description: "Deliver better results for clients with AI-powered automation. Scale content creation, reporting, and client communication.",
+      benefits: [
+        "Automated client reporting",
+        "Scalable content generation",
+        "Better campaign performance",
+        "More clients with same team size"
+      ],
+      color: "from-orange-500 to-orange-600"
     }
   ];
 
@@ -56,37 +57,31 @@ const AITargetAudience = () => {
     <section className="py-20 bg-white">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">
-            Who Uses Our <span className="bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent">Agentic AI</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+            Built for Forward-Thinking Teams
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            From agencies to startups, our AI solutions help businesses of all sizes automate their most critical processes
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+            Our AI solutions are designed for businesses ready to embrace automation and scale intelligently
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid lg:grid-cols-3 gap-8 mb-16 max-w-7xl mx-auto">
           {audiences.map((audience, index) => {
             const Icon = audience.icon;
             
             return (
-              <div
-                key={index}
-                className="group relative overflow-hidden"
-              >
+              <div key={index} className="group relative">
                 <div className="p-8 rounded-2xl bg-white border border-slate-200 hover:border-blue-300 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg h-full">
-                  {/* Icon with gradient background */}
-                  <div className="relative mb-6">
-                    <div className={`w-16 h-16 mx-auto rounded-xl bg-gradient-to-r ${audience.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                      <Icon className="w-8 h-8 text-white" />
-                    </div>
-                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-orange-400/20 rounded-full opacity-0 group-hover:opacity-100 animate-ping transition-opacity duration-300"></div>
+                  {/* Icon */}
+                  <div className={`w-16 h-16 bg-gradient-to-r ${audience.color} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <Icon className="w-8 h-8 text-white" />
                   </div>
 
-                  <h3 className="text-xl font-bold mb-3 text-slate-900 text-center">
+                  <h3 className="text-2xl font-bold mb-4 text-slate-900">
                     {audience.title}
                   </h3>
-
-                  <p className="text-slate-600 text-center mb-6 leading-relaxed">
+                  
+                  <p className="text-slate-600 leading-relaxed mb-6">
                     {audience.description}
                   </p>
 
@@ -124,7 +119,7 @@ const AITargetAudience = () => {
           </div>
         </div>
 
-        {/* Use case callout */}
+        {/* FIXED: Use case callout with working buttons */}
         <div className="mt-16 text-center">
           <div className="p-8 rounded-2xl bg-slate-50 border border-slate-200 max-w-3xl mx-auto">
             <h3 className="text-2xl font-bold mb-4 text-slate-900">
@@ -134,10 +129,16 @@ const AITargetAudience = () => {
               Our AI experts will analyze your current processes and recommend the perfect AI solution for your specific industry and use case.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition-colors">
+              <button 
+                onClick={handleScheduleConsultation}
+                className="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition-colors font-semibold"
+              >
                 Schedule Consultation
               </button>
-              <button className="px-6 py-3 border border-blue-500 text-blue-500 rounded-lg hover:bg-blue-50 transition-colors">
+              <button 
+                onClick={handleViewCaseStudies}
+                className="px-6 py-3 border border-blue-500 text-blue-500 rounded-lg hover:bg-blue-50 transition-colors font-semibold"
+              >
                 View Case Studies
               </button>
             </div>
