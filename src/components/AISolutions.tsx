@@ -1,9 +1,12 @@
-// src/components/AISolutions.tsx - SAFE ENHANCEMENT (keeps your current structure)
+// src/components/AISolutions.tsx - FIXED WITH WORKING BUTTON LINKS
 import { Button } from "@/components/ui/button";
-import { Phone, Bot, UserCheck, TrendingUp, ArrowRight, Brain, Database, FileText, Cog, Wand2} from "lucide-react";
+import { Phone, Bot, UserCheck, TrendingUp, ArrowRight, Brain, Database, FileText, Cog, Wand2, Calendar, MessageCircle} from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const AISolutions = () => {
-  // ENHANCED your existing 4 solutions + add 2 more using existing components
+  const navigate = useNavigate();
+
+  // Enhanced solutions with proper routing
   const solutions = [
     {
       icon: Phone,
@@ -15,11 +18,11 @@ const AISolutions = () => {
         "Automatic meeting scheduling",
         "24/7 availability"
       ],
-      pricing: "₹65,000 - ₹180,000", // ENHANCED PRICING
+      pricing: "₹65,000 - ₹180,000",
       timeline: "2-4 weeks",
       gradient: "from-pink-500 to-rose-600",
       badge: "🎯 High Converting",
-      link: "/voice-ai" // EXISTING ROUTE
+      link: "/voice-ai"
     },
     {
       icon: Bot,
@@ -31,11 +34,11 @@ const AISolutions = () => {
         "Automated pipeline management", 
         "3-5x ROI in 90 days"
       ],
-      pricing: "₹55,000 - ₹180,000", // UPDATED PRICING
+      pricing: "₹55,000 - ₹180,000",
       timeline: "2-4 weeks",
-      gradient: "from-blue-500 to-indigo-600", // UPDATED GRADIENT
-      badge: "💰 Revenue Multiplier", // UPDATED BADGE
-      link: "/sales-ai" // NOW LINKS TO NEW PAGE!
+      gradient: "from-blue-500 to-indigo-600",
+      badge: "💰 Revenue Multiplier",
+      link: "/sales-ai"
     },
     {
       icon: UserCheck,
@@ -47,11 +50,11 @@ const AISolutions = () => {
         "Detailed assessment reports",
         "Time-saving recruitment"
       ],
-      pricing: "₹45,000 - ₹120,000", // ENHANCED PRICING
+      pricing: "₹45,000 - ₹120,000",
       timeline: "2-4 weeks",
       gradient: "from-green-500 to-blue-600",
       badge: "🎨 HR Automation",
-      link: "/agentic-ai" // EXISTING ROUTE (part of agentic AI)
+      link: "/agentic-ai"
     },
     {
       icon: TrendingUp,
@@ -63,11 +66,11 @@ const AISolutions = () => {
         "Automated reporting",
         "Performance predictions"
       ],
-      pricing: "₹75,000 - ₹250,000", // ENHANCED PRICING
+      pricing: "₹75,000 - ₹250,000",
       timeline: "3-6 weeks",
       gradient: "from-orange-500 to-red-600",
       badge: "📊 Analytics Engine",
-      link: "/ai-data-processing" // EXISTING ROUTE
+      link: "/ai-data-processing"
     },
     {
       icon: Database,
@@ -79,27 +82,11 @@ const AISolutions = () => {
         "Real-time dashboards",
         "Custom AI models"
       ],
-      pricing: "₹80,000 - ₹300,000", // ENHANCED PRICING
+      pricing: "₹80,000 - ₹300,000",
       timeline: "4-8 weeks",
       gradient: "from-blue-500 to-purple-600",
       badge: "🔥 Most Advanced",
-      link: "/ai-data-processing" // EXISTING ROUTE
-    },
-    {
-      icon: FileText,
-      title: "Programmatic SEO & Content",
-      description: "Scale your content creation and SEO efforts with AI-powered systems that generate hundreds of optimized pages automatically.",
-      benefits: [
-        "Mass content generation",
-        "SEO optimization at scale",
-        "Automated publishing",
-        "Performance tracking"
-      ],
-      pricing: "₹60,000 - ₹200,000", // ENHANCED PRICING
-      timeline: "3-6 weeks", 
-      gradient: "from-indigo-500 to-purple-600",
-      badge: "🚀 Growth Engine",
-      link: "/programmatic-seo" // EXISTING ROUTE
+      link: "/ai-data-processing"
     },
     {
       icon: Wand2,
@@ -115,57 +102,68 @@ const AISolutions = () => {
       timeline: "2-4 weeks", 
       gradient: "from-purple-500 to-pink-600",
       badge: "🎨 Creative Power",
-      link: "/generative-ai" // NOW LINKS TO NEW PAGE!
+      link: "/generative-ai"
     }
   ];
 
+  // Handler functions for button clicks
+  const handleLearnMore = (solutionLink: string) => {
+    navigate(solutionLink);
+  };
+
+  const handleBookConsultation = () => {
+    navigate('/workflow-audit');
+  };
+
+  const handleContactUs = () => {
+    navigate('/contact');
+  };
+
   return (
-    <section className="py-20 bg-slate-50">
+    <section className="py-20 bg-gradient-to-b from-white to-slate-50">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">
-            Our <span className="bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent">Enhanced AI Solutions</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+            Our Advanced AI Solutions
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Choose from our comprehensive suite of AI solutions designed to automate your most critical business processes and accelerate growth
+            Choose from our comprehensive suite of AI automation solutions designed to transform your business operations.
           </p>
         </div>
 
-        {/* Enhanced Solutions with Pricing */}
-        <div className="space-y-20">
+        <div className="max-w-7xl mx-auto space-y-16">
           {solutions.map((solution, index) => {
             const Icon = solution.icon;
             const isEven = index % 2 === 0;
             
             return (
-              <div
-                key={index}
-                className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12`}
-              >
+              <div key={index} className={`flex items-center gap-12 ${!isEven ? 'flex-row-reverse' : ''}`}>
                 {/* Content Side */}
-                <div className="flex-1 text-center lg:text-left">
-                  <div className="mb-6">
-                    {solution.badge && (
-                      <span className="inline-block bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold mb-4">
-                        {solution.badge}
-                      </span>
-                    )}
-                    <h3 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-                      {solution.title}
-                    </h3>
-                    <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                      {solution.description}
-                    </p>
+                <div className="flex-1">
+                  {/* Badge */}
+                  <div className="inline-flex items-center px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">
+                    {solution.badge}
                   </div>
 
-                  {/* Benefits Grid */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
-                    {solution.benefits.map((benefit, benefitIndex) => (
-                      <div key={benefitIndex} className="flex items-center">
-                        <div className="w-2 h-2 bg-green-500 rounded-full mr-3 flex-shrink-0"></div>
-                        <span className="text-slate-700">{benefit}</span>
-                      </div>
-                    ))}
+                  <h3 className="text-3xl font-bold text-slate-900 mb-4">
+                    {solution.title}
+                  </h3>
+                  
+                  <p className="text-lg text-slate-600 leading-relaxed mb-6">
+                    {solution.description}
+                  </p>
+
+                  {/* Benefits */}
+                  <div className="mb-8">
+                    <h4 className="text-lg font-semibold text-slate-900 mb-4">What You Get:</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {solution.benefits.map((benefit, benefitIndex) => (
+                        <div key={benefitIndex} className="flex items-start">
+                          <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                          <span className="text-slate-700">{benefit}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
                   {/* Enhanced Pricing & Timeline */}
@@ -182,13 +180,13 @@ const AISolutions = () => {
                     </div>
                   </div>
 
-                  {/* CTA */}
+                  {/* FIXED: CTA Button with proper onClick handler and correct text */}
                   <Button
                     size="lg"
+                    onClick={() => handleLearnMore(solution.link)}
                     className={`bg-gradient-to-r ${solution.gradient} text-white hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl px-8 py-6 text-lg`}
-                    onClick={() => window.location.href = solution.link}
                   >
-                    Learn More About {solution.title.split(' ')[0]} AI
+                    Learn More About {solution.title.replace(/ AI$/, '')}
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </div>
@@ -205,45 +203,31 @@ const AISolutions = () => {
           })}
         </div>
 
-        {/* Enhanced CTA Section */}
+        {/* FIXED: Enhanced CTA Section with working buttons */}
         <div className="mt-20 text-center bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-12 text-white">
           <h3 className="text-3xl font-bold mb-4">Ready to Scale with AI?</h3>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
             Transform your business operations with intelligent automation. Start with a free consultation to discover your AI opportunities.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               size="lg" 
-              className="bg-orange-500 hover:bg-orange-600 text-white text-lg px-8 py-6 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-              onClick={() => window.location.href = '/workflow-audit'}
+              onClick={handleBookConsultation}
+              className="bg-orange-500 hover:bg-orange-600 text-white text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             >
-              Get Free AI Audit
+              <Calendar className="w-5 h-5 mr-2" />
+              Book Free AI Consultation
             </Button>
+            
             <Button 
               size="lg" 
-              variant="outline"
-              className="text-lg px-8 py-6 border-2 border-white/20 bg-white/10 backdrop-blur-sm hover:bg-white hover:text-blue-600"
-              onClick={() => window.location.href = '/contact'}
+              onClick={handleContactUs}
+              className="bg-white/20 backdrop-blur-sm border-2 border-white/30 text-white hover:bg-white hover:text-blue-600 text-lg px-8 py-6 transition-all duration-300 transform hover:scale-105"
             >
-              Book Strategy Call
+              <MessageCircle className="w-5 h-5 mr-2" />
+              Contact AI Specialists
             </Button>
-          </div>
-          
-          {/* Trust Indicators */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm text-blue-200">
-            <div className="flex items-center justify-center">
-              <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
-              No upfront costs for consultation
-            </div>
-            <div className="flex items-center justify-center">
-              <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
-              Results guaranteed in 90 days
-            </div>
-            <div className="flex items-center justify-center">
-              <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
-              Full refund if not satisfied
-            </div>
           </div>
         </div>
       </div>

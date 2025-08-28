@@ -1,7 +1,20 @@
+// src/components/FinalCTA.tsx - FIXED WITH WORKING BUTTON LINKS
 import { Button } from "@/components/ui/button";
 import { Calendar, MessageCircle, CheckCircle } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const FinalCTA = () => {
+  const navigate = useNavigate();
+
+  // Handler functions for button clicks
+  const handleBookDemo = () => {
+    navigate('/workflow-audit');
+  };
+
+  const handleContactUs = () => {
+    navigate('/contact');
+  };
+
   return (
     <section className="py-20 bg-gradient-to-br from-blue-600 via-blue-500 to-purple-600">
       <div className="container mx-auto px-6">
@@ -14,19 +27,22 @@ const FinalCTA = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            {/* Keep the orange color for primary CTA */}
+            {/* FIXED: Primary CTA with proper onClick handler */}
             <Button 
               size="lg" 
+              onClick={handleBookDemo}
               className="bg-orange-500 hover:bg-orange-600 text-white text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             >
               <Calendar className="mr-2 h-5 w-5" />
               Book Free Demo
             </Button>
-            {/* Secondary button with white/outline style */}
+            
+            {/* FIXED: Secondary button with proper onClick handler and better contrast */}
             <Button 
               size="lg" 
               variant="outline"
-              className="border-white/30 text-white hover:bg-white hover:text-blue-600 text-lg px-8 py-6 transition-all duration-300 transform hover:scale-105"
+              onClick={handleContactUs}
+              className="bg-white/95 border-2 border-white text-blue-600 hover:bg-white hover:text-blue-700 text-lg px-8 py-6 transition-all duration-300 transform hover:scale-105 font-semibold"
             >
               <MessageCircle className="mr-2 h-5 w-5" />
               Contact Us
@@ -58,16 +74,7 @@ const FinalCTA = () => {
                 <CheckCircle className="w-3 h-3 text-white" />
               </div>
               <span className="text-sm font-medium group-hover:text-white transition-colors duration-200">
-                Setup in 2 weeks
-              </span>
-            </div>
-            
-            <div className="flex items-center gap-3 group">
-              <div className="w-5 h-5 rounded-full bg-green-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
-                <CheckCircle className="w-3 h-3 text-white" />
-              </div>
-              <span className="text-sm font-medium group-hover:text-white transition-colors duration-200">
-                Proven ROI
+                Setup in 2 weeks or less
               </span>
             </div>
           </div>

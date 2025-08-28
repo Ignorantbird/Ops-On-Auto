@@ -1,3 +1,4 @@
+// src/components/AIHowItWorks.tsx - FIXED WITH PROPER GUARANTEE POSITIONING
 import { Plug, GraduationCap, Rocket, ArrowRight } from "lucide-react";
 
 const AIHowItWorks = () => {
@@ -96,15 +97,19 @@ const AIHowItWorks = () => {
           </div>
         </div>
 
-        {/* Implementation guarantee */}
-        <div className="mt-16 text-center">
-          <div className="inline-flex items-center gap-4 p-6 rounded-2xl bg-slate-50 border border-slate-200">
-            <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-              <Rocket className="w-6 h-6 text-green-600" />
-            </div>
-            <div className="text-left">
-              <h3 className="font-bold text-slate-900">7-Day Implementation Guarantee</h3>
-              <p className="text-slate-600">Your AI solution will be live and working within one week, or we'll extend support at no extra cost.</p>
+        {/* FIXED: Implementation guarantee with more spacing from steps above */}
+        <div className="mt-32 flex justify-center">
+          <div className="max-w-2xl mx-auto bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8 border-2 border-green-200 shadow-lg">
+            <div className="flex items-center gap-6">
+              <div className="flex-shrink-0 w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+                <Rocket className="w-8 h-8 text-green-600" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">7-Day Implementation Guarantee</h3>
+                <p className="text-lg text-slate-600 leading-relaxed">
+                  Your AI solution will be live and working within one week, or we'll extend support at no extra cost.
+                </p>
+              </div>
             </div>
           </div>
         </div>

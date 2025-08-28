@@ -1,17 +1,35 @@
-// src/components/OptimizedHeroSection.tsx - ENHANCED TEXT VISIBILITY
+// src/components/OptimizedHeroSection.tsx - ENHANCED WITH DARKER TEXT & PROPER BUTTON LINKING
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, Calendar } from "lucide-react";
 import { PrimaryCTA, SecondaryCTA } from "@/components/cta/StandardizedCTA";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const OptimizedHeroSection = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const navigate = useNavigate();
 
   // Delay animations until after initial render for better Core Web Vitals
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 100);
     return () => clearTimeout(timer);
   }, []);
+
+  // Button click handlers with proper routing
+  const handleWorkflowAudit = () => {
+    navigate('/workflow-audit');
+  };
+
+  const handleExploreServices = () => {
+    navigate('/services');
+  };
+
+  const scrollToServices = () => {
+    const servicesSection = document.getElementById('services-section');
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <section className="relative min-h-[calc(100vh-4rem)] pt-16 flex items-center bg-gradient-to-br from-blue-600 via-blue-500 to-purple-600 overflow-hidden">
@@ -34,12 +52,12 @@ const OptimizedHeroSection = () => {
           {/* MAXIMUM VISIBILITY - Text on semi-transparent background */}
           <div className="mb-8 bg-black/30 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight tracking-tight">
-              {/* Use existing CSS class with maximum contrast */}
-              <span className="hero-heading-primary block mb-2">
+              {/* First line - keeping white for contrast */}
+              <span className="hero-heading-primary block mb-2 text-white">
                 Automate Repetitive Work.
               </span>
-              {/* Second line also with maximum contrast */}
-              <span className="hero-heading-primary block text-orange-300">
+              {/* UPDATED: Second line with MUCH DARKER color for better readability */}
+              <span className="block text-slate-800 font-extrabold bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent drop-shadow-lg">
                 Focus on What Matters.
               </span>
             </h1>
@@ -57,104 +75,69 @@ const OptimizedHeroSection = () => {
               `
             }}
           >
-            <strong className="text-white">AI automation for entrepreneurs</strong> - from CRM setup to voice AI bots.{' '}
-            <span className="text-orange-200 font-semibold">Save 20+ hours weekly</span> at a fraction of traditional costs.
+            <strong className="text-white">AI automation for entrepreneurs</strong> - from CRM setup to voice AI bots.
+            <br className="hidden sm:block" />
+            Save 20+ hours weekly at a fraction of traditional costs.
           </p>
           
-          {/* ENHANCED CTA Section */}
-          <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 transition-all duration-700 ${
-            isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`}>
-            <PrimaryCTA 
-              label="Get Free Business Audit" 
-              icon="calendar"
-              className="transform hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-3xl text-lg px-8 py-4 font-bold"
-            />
-            <SecondaryCTA 
-              label="View Success Stories" 
-              icon="arrow"
-              className="bg-white/15 backdrop-blur-sm border-white/40 text-white hover:bg-white hover:text-blue-600 transition-all duration-300 hover:scale-105 shadow-lg text-lg px-8 py-4 font-semibold"
-            />
+          {/* UPDATED: Enhanced CTA Section with Proper Button Linking */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+            <button 
+              onClick={handleWorkflowAudit}
+              className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-lg text-lg font-semibold bg-orange-500 text-white shadow-lg hover:shadow-xl hover:-translate-y-1 hover:scale-105 transition-all duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-orange-500/20 transform hover:scale-105 shadow-xl hover:shadow-2xl"
+            >
+              <Calendar className="w-5 h-5" />
+              Get Free Business Audit
+            </button>
+            
+            <button 
+              onClick={handleExploreServices}
+              className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-lg text-lg font-semibold bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white hover:text-blue-600 border-2 transition-all duration-300 hover:scale-105"
+            >
+              <ArrowRight className="w-5 h-5" />
+              View Service Guide
+            </button>
           </div>
           
-          {/* ENHANCED Trust Indicators with Better Visibility */}
-          <div className={`flex flex-col sm:flex-row flex-wrap justify-center gap-8 mb-16 transition-all duration-700 ${
-            isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`}>
+          {/* Enhanced Trust Indicators with Proper Icons */}
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-8 text-white/90">
             <div className="flex items-center gap-3 group">
-              <div className="w-6 h-6 rounded-full bg-green-400 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
-                <CheckCircle className="w-4 h-4 text-white" />
+              <div className="w-5 h-5 rounded-full bg-green-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                <CheckCircle className="w-3 h-3 text-white" />
               </div>
-              <span 
-                className="font-semibold group-hover:text-orange-200 transition-colors duration-200"
-                style={{
-                  color: 'rgba(255, 255, 255, 0.9)',
-                  textShadow: '0 2px 4px rgba(0, 0, 0, 0.5)'
-                }}
-              >
-                50-80% cost savings vs traditional agencies
+              <span className="text-sm font-medium group-hover:text-white transition-colors duration-200">
+                Setup in 2 weeks or less
               </span>
             </div>
             
             <div className="flex items-center gap-3 group">
-              <div className="w-6 h-6 rounded-full bg-green-400 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
-                <CheckCircle className="w-4 h-4 text-white" />
+              <div className="w-5 h-5 rounded-full bg-green-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                <CheckCircle className="w-3 h-3 text-white" />
               </div>
-              <span 
-                className="font-semibold group-hover:text-orange-200 transition-colors duration-200"
-                style={{
-                  color: 'rgba(255, 255, 255, 0.9)',
-                  textShadow: '0 2px 4px rgba(0, 0, 0, 0.5)'
-                }}
-              >
-                2-week delivery not 2-3 months
+              <span className="text-sm font-medium group-hover:text-white transition-colors duration-200">
+                Custom workflow setup
               </span>
             </div>
             
             <div className="flex items-center gap-3 group">
-              <div className="w-6 h-6 rounded-full bg-green-400 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
-                <CheckCircle className="w-4 h-4 text-white" />
+              <div className="w-5 h-5 rounded-full bg-green-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                <CheckCircle className="w-3 h-3 text-white" />
               </div>
-              <span 
-                className="font-semibold group-hover:text-orange-200 transition-colors duration-200"
-                style={{
-                  color: 'rgba(255, 255, 255, 0.9)',
-                  textShadow: '0 2px 4px rgba(0, 0, 0, 0.5)'
-                }}
-              >
-                24/7 AI availability never calls in sick
+              <span className="text-sm font-medium group-hover:text-white transition-colors duration-200">
+                ROI in 30 days or less
               </span>
-            </div>
-          </div>
-
-          {/* Enhanced Social Proof Stats */}
-          <div className={`bg-black/30 backdrop-blur-sm rounded-2xl p-8 border border-white/20 shadow-2xl transition-all duration-700 ${
-            isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`}>
-            <div className="flex items-center justify-center gap-8 text-white">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-orange-300 mb-1">$2,000+</div>
-                <div className="text-sm text-white/80 font-medium">Monthly savings</div>
-              </div>
-              <div className="w-px h-16 bg-white/30"></div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-orange-300 mb-1">25+</div>
-                <div className="text-sm text-white/80 font-medium">Hours saved/week</div>
-              </div>
-              <div className="w-px h-16 bg-white/30"></div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-orange-300 mb-1">2-14</div>
-                <div className="text-sm text-white/80 font-medium">Days to deploy</div>
-              </div>
             </div>
           </div>
         </div>
       </div>
       
-      {/* Enhanced scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
-        <div className="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center shadow-lg">
-          <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-bounce"></div>
+      {/* Scroll Indicator */}
+      <div 
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer"
+        onClick={scrollToServices}
+      >
+        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
     </section>

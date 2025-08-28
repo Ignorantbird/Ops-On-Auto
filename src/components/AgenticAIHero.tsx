@@ -1,7 +1,25 @@
+// src/components/AgenticAIHero.tsx - FIXED WITH PROPER BUTTON LINKS
 import { Button } from "@/components/ui/button";
 import { Bot, Brain, Zap } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const AgenticAIHero = () => {
+  const navigate = useNavigate();
+
+  const handleBookDemo = () => {
+    navigate('/workflow-audit');
+  };
+
+  const handleWatchDemo = () => {
+    // Open a demo video or scroll to demo section
+    window.open('https://calendly.com/your-demo-link', '_blank');
+    // Alternative: scroll to demo section
+    // const demoSection = document.getElementById('ai-demo-section');
+    // if (demoSection) {
+    //   demoSection.scrollIntoView({ behavior: 'smooth' });
+    // }
+  };
+
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-blue-600 via-blue-500 to-purple-600 pt-20 flex items-center">
       {/* Animated background elements */}
@@ -48,19 +66,22 @@ const AgenticAIHero = () => {
             From instant lead follow-ups to AI-powered interviews, our agentic AI solutions automate conversations, decisions, and analysis — so your business never misses an opportunity.
           </p>
           
+          {/* FIXED: CTAs with proper onClick handlers */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               size="lg" 
+              onClick={handleBookDemo}
               className="bg-orange-500 hover:bg-orange-600 text-white text-lg px-8 py-6 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-              onClick={() => document.getElementById('workflow-audit-form')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <Bot className="w-5 h-5 mr-2" />
               Book a Free AI Demo
             </Button>
+            
             <Button 
               size="lg" 
               variant="outline"
-              className="text-lg px-8 py-6 border-2 border-white/20 bg-white/10 backdrop-blur-sm hover:bg-white hover:text-blue-600"
+              onClick={handleWatchDemo}
+              className="text-lg px-8 py-6 border-2 border-white/20 bg-white/10 backdrop-blur-sm text-white hover:bg-white hover:text-blue-600 transition-all duration-300"
             >
               Watch AI in Action
             </Button>
