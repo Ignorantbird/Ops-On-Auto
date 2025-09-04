@@ -71,7 +71,7 @@ export const SEO = ({
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       
       {/* Google Search Console Verification (will be added after setup) */}
-      <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_HERE" />
+      <meta name="google-site-verification" content="izkidDSgsVRy6Z3fbaAvH3Ir6KK4cK1rrcoyUizBEqk" />
       
       {/* JSON-LD Organization Schema - Enhanced */}
       <script type="application/ld+json">
