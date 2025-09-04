@@ -151,7 +151,7 @@
   <url>
     <loc>https://opsonauto.com/about</loc>
     <lastmod>2025-01-15</lastmod>
-    <changefreq>quarterly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
@@ -165,7 +165,7 @@
   <url>
     <loc>https://opsonauto.com/partnerships</loc>
     <lastmod>2025-01-15</lastmod>
-    <changefreq>quarterly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
@@ -173,7 +173,7 @@
   <url>
     <loc>https://opsonauto.com/privacy-policy</loc>
     <lastmod>2025-01-15</lastmod>
-    <changefreq>yearly</changefreq>
+    <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
 
