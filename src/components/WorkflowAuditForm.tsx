@@ -1,4 +1,4 @@
-// src/components/WorkflowAuditForm.tsx - COMPLETE WITH FORMSPREE INTEGRATION
+// src/components/WorkflowAuditForm.tsx - COMPLETE WITH DEBUGGING
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -47,33 +47,55 @@ const WorkflowAuditForm = () => {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     
+    // REPLACE THIS WITH YOUR ACTUAL FORMSPREE FORM ID
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xvgbvrbz';
+    
+    console.log('=== FORM SUBMISSION DEBUG ===');
+    console.log('Form data:', data);
+    console.log('Submitting to:', FORMSPREE_ENDPOINT);
+    console.log('Current time:', new Date().toISOString());
+    
     try {
-      // FORMSPREE INTEGRATION - Replace YOUR_AUDIT_FORM_ID with your actual Formspree form ID
-      const response = await fetch('https://formspree.io/f/xvgbvrbz', {
+      const payload = {
+        name: data.name,
+        email: data.email,
+        company: data.company,
+        role: data.role,
+        challenge: data.challenge,
+        preferredTime: data.preferredTime,
+        _subject: 'New Workflow Audit Request - OpsOnAuto',
+        _replyto: data.email,
+        source: 'opsonauto.com',
+        leadValue: 4997,
+        timestamp: new Date().toISOString(),
+        page: 'workflow-audit',
+        leadType: 'workflow_audit'
+      };
+      
+      console.log('Payload being sent:', payload);
+      
+      const response = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          name: data.name,
-          email: data.email,
-          company: data.company,
-          role: data.role,
-          challenge: data.challenge,
-          preferredTime: data.preferredTime,
-          _subject: 'New Workflow Audit Request - OpsOnAuto',
-          _replyto: data.email,
-          source: 'opsonauto.com',
-          leadValue: 4997, // Your service value for tracking
-          timestamp: new Date().toISOString(),
-          page: 'workflow-audit',
-          leadType: 'workflow_audit'
-        }),
+        body: JSON.stringify(payload),
       });
       
+      console.log('Response received:');
+      console.log('- Status:', response.status);
+      console.log('- Status Text:', response.statusText);
+      console.log('- OK:', response.ok);
+      console.log('- Headers:', Object.fromEntries(response.headers.entries()));
+      
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorText = await response.text();
+        console.error('Error response body:', errorText);
+        throw new Error(`Formspree returned ${response.status}: ${response.statusText}. Body: ${errorText}`);
       }
+      
+      const responseData = await response.json();
+      console.log('Success response data:', responseData);
       
       // Success handling
       toast.success("Audit Request Submitted!", {
@@ -88,15 +110,23 @@ const WorkflowAuditForm = () => {
           value: 4997,
           currency: 'USD'
         });
+        console.log('GA4 event tracked');
       }
       
       form.reset();
+      console.log('Form reset successfully');
       
     } catch (error) {
-      console.error('Audit form submission error:', error);
-      toast.error("Submission failed. Please try again or email hello@opsonauto.com directly.");
+      console.error('=== SUBMISSION ERROR ===');
+      console.error('Error type:', typeof error);
+      console.error('Error message:', error.message);
+      console.error('Full error:', error);
+      console.error('Stack trace:', error.stack);
+      
+      toast.error(`Submission failed: ${error.message}. Please check the console for details or email hello@opsonauto.com directly.`);
     } finally {
       setIsSubmitting(false);
+      console.log('=== FORM SUBMISSION COMPLETE ===');
     }
   };
 
@@ -313,7 +343,7 @@ const WorkflowAuditForm = () => {
 
                   <div className="text-center">
                     <p className="text-sm text-slate-500">
-                      🔒 Your information is secure and will never be shared with third parties.
+                      Your information is secure and will never be shared with third parties.
                     </p>
                     <p className="text-xs text-slate-400 mt-1">
                       Response time: Within 24 hours | Value: $500 consultation - FREE
