@@ -51,7 +51,8 @@ const OptimizedHeroSection = () => {
         <div className="max-w-4xl mx-auto text-center">
           {/* PURPLE COW MESSAGING - Text on semi-transparent background */}
           <div className="mb-8 bg-black/30 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-6 leading-tight tracking-tight">
+
               {/* Purple Cow Hook - Speed Differentiator */}
               <span className="hero-heading-primary block mb-2 text-white">
                 Automate Repetitive Work.
@@ -63,18 +64,18 @@ const OptimizedHeroSection = () => {
             </h1>
             
             {/* Purple Cow Value Proposition */}
-            <p className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed text-white/95">
+            <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed font-light">
               Skip the 6-month enterprise timelines. Get Silicon Valley-quality automation 
               delivered in 2 weeks with 50-80% cost savings. Starting at $4,997.
             </p>
           </div>
           
           {/* Enhanced CTA Section with Purple Cow Messaging */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8 max-w-md sm:max-w-none mx-auto">
             <PrimaryCTA 
               label="Get 2-Week Setup" 
               icon="calendar"
-              className="transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl"
+              className="w-full sm:w-auto[transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl]"
               onClick={handleWorkflowAudit}
             />
             <button
