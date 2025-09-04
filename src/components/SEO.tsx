@@ -24,13 +24,13 @@ export const SEO = ({
   return (
     <Helmet>
       {/* Google Analytics 4 */}
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G--015E16BJ8Q"></script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-015E16B3Q0"></script>
       <script>
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-015E16BJ8Q', {
+          gtag('config', 'G-015E16B3Q0', {
             page_title: '${fullTitle}',
             page_location: '${fullCanonical}',
             custom_map: {
@@ -70,7 +70,7 @@ export const SEO = ({
       <meta name="robots" content="index, follow" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       
-      {/* Google Search Console Verification (will be added after setup) */}
+      {/* Google Search Console Verification */}
       <meta name="google-site-verification" content="izkidDSgsVRy6Z3fbaAvH3Ir6KK4cK1rrcoyUizBEqk" />
       
       {/* JSON-LD Organization Schema - Enhanced */}
