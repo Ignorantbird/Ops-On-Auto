@@ -70,7 +70,7 @@ const FAQSection = () => {
       questions: [
         {
           question: "How much does automation cost?",
-          answer: "Packages start from ₹25,000 for Starter plans. Complex agentic AI implementations are quoted based on scope."
+          answer: "Packages start from $4,997 for our Automation Accelerator. Enterprise solutions up to $49,997+ for complete AI transformation in 2 weeks.. Complex agentic AI implementations are quoted based on scope."
         },
         {
           question: "Are there ongoing fees?",

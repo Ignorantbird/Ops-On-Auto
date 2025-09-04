@@ -72,67 +72,85 @@ const DataAnalyticsSection = () => {
   // Pricing tiers with ROI focus
   const pricingTiers = [
     {
-      name: "Analytics Starter",
-      price: "₹75,000",
-      description: "Essential analytics for growing businesses",
+      name: "Automation Accelerator",
+      price: "$4,997",
+      description: "Enterprise automation in 2 weeks, not 6 months",
       features: [
-        "Custom dashboard with key metrics",
-        "Automated daily/weekly reports",
-        "Basic predictive analytics",
-        "CRM & sales data integration", 
-        "Email alerts for important changes",
-        "30-day setup & training"
+        "Custom workflow automation setup",
+        "CRM integration & lead management",
+        "Automated reporting dashboards", 
+        "Email & communication automation",
+        "2-week rapid implementation",
+        "30-day optimization & training"
       ],
-      ideal: "Small businesses, startups, growing companies",
-      timeline: "3-4 weeks",
+      ideal: "Growing startups, small agencies, emerging SMBs",
+      timeline: "2 weeks",
       popular: false,
       roi: "5-8x ROI in first 90 days",
-      savings: "Save ₹50,000/month in decision-making time"
+      savings: "Save $2,500+/month in operational costs"
     },
     {
-      name: "Analytics Pro",
-      price: "₹150,000", 
-      description: "Advanced analytics with predictive capabilities",
+      name: "Growth Engine Pro",
+      price: "$12,997", 
+      description: "Complete AI transformation at startup speed",
       features: [
-        "Advanced predictive modeling & forecasting",
-        "Customer behavior & churn analysis",
-        "Multi-channel attribution & ROI tracking",
-        "Automated insight generation",
-        "Custom KPI monitoring & alerts",
-        "Integration with all major platforms",
-        "90-day optimization & monthly strategy calls"
+        "Advanced AI workflow automation",
+        "Multi-platform integration (CRM, email, social)",
+        "Predictive analytics & insights",
+        "Voice AI & chatbot implementation",
+        "Custom dashboard & KPI tracking",
+        "60-day optimization with monthly strategy calls"
       ],
-      ideal: "Scaling businesses, agencies, e-commerce companies",
-      timeline: "4-6 weeks",
+      ideal: "Scaling businesses, established agencies, growing e-commerce",
+      timeline: "2-3 weeks",
       popular: true,
-      roi: "8-15x ROI in first 90 days",
-      savings: "Generate ₹200,000+/month in additional revenue"
+      roi: "10-15x ROI in first 90 days",
+      savings: "Generate $8,000+/month in additional revenue"
     },
     {
-      name: "Enterprise Analytics",
-      price: "₹300,000+",
-      description: "Complete data intelligence platform",
+      name: "Scale Master Enterprise",
+      price: "$24,997",
+      description: "Full AI ecosystem with enterprise sophistication",
       features: [
-        "Custom AI models for specific use cases",
-        "Advanced machine learning algorithms",
-        "Real-time streaming data processing",
+        "Complete AI automation ecosystem",
+        "Advanced machine learning models", 
+        "Real-time data processing & analytics",
         "Enterprise-grade security & compliance",
         "Custom API development & integrations",
-        "Dedicated data scientist & analyst",
-        "6-month partnership with ongoing optimization"
+        "Dedicated success manager & quarterly reviews",
+        "90-day partnership with ongoing optimization"
       ],
-      ideal: "Large enterprises, data-heavy businesses, corporations",
-      timeline: "6-10 weeks",
+      ideal: "Large SMBs, funded startups, mid-market companies",
+      timeline: "3-4 weeks", 
       popular: false,
       roi: "15-25x ROI in first 90 days",
-      savings: "Save ₹500,000+/month in operational efficiency"
+      savings: "Save $15,000+/month in operational efficiency"
+    },
+    {
+      name: "Custom AI Dominance",
+      price: "$49,997+",
+      description: "Bespoke AI advantage systems for market leaders",
+      features: [
+        "Fully custom AI solution architecture",
+        "Proprietary algorithm development",
+        "Advanced automation with ML capabilities",
+        "Enterprise integration & scalability",
+        "Dedicated AI specialist & data scientist",
+        "6-month strategic partnership",
+        "Competitive advantage IP development"
+      ],
+      ideal: "Funded startups, enterprises, market leaders",
+      timeline: "4-6 weeks",
+      popular: false,
+      roi: "20-50x ROI in first 90 days", 
+      savings: "Generate $25,000+/month competitive advantage"
     }
   ];
 
   // Success metrics
   const successMetrics = [
-    { metric: "Revenue Increase", value: "25-40%", icon: TrendingUp },
-    { metric: "Cost Savings", value: "₹5L+/month", icon: DollarSign },
+    { metric: "Cost Savings", value: "$6K+/month", icon: DollarSign },
+    { metric: "Implementation Speed", value: "2 weeks", icon: Clock },
     { metric: "Decision Speed", value: "10x faster", icon: Clock },
     { metric: "ROI Achievement", value: "15x average", icon: Target }
   ];

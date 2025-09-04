@@ -1,3 +1,4 @@
+// src/components/PricingTable.tsx - PURPLE COW PRICING TRANSFORMATION
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Rocket, TrendingUp, Handshake, Check } from "lucide-react";
@@ -6,53 +7,64 @@ const PricingTable = () => {
   const packages = [
     {
       icon: Rocket,
-      name: "Starter Plan",
-      subtitle: "Perfect for First-Time Automation",
-      audience: "Small teams, consultants, and startups ready to remove their first big bottleneck.",
-      price: "₹25,000 — ₹45,000",
-      priceNote: "(one-time)",
+      name: "Automation Accelerator",
+      subtitle: "Enterprise Automation in 2 Weeks",
+      audience: "Growing startups, small agencies, emerging SMBs ready for rapid transformation.",
+      price: "$4,997",
+      priceNote: "(one-time setup)",
       features: [
-        "AI automation setup (1—2 workflows)",
-        "CRM cleanup & basic optimization",
-        "Automated reporting for one process",
-        "Email & chat support for 30 days post-launch"
+        "Custom workflow automation setup",
+        "CRM integration & lead management", 
+        "Automated reporting dashboards",
+        "Email & communication automation",
+        "2-week rapid implementation",
+        "30-day optimization & training"
       ],
-      ctaText: "Book Free Audit",
-      popular: false
+      ctaText: "Get 2-Week Setup",
+      popular: false,
+      timeline: "2 weeks",
+      roi: "5-8x ROI in first 90 days"
     },
     {
       icon: TrendingUp,
-      name: "Growth Plan",
-      subtitle: "Scale Your Automation Impact",
-      audience: "Businesses ready to automate multiple workflows and integrate tools.",
-      price: "₹65,000 — ₹95,000",
-      priceNote: "(one-time or monthly retainer)",
+      name: "Growth Engine Pro",
+      subtitle: "Complete AI Transformation at Startup Speed",
+      audience: "Scaling businesses, established agencies, growing e-commerce companies.",
+      price: "$12,997",
+      priceNote: "(complete transformation)",
       features: [
-        "CRM automation + advanced lead routing",
-        "Reporting automation across multiple KPIs",
-        "Up to 5 automated workflows across departments",
-        "Tool integration (CRM, marketing, PPC tracking, analytics)",
-        "60 days of post-launch optimization support"
+        "Advanced AI workflow automation",
+        "Multi-platform integration (CRM, email, social)",
+        "Predictive analytics & insights", 
+        "Voice AI & chatbot implementation",
+        "Custom dashboard & KPI tracking",
+        "60-day optimization with monthly strategy calls"
       ],
-      ctaText: "Book Free Audit",
-      popular: true
+      ctaText: "Get 2-Week Setup",
+      popular: true,
+      timeline: "2-3 weeks",
+      roi: "10-15x ROI in first 90 days"
     },
     {
       icon: Handshake,
-      name: "Enterprise / Custom Plan",
-      subtitle: "Full-Scale Intelligent Automation",
-      audience: "Businesses needing end-to-end automation with advanced AI capabilities.",
-      price: "Custom Quote",
-      priceNote: "",
+      name: "Scale Master Enterprise",
+      subtitle: "Full AI Ecosystem with Enterprise Sophistication",
+      audience: "Large SMBs, funded startups, mid-market companies needing comprehensive automation.",
+      price: "$24,997+",
+      priceNote: "(custom scope)",
       features: [
-        "Agentic AI implementation (Voice AI bots, LLM-driven workflows)",
-        "Multi-department workflow automation",
-        "Programmatic SEO for organic growth",
-        "Custom integrations",
-        "Dedicated account manager & ongoing support"
+        "Complete AI automation ecosystem",
+        "Advanced machine learning models",
+        "Real-time data processing & analytics",
+        "Enterprise-grade security & compliance", 
+        "Custom API development & integrations",
+        "Dedicated success manager & quarterly reviews",
+        "90-day partnership with ongoing optimization"
       ],
-      ctaText: "Book Free Audit",
-      popular: false
+      ctaText: "Get Custom Quote",
+      popular: false,
+      timeline: "3-4 weeks",
+      roi: "15-25x ROI in first 90 days"
     }
   ];
 
@@ -61,10 +73,10 @@ const PricingTable = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-            Our Packages
+            Purple Cow Pricing
           </h2>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            Choose the perfect automation package for your business needs
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            Enterprise automation delivered in 2 weeks, not 6 months. Skip the enterprise timeline, get premium results.
           </p>
         </div>
 
@@ -100,7 +112,9 @@ const PricingTable = () => {
                   <p className="text-sm text-slate-600 mb-4">
                     {pkg.audience}
                   </p>
-                  <div className="text-center">
+                  
+                  {/* Purple Cow Pricing Display */}
+                  <div className="text-center mb-4">
                     <div className="text-3xl font-bold text-slate-900">
                       {pkg.price}
                     </div>
@@ -109,6 +123,16 @@ const PricingTable = () => {
                         {pkg.priceNote}
                       </div>
                     )}
+                  </div>
+
+                  {/* Purple Cow Value Props */}
+                  <div className="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
+                    <div className="text-sm font-semibold text-green-800">
+                      ⚡ {pkg.timeline} implementation
+                    </div>
+                    <div className="text-sm font-semibold text-green-800">
+                      📈 {pkg.roi}
+                    </div>
                   </div>
                 </CardHeader>
                 
@@ -125,13 +149,49 @@ const PricingTable = () => {
                     </ul>
                   </div>
                   
-                  <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white">
+                  <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3">
                     {pkg.ctaText}
                   </Button>
+                  
+                  {/* Purple Cow Guarantee */}
+                  <div className="text-center mt-4">
+                    <p className="text-xs text-slate-500">
+                      2-week delivery guarantee or money back
+                    </p>
+                  </div>
                 </CardContent>
               </Card>
             );
           })}
+        </div>
+
+        {/* Purple Cow Comparison Section */}
+        <div className="mt-16 bg-white rounded-2xl p-8 border border-slate-200 max-w-4xl mx-auto">
+          <h3 className="text-2xl font-bold text-slate-900 text-center mb-8">
+            Why OpsOnAuto?
+          </h3>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="text-center">
+              <div className="text-4xl font-bold text-red-500 mb-2">Traditional Approach</div>
+              <div className="text-slate-600">
+                <p>❌ 6-month implementations</p>
+                <p>❌ $50K-$200K enterprise quotes</p>
+                <p>❌ Complex requirements gathering</p>
+                <p>❌ Endless project delays</p>
+              </div>
+            </div>
+            
+            <div className="text-center">
+              <div className="text-4xl font-bold text-blue-500 mb-2">Our Approach</div>
+              <div className="text-slate-600">
+                <p>✅ 2-week rapid delivery</p>
+                <p>✅ $5K-$25K transparent pricing</p>
+                <p>✅ Streamlined implementation</p>
+                <p>✅ Guaranteed timeline</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
