@@ -40,20 +40,7 @@ export const SEO = ({
           });
         `}
       </script>
-      
-      {/* Writesonic SEO Integration - ADD THIS */}
-      <script 
-        src="https://seo-fixer.writesonic.com/site-audit/fixer-script/index.js" id="wsAiSeoMb" type="application/javascript"></script>
-      <script>
-        {`
-          if (typeof wsSEOfixer !== 'undefined') {
-            wsSEOfixer.configure({
-              hostURL: 'https://seo-fixer.writesonic.com',
-              siteID: '68ba99f2a4f1a65fa360d891'
-            });
-          }
-        `}
-      </script>
+  
 
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
