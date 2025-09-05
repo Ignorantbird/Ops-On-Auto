@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
-    compress: true, // Enable compression in development
+    compress: true,
   },
   plugins: [
     react(),
@@ -20,21 +20,21 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  // Add build optimizations only for production
   build: {
-    // Enable minification for production
+    // CONSERVATIVE: Keep what's working for desktop
     minify: 'terser',
     terserOptions: {
       compress: {
-        drop_console: true, // Remove console.logs in production
+        drop_console: true,
         drop_debugger: true,
+        // Light optimization - won't hurt desktop performance
+        pure_funcs: ['console.log'],
       },
     },
-    // Optimize chunk splitting
     rollupOptions: {
       output: {
+        // CONSERVATIVE: Keep current chunking strategy that works for desktop
         manualChunks: {
-          // Separate vendor chunks for better caching
           vendor: ['react', 'react-dom'],
           router: ['react-router-dom'],
           ui: ['lucide-react'],
@@ -42,24 +42,18 @@ export default defineConfig(({ mode }) => ({
         },
       },
     },
-    // Disable source maps in production for smaller bundles
+    // KEEP CURRENT SETTINGS: Don't change what's working for desktop
     sourcemap: false,
-    // Reduce chunk size warnings
-    chunkSizeWarningLimit: 500,
-    // Enable CSS code splitting
+    chunkSizeWarningLimit: 500, // Keep current setting
     cssCodeSplit: true,
-    // Optimize assets
-    assetsInlineLimit: 4096,
+    assetsInlineLimit: 4096, // Keep current setting
   },
-  // Optimize dependencies pre-bundling
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom', 'react-helmet'],
   },
-  // Additional performance optimizations
   esbuild: {
-    // Remove unused imports
     treeShaking: true,
-    // Optimize for modern browsers
-    target: 'es2020'
+    target: 'es2020',
+    drop: mode === 'production' ? ['console', 'debugger'] : [],
   }
 }));
