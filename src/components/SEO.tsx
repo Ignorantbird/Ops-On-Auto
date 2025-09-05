@@ -30,14 +30,7 @@ export const SEO = ({
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-015E16B3Q0', {
-            page_title: '${fullTitle}',
-            page_location: '${fullCanonical}',
-            custom_map: {
-              'custom_dimension_1': 'page_type',
-              'custom_dimension_2': 'service_category'
-            }
-          });
+          gtag('config', 'G-015E16B3Q0', 
         `}
       </script>
       
