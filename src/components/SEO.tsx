@@ -71,7 +71,7 @@ export const SEO = ({
       <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       
-      {/* Google Search Console Verification */}
+      {/* Google Sarch Console Verification */}
       <meta name="google-site-verification" content="izkidDSgsVRy6Z3fbaAvH3Ir6KK4cK1rrcoyUizBEqk" />
       
       {/* JSON-LD Organization Schema - Enhanced */}

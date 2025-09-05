@@ -13,6 +13,7 @@ import Integrations from "./pages/Integrations";
 import Industries from "./pages/Industries";
 import CaseStudies from "./pages/CaseStudies";
 import WorkflowAudit from "./pages/WorkflowAudit";
+import CRMAudit from "./pages/CRMAudit"; 
 import Resources from "./pages/Resources";
 import AgenticAI from "./pages/AgenticAI";
 import FAQ from "./pages/FAQ";
@@ -64,6 +65,7 @@ const App = () => (
           <Route path="/industries" element={<Industries />} />
           <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/workflow-audit" element={<WorkflowAudit />} />
+          <Route path="/crm-audit" element={<CRMAudit />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/contact" element={<Contact />} />
