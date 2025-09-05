@@ -30,25 +30,29 @@ export const SEO = ({
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-015E16B3Q0', 
+          gtag('config', 'G-015E16B3Q0', {
+            page_title: '${fullTitle}',
+            page_location: '${fullCanonical}',
+            custom_map: {
+              'custom_dimension_1': 'page_type',
+              'custom_dimension_2': 'service_category'
+            }
+          });
         `}
       </script>
       
       {/* Writesonic SEO Integration - ADD THIS */}
-      <script 
-        src="https://seo-fixer.writesonic.com/site-audit/fixer-script/index.js" 
-        id="wsAiSeoInitScript"
-      />
-      <script>
-        {`
-          if (typeof wsSEOfixer !== 'undefined') {
-            wsSEOfixer.configure({
-              hostURL: 'https://seo-fixer.writesonic.com',
-              siteID: '68ba99f2a4f1a65fa360d891'
-            });
-          }
-        `}
+      
+      <script src="https://seo-fixer.writesonic.com/site-audit/fixer-script/index.js" id="wsAiSeoMb" type="application/javascript"></script>
+      <script id="wsAiSeoInitScript">
+        wsSEOfixer.configure({
+          hostURL: 'https://seo-fixer.writesonic.com',
+          siteID: '68ba99f2a4f1a65fa360d891'
+        });
       </script>
+
+
+
 
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
