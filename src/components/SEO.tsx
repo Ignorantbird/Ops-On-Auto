@@ -40,6 +40,7 @@ export const SEO = ({
           });
         `}
       </script>
+      
       {/* Writesonic SEO Integration - ADD THIS */}
       <script 
         src="https://seo-fixer.writesonic.com/site-audit/fixer-script/index.js" 
