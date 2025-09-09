@@ -1,4 +1,4 @@
-// src/pages/SalesAI.tsx - COMPLETE NEW PAGE
+// src/pages/SalesAI.tsx - UPDATED FOR AGENTIC AI POSITIONING
 import Navigation from "@/components/Navigation";
 import SalesAISection from "@/components/SalesAISection";
 import Footer from "@/components/Footer";
@@ -8,9 +8,9 @@ const SalesAI = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEO 
-        title="AI Sales Person - 24/7 Sales Team Automation | OpsOnAuto"
-        description="Professional AI Sales Person services. 24/7 AI that handles lead qualification, objection management, and sales conversations. 3-5x ROI guaranteed. From ₹55,000."
-        keywords="AI sales person, sales automation, lead qualification AI, AI objection handling, automated sales, sales AI bot, sales process automation, AI sales team"
+        title="AI Sales Agent - Intelligent Sales Automation That Thinks & Acts | OpsOnAuto"
+        description="Advanced AI Sales Agent that thinks, plans & acts independently. 24/7 intelligent sales conversations, lead qualification, and deal closing. Premium Agentic AI starting from $1,100."
+        keywords="AI sales agent, agentic AI sales, intelligent sales automation, AI sales person, autonomous sales AI, sales AI agent, AI that thinks and acts, sales process automation"
         canonical="/sales-ai"
       />
       <Navigation />

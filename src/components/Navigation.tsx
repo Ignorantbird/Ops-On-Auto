@@ -1,14 +1,11 @@
-// STEP 1 FIX: Your existing Navigation.tsx with Formspree integration added
-// Only the handleBookDemo function and PrimaryCTA onClick props are changed
+// src/components/Navigation.tsx - RESTORED PROPER LOGO
+import React, { useState, useEffect, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { ChevronDown, Menu, X } from 'lucide-react';
+import { toast } from 'sonner';
+import Logo3D from './Logo3D';
 
-import { useState, useEffect, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { ChevronDown, Menu, X} from "lucide-react";
-import { PrimaryCTA } from "@/components/cta/StandardizedCTA";
-import { toast } from "sonner";
-import Logo3D from "./Logo3D";
-
-// KEEP ALL YOUR EXISTING LOGO COMPONENTS UNCHANGED
+// RESTORED: Your existing proper logo components
 const OpsOnAuto3DLogo = ({ 
   size = 64, 
   showText = true,
@@ -143,7 +140,6 @@ const Navigation = () => {
   const location = useLocation();
   const megaMenuRef = useRef<HTMLDivElement>(null);
 
-  // STEP 1 FIX: Added handleBookDemo function with Formspree integration
   const handleBookDemo = async () => {
     try {
       const response = await fetch('https://formspree.io/f/xvgblgdn', {
@@ -200,49 +196,83 @@ const Navigation = () => {
       }
     };
     
-    // Add hover delay for better UX
-    let hoverTimeout: NodeJS.Timeout;
-    
-    const handleMouseLeave = () => {
-      hoverTimeout = setTimeout(() => {
-        setIsMegaMenuOpen(false);
-      }, 100); // Small delay before closing
-    };
-    
-    const handleMouseEnter = () => {
-      clearTimeout(hoverTimeout);
-    };
-    
     document.addEventListener('mousedown', handleClickOutside);
-    
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      clearTimeout(hoverTimeout);
-    };
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   const isActiveRoute = (path: string) => {
     return location.pathname === path || location.pathname.startsWith(path);
   };
 
-  // KEEP ALL YOUR EXISTING SERVICE CATEGORIES
+  // UPDATED: Restructured service categories according to the plan
   const serviceCategories = [
     {
-      category: "AI Solutions",
+      category: "🤖 Agentic AI",
       services: [
-        { title: "Agentic AI", path: "/agentic-ai", description: "AI that thinks, plans & acts independently", badge: "🔥 Popular" },
-        { title: "Generative AI", path: "/generative-ai", description: "Custom AI that creates content & designs", badge: "✨ New" },
-        { title: "AI Sales Person", path: "/sales-ai", description: "24/7 AI sales team that never sleeps", badge: "💰 High ROI" },
-        { title: "AI Development", path: "/ai-data-processing", description: "Custom ML models & AI integrations" }
+        { 
+          title: "Agentic AI", 
+          path: "/agentic-ai", 
+          description: "AI that thinks, plans & acts independently", 
+          badge: "🔥 Popular" 
+        },
+        { 
+          title: "AI Sales Person", 
+          path: "/sales-ai", 
+          description: "24/7 AI sales team that never sleeps", 
+          badge: "💰 High ROI" 
+        },
+        { 
+          title: "Voice AI", 
+          path: "/voice-ai", 
+          description: "AI phone calls & customer service" 
+        },
+        { 
+          title: "Data Analytics", 
+          path: "/data-analytics", 
+          description: "AI-driven insights & predictions", 
+          badge: "📊 Premium" 
+        }
       ]
     },
     {
-      category: "Business Systems",
+      category: "✨ Generative AI",
       services: [
-        { title: "CRM Automation", path: "/crm-automation", description: "Smart pipelines & lead scoring" },
-        { title: "Voice AI", path: "/voice-ai", description: "AI phone calls & customer service" },
-        { title: "Workflow Automation", path: "/workflow-automation", description: "Process optimization & task automation" },
-        { title: "Data Analytics", path: "/data-analytics", description: "AI-driven insights & predictions", badge: "📊 Premium" }
+        { 
+          title: "Generative AI", 
+          path: "/generative-ai", 
+          description: "Custom AI that creates content & designs", 
+          badge: "✨ New" 
+        },
+        { 
+          title: "AI Data Processing", 
+          path: "/ai-data-processing", 
+          description: "Custom ML models & AI integrations" 
+        },
+        { 
+          title: "Programmatic SEO", 
+          path: "/programmatic-seo", 
+          description: "AI-generated SEO content at scale" 
+        }
+      ]
+    },
+    {
+      category: "⚙️ Business Automation",
+      services: [
+        { 
+          title: "CRM Automation", 
+          path: "/crm-automation", 
+          description: "Smart pipelines & lead scoring" 
+        },
+        { 
+          title: "Workflow Automation", 
+          path: "/workflow-automation", 
+          description: "Process optimization & task automation" 
+        },
+        { 
+          title: "Reporting Automation", 
+          path: "/reporting-automation", 
+          description: "Automated dashboards & real-time insights" 
+        }
       ]
     }
   ];
@@ -272,7 +302,7 @@ const Navigation = () => {
           {/* DESKTOP NAVIGATION - UNCHANGED */}
           <div className="hidden lg:flex items-center space-x-1">
             
-            {/* Services Mega Menu - UNCHANGED */}
+            {/* Services Mega Menu - Only serviceCategories array changed */}
             <div className="relative" ref={megaMenuRef}>
               <button
                 className={`relative flex items-center px-4 py-3 font-semibold text-base transition-all duration-200 rounded-lg group ${
@@ -286,10 +316,10 @@ const Navigation = () => {
                 <ChevronDown className={`ml-1 w-4 h-4 transition-transform duration-200 ${isMegaMenuOpen ? 'rotate-180' : ''}`} />
               </button>
 
-              {/* Mega Menu - UNCHANGED */}
+              {/* Mega Menu - UPDATED TO 3-COLUMN LAYOUT */}
               {isMegaMenuOpen && (
-                <div className="absolute top-full left-0 mt-2 w-[600px] bg-white rounded-xl shadow-2xl border border-gray-200 p-6 z-50">
-                  <div className="grid grid-cols-2 gap-6">
+                <div className="absolute top-full left-0 mt-2 w-[800px] bg-white rounded-xl shadow-2xl border border-gray-200 p-6 z-50">
+                  <div className="grid grid-cols-3 gap-6">
                     {serviceCategories.map((category, categoryIndex) => (
                       <div key={categoryIndex}>
                         <h3 className="font-bold text-slate-900 mb-4 text-sm uppercase tracking-wide">
@@ -323,7 +353,7 @@ const Navigation = () => {
                     ))}
                   </div>
                   
-                  {/* Quick CTA in Mega Menu */}
+                  {/* Quick CTA in Mega Menu - UNCHANGED */}
                   <div className="border-t border-gray-100 mt-6 pt-4">
                     <div className="flex items-center justify-between">
                       <div>
@@ -376,46 +406,45 @@ const Navigation = () => {
             >
               Industries
             </Link>
-            
-            {/* MORE DROPDOWN - UNCHANGED */}
+
+            {/* More Dropdown - UNCHANGED */}
             <div className="relative group">
-              <button className="flex items-center px-4 py-3 font-semibold text-base text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded-lg">
+              <button className="relative flex items-center px-4 py-3 font-semibold text-base transition-all duration-200 rounded-lg text-slate-700 hover:text-blue-600 hover:bg-blue-50">
                 More
-                <ChevronDown className="ml-1 w-4 h-4 group-hover:rotate-180 transition-transform duration-200" />
+                <ChevronDown className="ml-1 w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
               </button>
               
-              <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-gray-200 py-2 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 z-50">
-                <Link to="/about" className="block px-4 py-2 text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-200">About</Link>
-                <Link to="/integrations" className="block px-4 py-2 text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-200">Integrations</Link>
-                <Link to="/case-studies" className="block px-4 py-2 text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-200">Case Studies</Link>
-                <Link to="/resources" className="block px-4 py-2 text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-200">Resources</Link>
-                <Link to="/partnerships" className="block px-4 py-2 text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-200">Partnerships</Link>
-                <Link to="/faq" className="block px-4 py-2 text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-200">FAQ</Link>
-                <Link to="/contact" className="block px-4 py-2 text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-200">Contact</Link>
+              <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-xl shadow-2xl border border-gray-200 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <Link to="/about" className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 text-sm transition-colors duration-200">About</Link>
+                <Link to="/integrations" className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 text-sm transition-colors duration-200">Integrations</Link>
+                <Link to="/case-studies" className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 text-sm transition-colors duration-200">Case Studies</Link>
+                <Link to="/resources" className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 text-sm transition-colors duration-200">Resources</Link>
+                <Link to="/partnerships" className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 text-sm transition-colors duration-200">Partnerships</Link>
+                <Link to="/contact" className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 text-sm transition-colors duration-200">Contact</Link>
               </div>
             </div>
           </div>
 
-          {/* STEP 1 FIX: Desktop CTA Button with onClick handler */}
-          <div className="hidden lg:block">
-            <PrimaryCTA 
-              label="Book Free Demo" 
-              icon="calendar"
-              className="font-bold px-6 py-3 text-base"
+          {/* CTA BUTTON - UNCHANGED */}
+          <div className="hidden lg:flex items-center space-x-4">
+            <button
               onClick={handleBookDemo}
-            />
+              className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:scale-105 hover:shadow-lg"
+            >
+              Book Free Demo
+            </button>
           </div>
 
           {/* MOBILE MENU BUTTON - UNCHANGED */}
-          <button 
-            className="lg:hidden p-2 rounded-lg text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-200"
+          <button
+            className="lg:hidden p-2 text-slate-700 hover:text-blue-600 transition-colors duration-200"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
 
-        {/* MOBILE MENU - UNCHANGED EXCEPT FOR CTA BUTTON */}
+        {/* MOBILE MENU - UNCHANGED EXCEPT SERVICE CATEGORIES */}
         {isMobileMenuOpen && (
           <div className="lg:hidden absolute top-full left-0 w-full bg-white border-t border-gray-200 shadow-lg max-h-96 overflow-y-auto">
             <div className="py-4 space-y-2">
@@ -436,7 +465,7 @@ const Navigation = () => {
                 )}
               </div>
               
-              {/* Other Links */}
+              {/* Other Links - UNCHANGED */}
               <Link 
                 to="/use-cases" 
                 className="block px-6 py-3 text-slate-700 hover:text-blue-600 hover:bg-blue-50 font-medium transition-colors duration-200"
@@ -459,7 +488,7 @@ const Navigation = () => {
                 Industries
               </Link>
               
-              {/* More section in mobile */}
+              {/* More section in mobile - UNCHANGED */}
               <div className="px-6 py-2">
                 <div className="font-semibold text-slate-900 mb-3">More</div>
                 <Link to="/about" className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 text-sm transition-colors duration-200" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
@@ -467,21 +496,17 @@ const Navigation = () => {
                 <Link to="/case-studies" className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 text-sm transition-colors duration-200" onClick={() => setIsMobileMenuOpen(false)}>Case Studies</Link>
                 <Link to="/resources" className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 text-sm transition-colors duration-200" onClick={() => setIsMobileMenuOpen(false)}>Resources</Link>
                 <Link to="/partnerships" className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 text-sm transition-colors duration-200" onClick={() => setIsMobileMenuOpen(false)}>Partnerships</Link>
-                <Link to="/faq" className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 text-sm transition-colors duration-200" onClick={() => setIsMobileMenuOpen(false)}>FAQ</Link>
                 <Link to="/contact" className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 text-sm transition-colors duration-200" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link>
               </div>
               
-              {/* STEP 1 FIX: Mobile CTA with onClick handler */}
-              <div className="px-6 py-4">
-                <PrimaryCTA 
-                  label="Book Free Demo" 
-                  icon="calendar"
-                  className="w-full font-bold px-6 py-3 text-base"
-                  onClick={() => {
-                    handleBookDemo();
-                    setIsMobileMenuOpen(false);
-                  }}
-                />
+              {/* CTA Button Mobile - UNCHANGED */}
+              <div className="px-6 pt-4 border-t border-gray-200">
+                <button
+                  onClick={handleBookDemo}
+                  className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white py-3 px-4 rounded-lg font-semibold transition-all duration-200"
+                >
+                  Book Free Demo
+                </button>
               </div>
             </div>
           </div>

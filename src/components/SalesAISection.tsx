@@ -1,140 +1,141 @@
-// src/components/SalesAISection.tsx - NEW COMPONENT
+// src/components/SalesAISection.tsx - UPDATED FOR AGENTIC AI POSITIONING
 import { useState } from "react";
-import { CheckCircle, Clock, TrendingUp, Users, Zap, ArrowRight, Play, Calendar, MessageSquare, Bot, Target, Shield, DollarSign, Phone, Mail, User, BarChart3, Handshake } from "lucide-react";
+import { CheckCircle, Clock, TrendingUp, Users, Zap, ArrowRight, Play, Calendar, MessageSquare, Bot, Target, Shield, DollarSign, Phone, Mail, User, BarChart3, Handshake, Brain, Lightbulb } from "lucide-react";
+import { CTA_ACTIONS } from "@/lib/BookingLinks";
 
 const SalesAISection = () => {
   const [activeTab, setActiveTab] = useState('how-it-works');
 
-  // Core features of AI Sales Person
+  // Core features emphasizing Agentic AI capabilities
   const coreFeatures = [
     {
-      icon: Bot,
-      title: "24/7 AI Sales Conversations",
-      description: "AI that never sleeps, handling prospects across all time zones",
-      benefit: "Convert leads even when your team is offline"
+      icon: Brain,
+      title: "Autonomous Decision Making",
+      description: "AI agent that thinks, analyzes prospects, and makes intelligent sales decisions independently",
+      benefit: "No human oversight needed - AI acts autonomously"
     },
     {
       icon: Target,
       title: "Intelligent Lead Qualification",
-      description: "AI analyzes prospect behavior and automatically scores leads",
-      benefit: "Focus only on high-intent, qualified prospects"
+      description: "Advanced reasoning to understand prospect needs and qualify leads with human-like judgment",
+      benefit: "Identifies high-intent prospects with 95% accuracy"
     },
     {
       icon: Handshake,
-      title: "Smart Objection Handling",
-      description: "AI trained on your best sales scripts to overcome common objections",
-      benefit: "Turn objections into opportunities automatically"
+      title: "Dynamic Objection Handling",
+      description: "AI thinks through objections and crafts personalized responses in real-time",
+      benefit: "Adapts conversation strategy based on prospect responses"
     },
     {
-      icon: TrendingUp,
-      title: "Automated Pipeline Management",
-      description: "AI moves prospects through your sales funnel intelligently",
-      benefit: "Never lose track of prospects or miss follow-ups"
+      icon: Lightbulb,
+      title: "Strategic Pipeline Management",
+      description: "AI plans multi-step sales sequences and executes complex sales strategies",
+      benefit: "Orchestrates entire sales processes without human intervention"
     }
   ];
 
-  // Detailed use cases with specific ROI data
+  // Detailed use cases with specific ROI data (UPDATED with USD)
   const useCases = [
     {
-      title: "Lead Qualification & Scoring",
-      scenario: "AI analyzes prospect behavior, asks qualifying questions, and scores leads based on buying intent",
+      title: "Autonomous Lead Qualification & Scoring",
+      scenario: "AI agent analyzes prospect behavior, asks intelligent qualifying questions, and scores leads based on buying intent and fit",
       result: "300% increase in qualified leads + 67% faster sales cycle",
       timeline: "Live in 2-3 weeks",
       industries: ["SaaS", "Consultancies", "B2B Services"],
-      savings: "Save ₹45,000/month vs SDR team"
+      savings: "Save $900/month vs SDR team"
     },
     {
-      title: "Automated Follow-Up Sequences", 
-      scenario: "AI sends personalized follow-ups based on prospect actions and engagement levels",
+      title: "Intelligent Follow-Up Sequences", 
+      scenario: "AI agent plans and executes personalized follow-up strategies based on prospect engagement and behavioral triggers",
       result: "85% reduction in lead drop-off + 40% higher response rates",
       timeline: "Live in 2 weeks",
       industries: ["Real Estate", "Insurance", "Financial Services"],
-      savings: "Save ₹30,000/month vs manual follow-up"
+      savings: "Save $600/month vs manual follow-up"
     },
     {
-      title: "Sales Meeting Booking",
-      scenario: "AI handles calendar scheduling, sends confirmations, and manages rescheduling automatically",
+      title: "Smart Meeting Booking & Management",
+      scenario: "AI agent handles calendar coordination, sends strategic confirmations, and manages rescheduling with context awareness",
       result: "200% more meetings booked + 50% reduction in no-shows",
       timeline: "Live in 1-2 weeks", 
       industries: ["Agencies", "Professional Services", "Coaching"],
-      savings: "Save ₹25,000/month vs scheduling team"
+      savings: "Save $500/month vs scheduling team"
     },
     {
-      title: "Upsell & Cross-sell Automation",
-      scenario: "AI identifies opportunities and suggests relevant upgrades to existing customers",
+      title: "Strategic Upsell & Cross-sell Automation",
+      scenario: "AI agent identifies optimal upsell moments and suggests relevant upgrades based on customer usage patterns and needs analysis",
       result: "45% increase in average order value + 30% higher customer lifetime value",
       timeline: "Live in 3-4 weeks",
       industries: ["E-commerce", "SaaS", "Subscription Services"],
-      savings: "Generate ₹80,000+ additional monthly revenue"
+      savings: "Generate $1,600+ additional monthly revenue"
     }
   ];
 
-  // Pricing tiers with ROI focus
+  // UPDATED: Pricing tiers with USD (Premium Agentic AI positioning)
   const pricingTiers = [
     {
-      name: "Sales AI Starter",
-      price: "₹55,000",
-      description: "Perfect for small sales teams getting started with AI",
+      name: "AI Sales Agent Starter",
+      price: "$1,100",
+      description: "Intelligent AI agent for growing sales teams",
       features: [
-        "AI lead qualification system",
-        "Basic objection handling scripts",
+        "Autonomous lead qualification system",
+        "Intelligent objection handling responses",
         "CRM integration (HubSpot/Salesforce)", 
-        "Email & SMS follow-up automation",
-        "Performance analytics dashboard",
-        "30-day setup & optimization"
+        "Smart email & SMS follow-up sequences",
+        "AI-powered performance analytics",
+        "30-day setup & agent training"
       ],
-      ideal: "Small businesses, startups, solo entrepreneurs",
+      ideal: "Growing businesses, sales teams, entrepreneurs",
       timeline: "2-3 weeks",
       popular: false,
-      roi: "3-5x ROI in first 90 days",
-      savings: "Save ₹25,000/month"
+      roi: "4-6x ROI in first 90 days",
+      savings: "Save $500+/month"
     },
     {
-      name: "Sales AI Pro",
-      price: "₹95,000", 
-      description: "Complete AI sales automation for growing teams",
+      name: "AI Sales Agent Pro",
+      price: "$1,900", 
+      description: "Advanced AI sales agent for scaling teams",
       features: [
-        "Advanced multi-channel AI conversations",
-        "Smart lead scoring & prioritization",
+        "Multi-channel AI conversations (email, SMS, chat)",
+        "Advanced lead scoring & predictive analytics",
         "Custom objection handling training",
         "Automated meeting booking & management",
-        "Upsell & cross-sell optimization",
-        "Advanced analytics & reporting",
+        "Strategic upsell & cross-sell optimization",
+        "Advanced reporting & revenue forecasting",
         "90-day optimization & strategy calls"
       ],
       ideal: "Growing sales teams, agencies, service businesses",
       timeline: "3-4 weeks",
       popular: true,
-      roi: "5-8x ROI in first 90 days",
-      savings: "Save ₹60,000/month"
+      roi: "6-10x ROI in first 90 days",
+      savings: "Save $1,200+/month"
     },
     {
-      name: "Enterprise Sales AI",
-      price: "₹180,000+",
-      description: "Full AI sales workforce for enterprise teams",
+      name: "Enterprise AI Sales Workforce",
+      price: "$3,600+",
+      description: "Complete autonomous AI sales team for enterprises",
       features: [
-        "Unlimited AI sales conversations",
-        "Advanced predictive lead scoring",
-        "Custom AI training for your products",
-        "Multi-team pipeline management",
-        "Revenue forecasting & analytics",
-        "API integrations with all your tools",
+        "Unlimited AI sales agent conversations",
+        "Advanced predictive lead scoring & analysis",
+        "Custom AI training for your specific products",
+        "Multi-team pipeline orchestration",
+        "Revenue forecasting & predictive analytics",
+        "API integrations with all sales tools",
         "Dedicated success manager & quarterly reviews",
         "6-month partnership with ongoing optimization"
       ],
       ideal: "Enterprise sales teams, large agencies, corporations",
       timeline: "4-6 weeks",
       popular: false,
-      roi: "8-12x ROI in first 90 days",
-      savings: "Save ₹200,000+/month"
+      roi: "10-15x ROI in first 90 days",
+      savings: "Save $4,000+/month"
     }
   ];
 
-  // Success metrics
+  // Success metrics (UPDATED with USD)
   const successMetrics = [
     { metric: "Lead Conversion", value: "300% increase", icon: TrendingUp },
     { metric: "Sales Cycle", value: "67% faster", icon: Clock },
-    { metric: "Revenue Impact", value: "₹50L+ annually", icon: DollarSign },
+    { metric: "Revenue Impact", value: "$100K+ annually", icon: DollarSign },
     { metric: "Team Efficiency", value: "5x productivity", icon: Users }
   ];
 
@@ -153,15 +154,31 @@ const SalesAISection = () => {
   const tabContent = {
     'how-it-works': (
       <div className="space-y-8">
+        {/* Agentic AI Positioning Banner */}
+        <div className="bg-gradient-to-r from-purple-100 to-blue-100 rounded-2xl p-8 border border-purple-200">
+          <div className="text-center">
+            <div className="inline-flex items-center px-4 py-2 bg-purple-500 text-white rounded-full text-sm font-medium mb-4">
+              <Brain className="w-4 h-4 mr-2" />
+              Premium Agentic AI Service
+            </div>
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">
+              AI Sales Agent That Thinks, Plans & Acts Independently
+            </h3>
+            <p className="text-slate-600 max-w-3xl mx-auto">
+              Unlike basic automation, our AI sales agent uses advanced reasoning to understand prospects, make intelligent decisions, and execute complex sales strategies without human oversight.
+            </p>
+          </div>
+        </div>
+
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {coreFeatures.map((feature, index) => (
             <div key={index} className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-              <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center mb-4">
+              <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center mb-4">
                 <feature.icon className="w-6 h-6 text-white" />
               </div>
               <h3 className="text-lg font-bold text-slate-900 mb-2">{feature.title}</h3>
               <p className="text-slate-600 text-sm mb-3">{feature.description}</p>
-              <div className="text-sm text-green-600 font-semibold">
+              <div className="text-sm text-purple-600 font-semibold">
                 ✓ {feature.benefit}
               </div>
             </div>
@@ -169,11 +186,11 @@ const SalesAISection = () => {
         </div>
         
         {/* Sales Processes Grid */}
-        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8">
-          <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">Sales Processes We Automate</h3>
+        <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl p-8">
+          <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">Sales Processes Our AI Agent Masters</h3>
           <div className="grid md:grid-cols-4 gap-4">
             {salesProcesses.map((process, index) => (
-              <div key={index} className="bg-white p-4 rounded-lg border border-blue-100 hover:shadow-md transition-all duration-200">
+              <div key={index} className="bg-white p-4 rounded-lg border border-purple-100 hover:shadow-md transition-all duration-200">
                 <div className="text-2xl mb-2">{process.icon}</div>
                 <div className="font-semibold text-slate-900 text-sm mb-1">{process.process}</div>
                 <div className="text-xs text-slate-600">{process.description}</div>
@@ -186,17 +203,17 @@ const SalesAISection = () => {
     'use_cases': (
       <div className="grid md:grid-cols-2 gap-8">
         {useCases.map((useCase, index) => (
-          <div key={index} className="bg-gradient-to-br from-white to-blue-50 p-6 rounded-xl border border-blue-100 hover:shadow-lg transition-all duration-300">
+          <div key={index} className="bg-gradient-to-br from-white to-purple-50 p-6 rounded-xl border border-purple-100 hover:shadow-lg transition-all duration-300">
             <h3 className="text-xl font-bold text-slate-900 mb-3">{useCase.title}</h3>
             <p className="text-slate-600 mb-4">{useCase.scenario}</p>
             <div className="space-y-3">
               <div className="text-green-600 font-semibold">
                 📈 {useCase.result}
               </div>
-              <div className="text-blue-600 font-medium">
+              <div className="text-purple-600 font-medium">
                 ⚡ {useCase.timeline}
               </div>
-              <div className="text-purple-600 font-medium">
+              <div className="text-blue-600 font-medium">
                 💰 {useCase.savings}
               </div>
               <div className="text-sm text-slate-500">
@@ -211,18 +228,19 @@ const SalesAISection = () => {
       <div className="grid md:grid-cols-3 gap-6">
         {pricingTiers.map((tier, index) => (
           <div key={index} className={`relative bg-white rounded-xl border-2 p-6 hover:shadow-xl transition-all duration-300 ${
-            tier.popular ? 'border-blue-500 transform scale-105' : 'border-gray-200'
+            tier.popular ?
+              'border-purple-500 transform scale-105' : 'border-gray-200'
           }`}>
             {tier.popular && (
               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                <span className="bg-blue-500 text-white px-4 py-1 rounded-full text-sm font-bold">
+                <span className="bg-purple-500 text-white px-4 py-1 rounded-full text-sm font-bold">
                   Most Popular
                 </span>
               </div>
             )}
             <div className="text-center mb-6">
               <h3 className="text-2xl font-bold text-slate-900 mb-2">{tier.name}</h3>
-              <div className="text-3xl font-bold text-blue-600 mb-2">{tier.price}</div>
+              <div className="text-3xl font-bold text-purple-600 mb-2">{tier.price}</div>
               <p className="text-slate-600">{tier.description}</p>
             </div>
             
@@ -230,8 +248,8 @@ const SalesAISection = () => {
               <div className="bg-green-50 border border-green-200 rounded-lg p-3">
                 <div className="text-sm font-semibold text-green-800">{tier.roi}</div>
               </div>
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-                <div className="text-sm font-semibold text-blue-800">{tier.savings}</div>
+              <div className="bg-purple-50 border border-purple-200 rounded-lg p-3">
+                <div className="text-sm font-semibold text-purple-800">{tier.savings}</div>
               </div>
             </div>
             
@@ -248,15 +266,17 @@ const SalesAISection = () => {
               <div className="text-sm text-slate-600">
                 <strong>Ideal for:</strong> {tier.ideal}
               </div>
-              <div className="text-sm text-blue-600">
+              <div className="text-sm text-purple-600">
                 <strong>Timeline:</strong> {tier.timeline}
               </div>
             </div>
             
-            <button className={`w-full mt-6 py-3 px-4 rounded-lg font-bold transition-all duration-300 ${
-              tier.popular 
-                ? 'bg-blue-500 text-white hover:bg-blue-600 hover:scale-105' 
-                : 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white hover:from-blue-600 hover:to-indigo-600'
+            <button 
+              onClick={() => CTA_ACTIONS.GET_WORKFLOW_AUDIT()}
+              className={`w-full mt-6 py-3 px-4 rounded-lg font-bold transition-all duration-300 ${
+                tier.popular 
+                  ? 'bg-purple-500 text-white hover:bg-purple-600 shadow-lg hover:shadow-xl'
+                  : 'bg-gray-100 text-gray-700 hover:bg-purple-50 hover:text-purple-600'
             }`}>
               Get Started
             </button>
@@ -267,74 +287,74 @@ const SalesAISection = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-slate-50 via-white to-blue-50/20">
+    <section className="pt-28 pb-20 bg-gradient-to-b from-purple-50 via-white to-slate-50">
       <div className="container mx-auto px-6">
-        
-        {/* Hero Section */}
+        {/* Hero Section with Agentic AI Positioning */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-600 rounded-full text-sm font-medium mb-6">
-            <Bot className="w-4 h-4 mr-2" />
-            AI Sales Person - Your 24/7 Sales Team
+          <div className="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-600 rounded-full text-sm font-medium mb-6">
+            <Brain className="w-4 h-4 mr-2" />
+            Premium Agentic AI Service
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
-            AI Sales Team That 
-            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent"> Never Stops Selling</span>
+            AI Sales Agent That 
+            <span className="bg-gradient-to-r from-purple-500 to-indigo-600 bg-clip-text text-transparent"> Thinks & Acts</span> Independently
           </h1>
-          <p className="text-xl text-slate-600 max-w-4xl mx-auto mb-8 leading-relaxed">
-            Deploy intelligent AI that handles lead qualification, objection management, and sales conversations 24/7. 
-            Scale your sales without hiring more people - your AI sales team works while you sleep.
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+            Deploy an intelligent AI sales agent that reasons like your best salesperson, handles complex conversations, and closes deals 24/7 without human oversight.
           </p>
-          
-          {/* Success Metrics Bar */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/50 shadow-lg max-w-4xl mx-auto mb-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {successMetrics.map((metric, index) => (
-                <div key={index} className="text-center">
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <metric.icon className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="text-2xl font-bold text-slate-900 mb-1">{metric.value}</div>
-                  <div className="text-sm text-slate-600">{metric.metric}</div>
-                </div>
-              ))}
-            </div>
+
+          {/* Category Link */}
+          <div className="mb-8">
+            <a 
+              href="/agentic-ai" 
+              className="inline-flex items-center px-4 py-2 bg-purple-500 text-white rounded-lg text-sm font-medium hover:bg-purple-600 transition-all duration-300"
+            >
+              <ArrowRight className="w-4 h-4 mr-2" />
+              Explore All Agentic AI Services
+            </a>
           </div>
           
-          {/* Primary CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-blue-500 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-600 transition-all flex items-center justify-center group hover:scale-105">
-              <Calendar className="w-5 h-5 mr-2" />
-              Book Sales AI Demo
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-600 hover:text-white transition-all flex items-center justify-center">
-              <Play className="w-5 h-5 mr-2" />
-              See AI Sales in Action
-            </button>
+          {/* Success Metrics */}
+          <div className="grid md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-12">
+            {successMetrics.map((metric, index) => {
+              const IconComponent = metric.icon;
+              return (
+                <div key={index} className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-r from-purple-100 to-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <IconComponent className="w-8 h-8 text-purple-600" />
+                  </div>
+                  <div className="text-2xl font-bold text-slate-900">{metric.value}</div>
+                  <div className="text-slate-600 text-sm">{metric.metric}</div>
+                </div>
+              );
+            })}
           </div>
         </div>
 
-        {/* Navigation Tabs */}
-        <div className="flex justify-center mb-8">
-          <div className="bg-white rounded-xl p-2 shadow-lg border border-gray-100">
+        {/* Tab Navigation - Vertical Layout */}
+        <div className="mb-12">
+          <div className="flex flex-col items-center gap-2 mb-8 max-w-sm mx-auto">
             {[
               { key: 'how-it-works', label: 'How It Works', icon: Bot },
               { key: 'use_cases', label: 'Use Cases', icon: Target },
               { key: 'pricing', label: 'Pricing', icon: DollarSign }
-            ].map((tab) => (
-              <button
-                key={tab.key}
-                onClick={() => setActiveTab(tab.key)}
-                className={`px-6 py-3 rounded-lg font-semibold transition-all flex items-center space-x-2 ${
-                  activeTab === tab.key
-                    ? 'bg-blue-500 text-white shadow-lg'
-                    : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
-                }`}
-              >
-                <tab.icon className="w-4 h-4" />
-                <span>{tab.label}</span>
-              </button>
-            ))}
+            ].map((tab) => {
+              const TabIcon = tab.icon;
+              return (
+                <button
+                  key={tab.key}
+                  onClick={() => setActiveTab(tab.key)}
+                  className={`w-full flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                    activeTab === tab.key
+                      ? 'bg-purple-500 text-white shadow-lg'
+                      : 'text-slate-600 hover:text-purple-600 hover:bg-purple-50 border border-slate-200'
+                  }`}
+                >
+                  <TabIcon className="w-4 h-4 mr-2" />
+                  <span>{tab.label}</span>
+                </button>
+              );
+            })}
           </div>
         </div>
 
@@ -344,32 +364,38 @@ const SalesAISection = () => {
         </div>
 
         {/* Final CTA Section */}
-        <div className="text-center mt-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-12 text-white">
-          <h3 className="text-3xl font-bold mb-4">Ready to Scale Your Sales with AI?</h3>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Join 180+ sales teams who've automated their processes and 3x'd their conversion rates. 
-            Start with a free sales process audit.
+        <div className="text-center mt-16 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-2xl p-12 text-white">
+          <h3 className="text-3xl font-bold mb-4">Ready to Deploy Your AI Sales Agent?</h3>
+          <p className="text-xl text-purple-100 mb-8 max-w-2xl mx-auto">
+            Join 180+ sales teams who've automated their processes with intelligent AI agents. 
+            Start with a free sales process audit and see how AI can transform your revenue.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-orange-500 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-orange-600 transition-all flex items-center justify-center">
+            <button 
+              onClick={() => CTA_ACTIONS.GET_WORKFLOW_AUDIT()}
+              className="bg-orange-500 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-orange-600 transition-all flex items-center justify-center"
+            >
               <MessageSquare className="w-5 h-5 mr-2" />
-              Free Sales Process Audit
+              Free AI Sales Audit
             </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-blue-600 transition-all flex items-center justify-center">
+            <button 
+              onClick={() => CTA_ACTIONS.BOOK_STRATEGY_CALL()}
+              className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-purple-600 transition-all flex items-center justify-center"
+            >
               <Calendar className="w-5 h-5 mr-2" />
               Book Strategy Call
             </button>
           </div>
           
           {/* Trust Indicators */}
-          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-6 mt-8 text-sm text-blue-200">
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-6 mt-8 text-sm text-purple-200">
             <span className="flex items-center">
               <CheckCircle className="w-4 h-4 mr-1" />
-              Free sales audit & strategy session
+              Free AI sales audit & strategy session
             </span>
             <span className="flex items-center">
               <CheckCircle className="w-4 h-4 mr-1" />
-              3-5x ROI guaranteed in 90 days
+              4-10x ROI guaranteed in 90 days
             </span>
             <span className="flex items-center">
               <CheckCircle className="w-4 h-4 mr-1" />
