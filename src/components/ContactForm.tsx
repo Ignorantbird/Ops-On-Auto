@@ -96,7 +96,7 @@ const ContactForm = () => {
       
     } catch (error) {
       console.error('Contact form submission error:', error);
-      toast.error("Message failed to send. Please try again or email hello@opsonauto.com directly.");
+      toast.error("Message failed to send. Please try again or email info@opsonauto.com directly.");
     } finally {
       setIsSubmitting(false);
     }
@@ -214,7 +214,7 @@ const ContactForm = () => {
               🔒 Your data is secure with us. We're GDPR compliant and never share your information with third parties.
             </p>
             <p className="text-xs text-slate-400 mt-2">
-              Response time: Within 24 hours | Emergency: hello@opsonauto.com
+              Response time: Within 24 hours | Emergency: info@opsonauto.com
             </p>
           </div>
         </div>

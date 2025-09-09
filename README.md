@@ -108,7 +108,7 @@ This project and its contents are proprietary and confidential. Unauthorized cop
 
 ## 📞 Support
 
-For support and questions, please visit our [Contact Page](https://opsonauto.com/contact) or email us at hello@opsonauto.com.
+For support and questions, please visit our [Contact Page](https://opsonauto.com/contact) or email us at info@opsonauto.com.
 
 ---
 

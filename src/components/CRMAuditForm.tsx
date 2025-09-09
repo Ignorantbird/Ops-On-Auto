@@ -73,7 +73,7 @@ const CRMAuditForm = () => {
       
     } catch (error) {
       console.error('Form submission error:', error);
-      toast.error("Submission failed. Please try again or email hello@opsonauto.com directly.");
+      toast.error("Submission failed. Please try again or email info@opsonauto.com directly.");
     } finally {
       setIsSubmitting(false);
       console.log('=== CRM AUDIT FORM SUBMISSION COMPLETE ===');
@@ -356,23 +356,24 @@ const CRMAuditForm = () => {
                       )}
                     />
 
-                    <div className="flex flex-col sm:flex-row gap-4">
+                    
+                    <div className="flex flex-col gap-3 sm:gap-4">
                       <Button 
                         type="submit" 
                         disabled={isSubmitting || !form.watch('consent')}
-                        className="flex-1 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white py-6 text-lg shadow-lg"
+                        className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white py-4 sm:py-6 text-base sm:text-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200"
                       >
-                        <Send className="w-5 h-5 mr-2" />
+                        <Send className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                         {isSubmitting ? "Scheduling..." : "Schedule Free CRM Audit"}
                       </Button>
                       
                       <Button 
                         type="button" 
                         variant="outline" 
-                        className="flex-1 border-blue-300 text-blue-700 hover:bg-blue-50 py-6 text-lg"
+                        className="w-full border-blue-300 text-blue-700 hover:bg-blue-50 hover:border-blue-400 py-4 sm:py-6 text-base sm:text-lg transition-all duration-200"
                         onClick={() => window.open('https://outlook.office.com/bookwithme/user/dbacc901ee0f46f6b263cb42d71d72fd@OpsOnAuto.onmicrosoft.com?anonymous&ismsaljsauthenabled&ep=plink', '_blank')}
                       >
-                        <Calendar className="w-5 h-5 mr-2" />
+                        <Calendar className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                         Book Direct Call
                       </Button>
                     </div>

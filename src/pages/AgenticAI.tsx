@@ -16,9 +16,9 @@ const AgenticAI = () => {
     <>
       {/* FIXED: Use SEO component instead of Helmet directly */}
       <SEO
-        title="Agentic AI Solutions - Human-Like AI That Works 24/7"
-        description="Advanced AI automation solutions including Voice AI Bots, Sales AI Assistants, Interview AI, and Lead Analysis. Automate conversations, decisions, and analysis with human-like AI that works 24/7."
-        keywords="agentic AI, voice AI bots, sales automation, interview AI, lead analysis, AI solutions, workflow automation, conversational AI"
+        title="Agentic AI Solutions - Autonomous AI Agents That Work 24/7"
+        description="Advanced Agentic AI solutions: AI Sales Persons, Voice AI Bots, Interview AI, and Data Analytics. Deploy intelligent agents that think, decide, and act autonomously to grow your business 24/7."
+        keywords="agentic AI, AI sales person, autonomous AI agents, voice AI bots, sales automation, interview AI, AI data analysis, AI decision making, conversational AI"
         canonical="/agentic-ai"
       />
       

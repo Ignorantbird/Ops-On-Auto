@@ -1,32 +1,86 @@
-// src/components/ContactMethods.tsx - FIXED WITH WHATSAPP NUMBER
-import { Mail, Phone, Calendar } from "lucide-react";
+// STEP 1 FIXED: ContactMethods.tsx - Remove phone number, fix functionality
+import { Mail, MessageCircle, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 const ContactMethods = () => {
+  // STEP 1 FIX: Handle WhatsApp without showing phone number
+  const handleWhatsApp = () => {
+    window.open('https://wa.me/918777671056?text=Hi%20OpsOnAuto,%20I%27m%20interested%20in%20learning%20more%20about%20your%20automation%20services.', '_blank');
+    
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'whatsapp_contact', {
+        event_category: 'communication',
+        event_label: 'contact_page'
+      });
+    }
+  };
+
+  // STEP 1 FIX: Handle demo booking via Formspree
+  const handleBookDemo = async () => {
+    try {
+      const response = await fetch('https://formspree.io/f/xvgblgdn', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          source: 'contact_page_methods',
+          message: 'User clicked "Schedule Now" from contact methods',
+          page: '/contact',
+          timestamp: new Date().toISOString(),
+          action: 'book_demo_request'
+        }),
+      });
+
+      if (response.ok) {
+        toast.success("Demo request submitted! We'll contact you within 24 hours.");
+        
+        if (typeof window !== 'undefined' && window.gtag) {
+          window.gtag('event', 'book_demo_contact', {
+            event_category: 'conversion',
+            event_label: 'contact_methods_success'
+          });
+        }
+      } else {
+        throw new Error('Failed to submit');
+      }
+    } catch (error) {
+      console.error('Demo request failed:', error);
+      toast.error("Request failed. Please contact hello@opsonauto.com directly.");
+    }
+  };
+
+  // STEP 1 FIX: Updated contactMethods - removed phone number display
   const contactMethods = [
     {
       icon: Mail,
       title: "Email",
       value: "hello@opsonauto.com",
       description: "Send us a message anytime",
-      action: "mailto:hello@opsonauto.com",
-      actionLabel: "Contact"
+      action: () => {
+        window.location.href = "mailto:hello@opsonauto.com?subject=Business%20Automation%20Inquiry";
+      },
+      actionLabel: "Contact",
+      buttonColor: "border-orange-300 text-orange-700 hover:bg-orange-50 hover:border-orange-400"
     },
     {
-      icon: Phone,
-      title: "Phone/WhatsApp",
-      value: "+91 8777 671 056",
-      description: "Call or message us directly",
-      action: "https://wa.me/918777671056",
-      actionLabel: "WhatsApp"
+      icon: MessageCircle, // Changed from Phone to MessageCircle
+      title: "WhatsApp", // STEP 1 FIX: Removed "Phone/" - just "WhatsApp"
+      value: "Send us a message", // STEP 1 FIX: No phone number shown
+      description: "Chat with us directly", // STEP 1 FIX: Updated description
+      action: handleWhatsApp,
+      actionLabel: "WhatsApp", // STEP 1 FIX: Updated button label
+      buttonColor: "border-green-300 text-green-700 hover:bg-green-50 hover:border-green-400"
     },
     {
       icon: Calendar,
       title: "Free Workflow Audit",
       value: "Book 30-min consultation",
       description: "Schedule your free assessment",
-      action: "/workflow-audit",
-      actionLabel: "Schedule Now"
+      action: handleBookDemo, // STEP 1 FIX: Use Formspree function
+      actionLabel: "Schedule Now",
+      buttonColor: "border-blue-300 text-blue-700 hover:bg-blue-50 hover:border-blue-400"
     }
   ];
 
@@ -69,22 +123,35 @@ const ContactMethods = () => {
                   {method.description}
                 </p>
 
+                {/* STEP 1 FIX: Updated Button with proper onClick handlers */}
                 <Button 
                   variant="outline" 
-                  className="w-full border-orange-300 text-orange-700 hover:bg-orange-50 hover:border-orange-400 transition-colors"
-                  onClick={() => {
-                    if (method.action.startsWith('/')) {
-                      window.location.href = method.action;
-                    } else {
-                      window.open(method.action, '_blank');
-                    }
-                  }}
+                  className={`w-full transition-colors ${method.buttonColor}`}
+                  onClick={method.action}
                 >
                   {method.actionLabel}
                 </Button>
               </div>
             );
           })}
+        </div>
+
+        {/* Trust indicators */}
+        <div className="mt-16 text-center">
+          <div className="flex flex-wrap justify-center gap-8 text-slate-600">
+            <div className="flex items-center gap-3">
+              <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+              <span className="font-medium">Free consultation</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+              <span className="font-medium">No obligation</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+              <span className="font-medium">Global service</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>

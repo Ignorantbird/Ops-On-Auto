@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Database, Users, Target, BarChart3, Zap, CheckCircle, ArrowRight, Play, Clock, TrendingUp, Filter, Mail, Phone, Calendar, Settings } from "lucide-react";
 import { PrimaryCTA } from "./cta/StandardizedCTA";
+import { CTA_ACTIONS } from "@/lib/BookingLinks";
 
 const CRMAutomationSection = () => {
   const [activeTab, setActiveTab] = useState('setup');
@@ -290,38 +291,37 @@ const CRMAutomationSection = () => {
             })}
           </div>
         </div>
-
-        {/* CTA Section */}
+        
+        {/* CTA Section - UPDATED WITH CENTRALIZED BOOKING */}
         <div className="text-center bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl p-12 text-white">
           <h3 className="text-3xl font-bold mb-4">Ready to Transform Your CRM?</h3>
           <p className="text-xl text-orange-100 mb-8 max-w-2xl mx-auto">
             Stop losing leads and start closing more deals. Get your free CRM audit and see how much time you could save.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-orange-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-orange-50 transition-all flex items-center justify-center">
-              <Calendar className="w-5 h-5 mr-2" />
-              Book Free CRM Audit
-            </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-orange-600 transition-all flex items-center justify-center">
-              <Phone className="w-5 h-5 mr-2" />
-              Call Now: +91-XXXXX-XXXXX
-            </button>
-          </div>
-          
-          <div className="flex flex-wrap justify-center gap-6 mt-8 text-sm text-orange-200">
-            <span className="flex items-center">
-              <CheckCircle className="w-4 h-4 mr-1" />
-              Free consultation
-            </span>
-            <span className="flex items-center">
-              <CheckCircle className="w-4 h-4 mr-1" />
-              No obligation quote
-            </span>
-            <span className="flex items-center">
-              <CheckCircle className="w-4 h-4 mr-1" />
-              Same-day response
-            </span>
-          </div>
+          <div className="flex justify-center">
+          <button 
+            onClick={CTA_ACTIONS.GET_CRM_AUDIT}
+            className="bg-white text-orange-600 px-12 py-4 rounded-lg font-bold text-xl hover:bg-orange-50 transition-all flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-105"
+          >
+            <Calendar className="w-6 h-6 mr-3" />
+            Get Your Free CRM Audit
+          </button>
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-8 mt-8 text-sm text-orange-200">
+          <span className="flex items-center">
+            <CheckCircle className="w-4 h-4 mr-1" />
+            Global support available
+          </span>
+          <span className="flex items-center">
+            <CheckCircle className="w-4 h-4 mr-1" />
+            No obligation audit
+          </span>
+          <span className="flex items-center">
+            <CheckCircle className="w-4 h-4 mr-1" />
+            2-hours response time
+          </span>
+        </div>
         </div>
       </div>
     </section>

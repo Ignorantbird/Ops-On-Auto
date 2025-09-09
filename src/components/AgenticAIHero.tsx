@@ -63,7 +63,7 @@ const AgenticAIHero = () => {
           </h1>
           
           <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-            From instant lead follow-ups to AI-powered interviews, our agentic AI solutions automate conversations, decisions, and analysis — so your business never misses an opportunity.
+            Deploy AI Sales Persons, Voice AI Bots, Interview AI, and Data Analytics – advanced agents that think, decide, and act autonomously to grow your business 24/7.
           </p>
           
           {/* FIXED: CTAs with proper onClick handlers */}

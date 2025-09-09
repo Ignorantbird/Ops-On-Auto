@@ -4,7 +4,7 @@
  * All rights reserved. Unauthorized copying prohibited.
  * 
  * Proprietary and confidential software.
- * Contact: hello@opsonauto.com for licensing inquiries.
+ * Contact: info@opsonauto.com for licensing inquiries.
  */
 
 // Add this header to the top of these key files:

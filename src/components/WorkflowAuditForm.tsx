@@ -123,7 +123,7 @@ const WorkflowAuditForm = () => {
       console.error('Full error:', error);
       console.error('Stack trace:', error.stack);
       
-      toast.error(`Submission failed: ${error.message}. Please check the console for details or email hello@opsonauto.com directly.`);
+      toast.error(`Submission failed: ${error.message}. Please check the console for details or email info@opsonauto.com directly.`);
     } finally {
       setIsSubmitting(false);
       console.log('=== FORM SUBMISSION COMPLETE ===');

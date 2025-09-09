@@ -84,7 +84,7 @@ export const SEO = ({
           "logo": `${siteUrl}/src/assets/opsonauto-logo.png`,
           "contactPoint": {
             "@type": "ContactPoint",
-            "email": "hello@opsonauto.com",
+            "email": "info@opsonauto.com",
             "contactType": "customer support"
           },
           "description": "AI automation & agentic AI workflows that remove repetitive work for SMBs and agencies.",
