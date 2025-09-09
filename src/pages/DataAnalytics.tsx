@@ -1,4 +1,4 @@
-// src/pages/DataAnalytics.tsx - COMPLETE NEW PAGE
+// src/pages/DataAnalytics.tsx - UPDATED FOR AGENTIC AI POSITIONING
 import Navigation from "@/components/Navigation";
 import DataAnalyticsSection from "@/components/DataAnalyticsSection";
 import Footer from "@/components/Footer";
@@ -8,9 +8,9 @@ const DataAnalytics = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEO 
-        title="AI Data Analytics - Predictive Insights & Business Intelligence | OpsOnAuto"
-        description="Professional AI Data Analytics services. Transform raw data into revenue-driving insights with predictive analytics, automated reporting, and custom dashboards. 15x ROI guaranteed. From ₹75,000."
-        keywords="AI data analytics, predictive analytics, business intelligence, data visualization, automated reporting, machine learning analytics, data science services, AI insights"
+        title="Analytical AI Agent - Intelligent Data Analysis & Predictive Insights | OpsOnAuto"
+        description="Advanced Analytical AI Agent that thinks, analyzes, and recommends. Autonomous data analysis, predictive insights, and intelligent reporting. Premium Agentic AI starting from $1,500."
+        keywords="analytical AI agent, agentic AI analytics, intelligent data analysis, AI agent data processing, autonomous analytics, predictive AI agent, data analytics automation, AI insights agent"
         canonical="/data-analytics"
       />
       <Navigation />

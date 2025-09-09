@@ -70,7 +70,7 @@ const AISolutions = () => {
       timeline: "3-6 weeks",
       gradient: "from-orange-500 to-red-600",
       badge: "📊 Analytics Engine",
-      link: "/ai-data-processing"
+      link: "/data-analytics"
     },
     {
       icon: Database,
@@ -86,7 +86,7 @@ const AISolutions = () => {
       timeline: "4-8 weeks",
       gradient: "from-blue-500 to-purple-600",
       badge: "🔥 Most Advanced",
-      link: "/ai-data-processing"
+      link: "/data-analytics"
     },
     {
       icon: Wand2,

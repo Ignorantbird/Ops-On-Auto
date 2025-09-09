@@ -13,7 +13,7 @@ module.exports = {
     "/voice-ai",                  // Service page 2
     "/workflow-automation",       // Service page 3
     "/reporting-automation",      // Service page 4 ✅ NEW
-    "/ai-data-processing",        // Service page 5 ✅ NEW
+    "/data-analytics",        // Service page 5 ✅ NEW
     "/programmatic-seo",          // Service page 6 ✅ NEW
     "/partnerships",
     "/faq",

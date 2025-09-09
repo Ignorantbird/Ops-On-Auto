@@ -245,7 +245,7 @@ const Navigation = () => {
         },
         { 
           title: "AI Data Processing", 
-          path: "/ai-data-processing", 
+          path: "/data-analytics", 
           description: "Custom ML models & AI integrations" 
         },
         { 

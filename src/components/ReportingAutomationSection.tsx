@@ -1,135 +1,206 @@
+// src/components/ReportingAutomationSection.tsx - FOLLOWING EXACT VOICEAISECTION STRUCTURE
 import { useState } from "react";
-import { BarChart3, Clock, Target, TrendingUp, Zap, CheckCircle, ArrowRight, Play, Calendar, Phone, Settings, Filter, Mail, Database } from "lucide-react";
-import { PrimaryCTA } from "./cta/StandardizedCTA";
+import { BarChart3, Users, Target, TrendingUp, Zap, CheckCircle, ArrowRight, Play, Clock, MessageCircle, Calendar, Settings, Filter, Mail, Phone, DollarSign, Activity, RefreshCw, PieChart, FileText } from "lucide-react";
+import { CTA_ACTIONS } from "@/lib/BookingLinks";
 
 const ReportingAutomationSection = () => {
-  const [activeTab, setActiveTab] = useState('dashboards');
+  const [activeTab, setActiveTab] = useState('how-it-works');
+  const [activeServiceTab, setActiveServiceTab] = useState('dashboards');
 
-  const reportingBenefits = [
+  // Core features for "How It Works" tab
+  const coreFeatures = [
     {
       icon: Clock,
       title: "Save 10+ Hours Weekly",
-      description: "Eliminate manual report compilation and data gathering"
+      description: "Automated report generation and data gathering that eliminates manual compilation and analysis",
+      benefit: "Never waste time on manual reports - automation handles them 24/7"
     },
     {
       icon: TrendingUp,
       title: "Real-time Insights",
-      description: "Get up-to-date metrics without waiting for manual updates"
+      description: "Get up-to-date metrics and KPIs without waiting for manual updates or data processing",
+      benefit: "Focus on strategic decisions with instant access to current data"
     },
     {
       icon: Target,
       title: "Consistent Reporting",
-      description: "Standardized reports delivered automatically on schedule"
+      description: "Standardized reports delivered automatically on schedule with reliable formatting and accuracy",
+      benefit: "Convert more insights into action with consistent, reliable data"
     },
     {
       icon: BarChart3,
       title: "Better Decision Making",
-      description: "Act on fresh data, not week-old spreadsheets"
+      description: "Act on fresh data with automated dashboards and real-time notifications for key changes",
+      benefit: "Seamless data visibility without manual status checking"
     }
   ];
 
-  const reportingPlatforms = [
-    { name: "Google Sheets", logo: "📊", description: "Automated spreadsheet reports" },
-    { name: "Power BI", logo: "📈", description: "Interactive business dashboards" },
-    { name: "Looker Studio", logo: "📉", description: "Google's data visualization tool" },
-    { name: "Tableau", logo: "📋", description: "Advanced analytics platform" },
-    { name: "Airtable", logo: "🗃️", description: "Database-driven reports" },
-    { name: "Custom Dashboards", logo: "⚡", description: "Bespoke reporting solutions" }
-  ];
-
-  const automationTabs = {
-    dashboards: {
+  // Use cases for "Use Cases" tab
+  const useCases = [
+    {
       title: "Real-time Dashboards",
-      features: [
-        "Live KPI tracking with automatic data refresh",
-        "Custom visualization design for your metrics",
-        "Multi-source data integration (CRM, PPC, Analytics)",
-        "Mobile-responsive dashboard access",
-        "Automated anomaly detection and alerts",
-        "Stakeholder access management and permissions"
-      ],
-      timeline: "1-2 weeks",
-      price: "₹20,000 - ₹35,000"
+      scenario: "Live KPI tracking with automatic data refresh, custom visualization design, and mobile-responsive access",
+      result: "90% faster decision-making with real-time insights"
     },
-    reports: {
-      title: "Automated Report Generation",
-      features: [
-        "Daily, weekly, monthly report scheduling",
-        "PDF and Excel report formatting",
-        "Email distribution to stakeholders",
-        "Executive summary generation",
-        "Trend analysis and insights",
-        "Custom branding and formatting"
-      ],
-      timeline: "1-2 weeks",
-      price: "₹25,000 - ₹40,000"
+    {
+      title: "Automated Report Generation", 
+      scenario: "Daily, weekly, monthly report scheduling with PDF/Excel formatting and email distribution to stakeholders",
+      result: "80% reduction in manual reporting time"
     },
-    analytics: {
+    {
       title: "Advanced Analytics & Forecasting",
-      features: [
-        "Predictive analytics and trend forecasting",
-        "ROI calculation and attribution modeling",
-        "Cohort analysis and customer segmentation",
-        "Performance benchmarking",
-        "Custom metric creation and tracking",
-        "AI-powered insights generation"
-      ],
-      timeline: "2-3 weeks",
-      price: "₹35,000 - ₹55,000"
+      scenario: "Predictive analytics, ROI calculation, cohort analysis, and AI-powered insights generation",
+      result: "300% improvement in forecasting accuracy"
+    },
+    {
+      title: "Marketing Performance Reports",
+      scenario: "Automated campaign reporting across Google Ads, Facebook, LinkedIn with ROI analysis and recommendations",
+      result: "50% faster campaign optimization cycles"
+    },
+    {
+      title: "Sales Performance Analytics",
+      scenario: "Pipeline reporting, lead source analysis, conversion tracking, and sales team performance metrics",
+      result: "40% improvement in sales forecasting"
+    },
+    {
+      title: "Financial Reporting Automation",
+      scenario: "Automated P&L statements, cash flow reports, budget vs actual analysis, and expense tracking",
+      result: "70% reduction in financial reporting time"
     }
-  };
+  ];
 
-  // Success story data
-  const successStory = {
-    company: "Digital Marketing Agency",
-    challenge: "Marketing team spent 15 hours weekly compiling client reports from 8 different tools",
-    solution: "Automated dashboard pulling data from Google Ads, Facebook, Analytics, and CRM",
-    results: [
-      { metric: "Time Saved", before: "15h/week", after: "2h/week" },
-      { metric: "Report Accuracy", before: "85%", after: "99%" },
-      { metric: "Client Satisfaction", before: "7.2/10", after: "9.1/10" },
-      { metric: "Team Productivity", before: "Baseline", after: "+40%" }
-    ]
+  // Pricing for "Pricing" tab
+  const pricingPlans = [
+    {
+      title: "Real-time Dashboards",
+      price: "$400",
+      timeline: "1-2 weeks",
+      features: ["Live KPI tracking", "Custom visualization design", "Multi-source data integration", "Mobile-responsive access"],
+      popular: true
+    },
+    {
+      title: "Automated Report Generation",
+      price: "$500",
+      timeline: "1-2 weeks", 
+      features: ["Scheduled report delivery", "PDF and Excel formatting", "Email distribution", "Custom branding"],
+      popular: false
+    },
+    {
+      title: "Advanced Analytics & Forecasting",
+      price: "$700",
+      timeline: "2-3 weeks",
+      features: ["Predictive analytics", "ROI calculation", "Custom metric creation", "AI-powered insights"],
+      popular: false
+    }
+  ];
+
+  // Tab content mapping
+  const tabContent = {
+    'how-it-works': (
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {coreFeatures.map((feature, index) => {
+          const IconComponent = feature.icon;
+          return (
+            <div key={index} className="bg-white rounded-2xl p-8 border border-slate-200 hover:border-green-300 hover:shadow-xl transition-all duration-300">
+              <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center mb-6">
+                <IconComponent className="w-6 h-6 text-white" />
+              </div>
+              <h4 className="text-lg font-bold text-slate-900 mb-3">{feature.title}</h4>
+              <p className="text-slate-600 text-sm mb-4">{feature.description}</p>
+              <div className="text-green-600 text-xs font-medium">
+                ✓ {feature.benefit}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    ),
+    'use-cases': (
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {useCases.map((useCase, index) => (
+          <div key={index} className="bg-white rounded-2xl p-8 border border-slate-200 hover:border-green-300 hover:shadow-xl transition-all duration-300">
+            <h4 className="text-xl font-bold text-slate-900 mb-4">{useCase.title}</h4>
+            <p className="text-slate-600 mb-6">{useCase.scenario}</p>
+            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+              <div className="text-green-600 font-semibold text-sm">Result:</div>
+              <div className="text-green-700 font-bold">{useCase.result}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    ),
+    'pricing': (
+      <div className="grid md:grid-cols-3 gap-8">
+        {pricingPlans.map((plan, index) => (
+          <div key={index} className={`bg-white rounded-2xl p-8 border-2 transition-all duration-300 ${
+            plan.popular ? 'border-green-500 shadow-xl scale-105' : 'border-slate-200 hover:border-green-300 hover:shadow-xl'
+          }`}>
+            {plan.popular && (
+              <div className="bg-green-500 text-white text-sm font-bold px-3 py-1 rounded-full inline-block mb-4">
+                Most Popular
+              </div>
+            )}
+            <h4 className="text-2xl font-bold text-slate-900 mb-2">{plan.title}</h4>
+            <div className="text-3xl font-bold text-green-600 mb-1">{plan.price}</div>
+            <div className="text-slate-600 text-sm mb-6">{plan.timeline}</div>
+            <ul className="space-y-3 mb-8">
+              {plan.features.map((feature, idx) => (
+                <li key={idx} className="flex items-center text-slate-600">
+                  <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <button className={`w-full py-3 px-6 rounded-xl font-semibold transition-all ${
+              plan.popular
+                ? 'bg-green-500 text-white hover:bg-green-600 shadow-lg hover:shadow-xl'
+                : 'bg-gray-100 text-gray-700 hover:bg-green-50 hover:text-green-600'
+            }`}>
+              Get Started
+            </button>
+          </div>
+        ))}
+      </div>
+    )
   };
 
   return (
-    <section className="py-20 bg-white">
+    <section className="pt-28 pb-20 bg-gradient-to-b from-green-50 via-white to-slate-50">
       <div className="container mx-auto px-6">
         {/* Hero Section */}
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-100 to-emerald-200 text-green-700 rounded-full text-sm font-medium mb-6">
-            <BarChart3 className="w-4 h-4 mr-2" />
-            Reporting & Analytics Automation
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-600 rounded-full text-sm font-medium mb-6">
+            <Settings className="w-4 h-4 mr-2" />
+            Business Automation Service
           </div>
-          
-          <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
-            Stop Creating <span className="bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent">Reports Manually</span>
+          <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+            Stop Creating 
+            <span className="bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent"> Reports Manually</span>
           </h1>
-          
-          <p className="text-xl md:text-2xl text-slate-600 mb-8 max-w-4xl mx-auto leading-relaxed">
-            Get automated dashboards with real-time insights that update themselves. Transform hours of manual work into minutes of strategic decision-making.
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+            Get automated dashboards with real-time insights that update themselves. 
+            Transform hours of manual work into minutes of strategic decision-making.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <PrimaryCTA 
-              label="Get Free Dashboard Audit" 
-              icon="search"
-              className="text-lg px-8 py-4"
-            />
-            <button className="flex items-center justify-center px-8 py-4 border-2 border-slate-300 text-slate-700 rounded-lg font-semibold hover:border-green-500 hover:text-green-600 transition-all duration-200">
-              <Play className="w-5 h-5 mr-2" />
-              Watch Demo (2 min)
+          <div className="mb-12">
+            <button className="bg-green-500 text-white px-8 py-4 rounded-xl font-semibold hover:bg-green-400 transition-all shadow-lg">
+              ✨ Explore all Business Automation Services
             </button>
           </div>
         </div>
 
-        {/* Benefits Grid */}
+        {/* 4 Benefits Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
-          {reportingBenefits.map((benefit, index) => {
+          {[
+            { icon: Clock, title: "Save 10+ Hours Weekly", description: "Eliminate manual data entry and report compilation" },
+            { icon: TrendingUp, title: "Real-time Insights", description: "Get up-to-date metrics without waiting for manual updates" },
+            { icon: Target, title: "Consistent Reporting", description: "Standardized reports delivered automatically on schedule" },
+            { icon: BarChart3, title: "Better Decision Making", description: "Act on fresh data, not week-old spreadsheets" }
+          ].map((benefit, index) => {
             const IconComponent = benefit.icon;
             return (
               <div key={index} className="text-center group">
-                <div className="w-16 h-16 bg-gradient-to-br from-green-100 to-emerald-200 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                   <IconComponent className="w-8 h-8 text-green-600" />
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2">{benefit.title}</h3>
@@ -139,185 +210,85 @@ const ReportingAutomationSection = () => {
           })}
         </div>
 
-        {/* Platform Integration */}
-        <div className="text-center mb-20">
-          <h3 className="text-3xl font-bold text-slate-900 mb-12">
-            Platforms We Integrate With
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {reportingPlatforms.map((platform, index) => (
-              <div key={index} className="p-4 bg-slate-50 rounded-xl hover:bg-green-50 hover:border-green-200 border border-slate-200 transition-all group">
-                <div className="text-3xl mb-2">{platform.logo}</div>
-                <h4 className="font-semibold text-slate-900 text-sm mb-1">{platform.name}</h4>
-                <p className="text-xs text-slate-600">{platform.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Service Tabs */}
-        <div className="mb-20">
-          <h3 className="text-3xl font-bold text-slate-900 mb-8 text-center">
-            Choose Your Reporting Solution
-          </h3>
-          
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            {Object.keys(automationTabs).map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-6 py-3 rounded-lg font-medium transition-all ${
-                  activeTab === tab
-                    ? 'bg-green-500 text-white'
-                    : 'bg-slate-100 text-slate-700 hover:bg-green-100 hover:text-green-700'
-                }`}
-              >
-                {automationTabs[tab as keyof typeof automationTabs].title}
-              </button>
-            ))}
-          </div>
-
-          <div className="bg-white border border-slate-200 rounded-2xl p-8">
-            <div className="grid lg:grid-cols-2 gap-8">
-              <div>
-                <h4 className="text-2xl font-bold text-slate-900 mb-6">
-                  {automationTabs[activeTab as keyof typeof automationTabs].title}
-                </h4>
-                <ul className="space-y-4">
-                  {automationTabs[activeTab as keyof typeof automationTabs].features.map((feature, index) => (
-                    <li key={index} className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-700">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              
-              <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6">
-                <div className="text-center mb-6">
-                  <div className="text-3xl font-bold text-green-600 mb-2">
-                    {automationTabs[activeTab as keyof typeof automationTabs].price}
-                  </div>
-                  <div className="text-slate-600">
-                    Timeline: {automationTabs[activeTab as keyof typeof automationTabs].timeline}
-                  </div>
-                </div>
-                
-                <div className="space-y-4">
-                  <div className="flex items-center text-green-700">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span className="text-sm">Free consultation included</span>
-                  </div>
-                  <div className="flex items-center text-green-700">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span className="text-sm">30-day optimization support</span>
-                  </div>
-                  <div className="flex items-center text-green-700">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span className="text-sm">Data migration assistance</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Success Story */}
-        <div className="bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl p-12 text-white mb-20">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h3 className="text-3xl font-bold mb-6">Real Results: {successStory.company}</h3>
-              <div className="space-y-6">
-                <div>
-                  <h4 className="text-xl font-bold mb-2 text-green-100">The Challenge:</h4>
-                  <p className="text-green-50">{successStory.challenge}</p>
-                </div>
-                <div>
-                  <h4 className="text-xl font-bold mb-2 text-green-100">Our Solution:</h4>
-                  <p className="text-green-50">{successStory.solution}</p>
-                </div>
-              </div>
-              <button className="mt-6 flex items-center text-white hover:text-green-200 transition-colors">
-                Read Full Case Study <ArrowRight className="w-4 h-4 ml-2" />
-              </button>
-            </div>
-            
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <h4 className="text-xl font-bold mb-4">Results Achieved:</h4>
-              <div className="space-y-4">
-                {successStory.results.map((result, index) => (
-                  <div key={index} className="flex justify-between items-center">
-                    <span className="text-green-100">{result.metric}</span>
-                    <div className="text-right">
-                      <div className="text-sm text-green-200 line-through">{result.before}</div>
-                      <div className="font-bold text-white">{result.after}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Process Overview */}
-        <div className="text-center mb-20">
-          <h3 className="text-3xl font-bold text-slate-900 mb-12">Our Reporting Automation Process</h3>
-          <div className="grid md:grid-cols-4 gap-8">
+        {/* Navigation Tabs - VERTICAL LAYOUT */}
+        <div className="text-center mb-16">
+          <div className="inline-flex flex-col gap-2 bg-white rounded-2xl p-2 shadow-lg border border-slate-200">
             {[
-              { step: "01", title: "Data Audit", description: "Analyze your current reporting setup and data sources", icon: Filter },
-              { step: "02", title: "Dashboard Design", description: "Create custom layouts and visualization strategy", icon: Settings },
-              { step: "03", title: "Integration Setup", description: "Connect all data sources and automate workflows", icon: Database },
-              { step: "04", title: "Training & Launch", description: "Train your team and launch automated reporting", icon: Zap }
-            ].map((process, index) => {
-              const IconComponent = process.icon;
+              { key: 'how-it-works', label: 'How It Works', icon: Settings },
+              { key: 'use-cases', label: 'Use Cases', icon: Target },
+              { key: 'pricing', label: 'Pricing', icon: DollarSign }
+            ].map(tab => {
+              const TabIcon = tab.icon;
               return (
-                <div key={index} className="relative">
-                  <div className="w-16 h-16 bg-green-500 text-white rounded-2xl flex items-center justify-center mx-auto mb-4 text-xl font-bold">
-                    {process.step}
-                  </div>
-                  <IconComponent className="w-8 h-8 text-green-500 mx-auto mb-4" />
-                  <h4 className="text-lg font-bold text-slate-900 mb-2">{process.title}</h4>
-                  <p className="text-slate-600 text-sm">{process.description}</p>
-                  
-                  {index < 3 && (
-                    <ArrowRight className="hidden md:block w-6 h-6 text-slate-300 absolute top-8 -right-12" />
-                  )}
-                </div>
+                <button
+                  key={tab.key}
+                  onClick={() => setActiveTab(tab.key)}
+                  className={`flex items-center gap-3 px-6 py-4 rounded-xl font-semibold transition-all ${
+                    activeTab === tab.key
+                      ? 'bg-green-500 text-white shadow-lg'
+                      : 'text-slate-600 hover:text-green-600 hover:bg-green-50'
+                  }`}
+                >
+                  <TabIcon className="w-4 h-4" />
+                  <span>{tab.label}</span>
+                </button>
               );
             })}
           </div>
         </div>
 
-        {/* CTA Section */}
+        {/* Tab Content */}
+        <div className="max-w-6xl mx-auto mb-20">
+          {tabContent[activeTab as keyof typeof tabContent]}
+        </div>
+
+        {/* Platforms We Integrate With */}
+        <div className="text-center mb-20">
+          <h3 className="text-3xl font-bold text-slate-900 mb-12">Platforms We Integrate With</h3>
+          <p className="text-slate-600 mb-8 max-w-2xl mx-auto">
+            We connect with the most popular data sources and reporting platforms to deliver automated insights.
+          </p>
+          
+          <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
+            {[
+              { name: "Google Sheets", logo: "📊", description: "Automated spreadsheet reports" },
+              { name: "Power BI", logo: "📈", description: "Interactive business dashboards" },
+              { name: "Looker Studio", logo: "📉", description: "Google's data visualization tool" },
+              { name: "Tableau", logo: "📋", description: "Advanced analytics platform" },
+              { name: "Airtable", logo: "🗃️", description: "Database-driven reports" },
+              { name: "Custom Dashboards", logo: "⚡", description: "Bespoke reporting solutions" }
+            ].map((platform, index) => (
+              <div key={index} className="flex flex-col items-center p-4 border border-slate-200 rounded-xl hover:border-green-300 hover:bg-green-50 transition-all">
+                <div className="text-3xl mb-2">{platform.logo}</div>
+                <h4 className="font-semibold text-slate-900 text-sm mb-1">{platform.name}</h4>
+                <p className="text-xs text-slate-600 text-center">{platform.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Final CTA */}
         <div className="text-center bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl p-12 text-white">
           <h3 className="text-3xl font-bold mb-4">Ready to Automate Your Reporting?</h3>
           <p className="text-xl text-green-100 mb-8 max-w-2xl mx-auto">
-            Stop spending hours on manual reports. Get real-time insights that help you make faster, better decisions.
+            Stop spending hours on manual reports. Get real-time insights that help 
+            you make faster, better decisions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-green-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-50 transition-all flex items-center justify-center">
-              <Calendar className="w-5 h-5 mr-2" />
+            <button 
+              onClick={() => CTA_ACTIONS.GET_WORKFLOW_AUDIT()}
+              className="bg-yellow-500 text-green-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-400 transition-all flex items-center justify-center"
+            >
+              <BarChart3 className="w-5 h-5 mr-2" />
               Book Free Dashboard Audit
             </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-green-600 transition-all flex items-center justify-center">
+            <button 
+              onClick={() => CTA_ACTIONS.BOOK_STRATEGY_CALL()}
+              className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-green-600 transition-all flex items-center justify-center"
+            >
               <Phone className="w-5 h-5 mr-2" />
-              Call Now: +91-XXXXX-XXXXX
+              Book a Strategy Call
             </button>
-          </div>
-          
-          <div className="flex flex-wrap justify-center gap-6 mt-8 text-sm text-green-200">
-            <span className="flex items-center">
-              <CheckCircle className="w-4 h-4 mr-1" />
-              Free consultation
-            </span>
-            <span className="flex items-center">
-              <CheckCircle className="w-4 h-4 mr-1" />
-              No obligation quote
-            </span>
-            <span className="flex items-center">
-              <CheckCircle className="w-4 h-4 mr-1" />
-              Same-day response
-            </span>
           </div>
         </div>
       </div>

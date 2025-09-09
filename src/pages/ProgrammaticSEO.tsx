@@ -1,3 +1,4 @@
+// src/pages/ProgrammaticSEO.tsx - UPDATED FOR GENERATIVE AI POSITIONING
 import Navigation from "@/components/Navigation";
 import ProgrammaticSEOSection from "@/components/ProgrammaticSEOSection";
 import Footer from "@/components/Footer";
@@ -7,9 +8,9 @@ const ProgrammaticSEO = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEO 
-        title="Programmatic SEO & Content Automation - Scale Content That Ranks"
-        description="Professional programmatic SEO services. Scale your content creation and SEO efforts with AI-powered systems that generate and optimize content automatically. Starting at ₹35,000."
-        keywords="programmatic SEO, content automation, SEO automation, automated content generation, content scaling, SEO content, mass content creation, AI content"
+        title="AI Content Generation System - Programmatic SEO at Scale | OpsOnAuto"
+        description="Advanced AI Content Generation System that creates SEO-optimized content at scale. AI-powered programmatic SEO that generates hundreds of pages automatically. Premium Generative AI starting from $700."
+        keywords="AI content generation, generative AI content, programmatic SEO, automated content creation, AI content factory, content generation at scale, SEO content automation, generative AI SEO"
         canonical="/programmatic-seo"
       />
       <Navigation />

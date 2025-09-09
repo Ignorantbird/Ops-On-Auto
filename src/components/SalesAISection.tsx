@@ -6,31 +6,31 @@ import { CTA_ACTIONS } from "@/lib/BookingLinks";
 const SalesAISection = () => {
   const [activeTab, setActiveTab] = useState('how-it-works');
 
-  // Core features emphasizing Agentic AI capabilities
+  // Core features matching Image 2 exactly
   const coreFeatures = [
     {
-      icon: Brain,
-      title: "Autonomous Decision Making",
-      description: "AI agent that thinks, analyzes prospects, and makes intelligent sales decisions independently",
-      benefit: "No human oversight needed - AI acts autonomously"
+      icon: Bot,
+      title: "24/7 AI Sales Conversations",
+      description: "AI that never sleeps, handling prospects across all time zones",
+      benefit: "Convert leads even when your team is offline"
     },
     {
       icon: Target,
       title: "Intelligent Lead Qualification",
-      description: "Advanced reasoning to understand prospect needs and qualify leads with human-like judgment",
-      benefit: "Identifies high-intent prospects with 95% accuracy"
+      description: "AI analyzes prospect behavior and automatically scores leads",
+      benefit: "Focus only on high-intent, qualified prospects"
     },
     {
       icon: Handshake,
-      title: "Dynamic Objection Handling",
-      description: "AI thinks through objections and crafts personalized responses in real-time",
-      benefit: "Adapts conversation strategy based on prospect responses"
+      title: "Smart Objection Handling",
+      description: "AI trained on your best sales scripts to overcome common objections",
+      benefit: "Turn objections into opportunities automatically"
     },
     {
-      icon: Lightbulb,
-      title: "Strategic Pipeline Management",
-      description: "AI plans multi-step sales sequences and executes complex sales strategies",
-      benefit: "Orchestrates entire sales processes without human intervention"
+      icon: TrendingUp,
+      title: "Automated Pipeline Management",
+      description: "AI moves prospects through your sales funnel intelligently",
+      benefit: "Never lose track of prospects or miss follow-ups"
     }
   ];
 
@@ -331,30 +331,32 @@ const SalesAISection = () => {
           </div>
         </div>
 
-        {/* Tab Navigation - Vertical Layout */}
+        {/* Tab Navigation - Correct Sizing Like DataAnalytics */}
         <div className="mb-12">
-          <div className="flex flex-col items-center gap-2 mb-8 max-w-sm mx-auto">
-            {[
-              { key: 'how-it-works', label: 'How It Works', icon: Bot },
-              { key: 'use_cases', label: 'Use Cases', icon: Target },
-              { key: 'pricing', label: 'Pricing', icon: DollarSign }
-            ].map((tab) => {
-              const TabIcon = tab.icon;
-              return (
-                <button
-                  key={tab.key}
-                  onClick={() => setActiveTab(tab.key)}
-                  className={`w-full flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
-                    activeTab === tab.key
-                      ? 'bg-purple-500 text-white shadow-lg'
-                      : 'text-slate-600 hover:text-purple-600 hover:bg-purple-50 border border-slate-200'
-                  }`}
-                >
-                  <TabIcon className="w-4 h-4 mr-2" />
-                  <span>{tab.label}</span>
-                </button>
-              );
-            })}
+          <div className="flex justify-center mb-8">
+            <div className="bg-white rounded-xl p-2 shadow-lg border border-gray-100">
+              {[
+                { key: 'how-it-works', label: 'How It Works', icon: Bot },
+                { key: 'use_cases', label: 'Use Cases', icon: Target },
+                { key: 'pricing', label: 'Pricing', icon: DollarSign }
+              ].map((tab) => {
+                const TabIcon = tab.icon;
+                return (
+                  <button
+                    key={tab.key}
+                    onClick={() => setActiveTab(tab.key)}
+                    className={`px-6 py-3 rounded-lg font-semibold transition-all flex items-center space-x-2 ${
+                      activeTab === tab.key
+                        ? 'bg-purple-500 text-white shadow-lg'
+                        : 'text-slate-600 hover:text-purple-600 hover:bg-purple-50'
+                    }`}
+                  >
+                    <TabIcon className="w-4 h-4" />
+                    <span>{tab.label}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
 

@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/OptimizedIndex";
 import About from "./pages/About";
 import Services from "./pages/Services";
@@ -58,7 +58,6 @@ const App = () => (
           <Route path="/voice-ai" element={<VoiceAI />} />
           <Route path="/workflow-automation" element={<WorkflowAutomation />} />
           <Route path="/reporting-automation" element={<ReportingAutomation />} />
-          <Route path="/ai-data-processing" element={<AIDataProcessing />} />
           <Route path="/programmatic-seo" element={<ProgrammaticSEO />} />
           <Route path="/sales-ai" element={<SalesAI />} />
           <Route path="/data-analytics" element={<DataAnalytics />} />

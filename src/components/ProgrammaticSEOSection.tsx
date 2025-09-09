@@ -1,42 +1,67 @@
+// src/components/ProgrammaticSEOSection.tsx - COMPLETE WITH CONTRAST FIXES
 import { useState } from "react";
-import { Search, TrendingUp, Zap, Target, FileText, CheckCircle, ArrowRight, Play, Calendar, Phone, Settings, Filter, Mail, Globe, BarChart3 } from "lucide-react";
-import { PrimaryCTA } from "./cta/StandardizedCTA";
+import { useNavigate } from "react-router-dom";
+import { 
+  Search, 
+  FileText, 
+  Zap, 
+  Globe, 
+  BarChart3, 
+  Play, 
+  CheckCircle, 
+  ArrowRight, 
+  Clock, 
+  TrendingUp,
+  ArrowLeft,
+  Sparkles,
+  PenTool,
+  Target,
+  DollarSign
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const ProgrammaticSEOSection = () => {
   const [activeTab, setActiveTab] = useState('content-generation');
+  const navigate = useNavigate();
 
-  const seoBenefits = [
+  // Core benefits for Generative AI positioning
+  const coreFeatures = [
     {
-      icon: TrendingUp,
-      title: "Scale Content 10x Faster",
-      description: "Generate hundreds of SEO-optimized pages in days, not months"
+      icon: Zap,
+      title: "10x Content Speed",
+      description: "Generate hundreds of SEO pages in hours, not months",
+      benefit: "Scale content creation without increasing headcount"
     },
     {
       icon: Target,
-      title: "Target Long-tail Keywords",
-      description: "Automatically target thousands of low-competition keywords"
+      title: "Smart Keyword Targeting",
+      description: "AI identifies and targets profitable long-tail keywords automatically",
+      benefit: "Dominate search results with strategic content"
     },
     {
-      icon: Search,
+      icon: TrendingUp,
       title: "Higher Search Rankings",
-      description: "AI-optimized content that consistently ranks on page 1"
+      description: "AI-optimized content that consistently ranks on page 1",
+      benefit: "Get measurable organic traffic increases"
     },
     {
       icon: BarChart3,
-      title: "Measurable Traffic Growth",
-      description: "Track organic traffic increases with detailed analytics"
+      title: "Complete Analytics Tracking",
+      description: "Monitor content performance and ROI with detailed insights",
+      benefit: "Data-driven content optimization for maximum impact"
     }
   ];
 
-  const seoPlatforms = [
-    { name: "WordPress", logo: "📝", description: "Mass content publishing automation" },
-    { name: "Webflow", logo: "🎨", description: "Design-focused content scaling" },
-    { name: "Shopify", logo: "🛒", description: "E-commerce product page generation" },
-    { name: "Ghost", logo: "👻", description: "Publication-grade content automation" },
-    { name: "Contentful", logo: "📚", description: "Headless CMS content scaling" },
-    { name: "Custom CMS", logo: "⚙️", description: "Bespoke content management systems" }
+  // Content generation platforms
+  const contentPlatforms = [
+    { name: "WordPress", logo: "📝", description: "Mass content publishing" },
+    { name: "Webflow", logo: "🎨", description: "Design-focused scaling" },
+    { name: "Shopify", logo: "🛒", description: "E-commerce content" },
+    { name: "Ghost", logo: "👻", description: "Publication-grade content" },
+    { name: "Custom CMS", logo: "⚙️", description: "Bespoke solutions" }
   ];
 
+  // Updated SEO tabs with USD pricing
   const seoTabs = {
     'content-generation': {
       title: "AI Content Generation at Scale",
@@ -49,7 +74,7 @@ const ProgrammaticSEOSection = () => {
         "Content quality scoring and optimization"
       ],
       timeline: "3-4 weeks",
-      price: "₹35,000 - ₹55,000"
+      price: "$700 - $1,100"
     },
     'keyword-automation': {
       title: "Keyword Research & Targeting Automation",
@@ -62,7 +87,7 @@ const ProgrammaticSEOSection = () => {
         "Real-time ranking tracking and alerts"
       ],
       timeline: "2-3 weeks",
-      price: "₹25,000 - ₹40,000"
+      price: "$500 - $800"
     },
     'technical-seo': {
       title: "Technical SEO & Site Optimization",
@@ -75,43 +100,105 @@ const ProgrammaticSEOSection = () => {
         "SEO audit automation and reporting"
       ],
       timeline: "2-4 weeks",
-      price: "₹30,000 - ₹50,000"
+      price: "$600 - $1,000"
     }
   };
+
+  // Updated pricing tiers with USD and contrast fixes
+  const pricingTiers = [
+    {
+      name: "Content Factory Starter",
+      price: "$700",
+      description: "AI content generation for growing businesses",
+      features: [
+        "50-100 AI-generated pages per month",
+        "Keyword research and optimization",
+        "Basic content templates",
+        "WordPress/CMS integration",
+        "Performance tracking dashboard",
+        "30-day content optimization"
+      ],
+      ideal: "Small businesses, startups, agencies",
+      timeline: "2-3 weeks",
+      popular: false,
+      roi: "5-8x ROI in first 90 days",
+      savings: "Save $3,000+/month vs manual content creation"
+    },
+    {
+      name: "Content Factory Pro",
+      price: "$1,400", 
+      description: "Advanced AI content system with automation",
+      features: [
+        "200-500 AI-generated pages per month",
+        "Advanced keyword clustering & targeting",
+        "Multi-template content variations",
+        "Automated publishing & indexing",
+        "Competitor content analysis",
+        "Custom content workflows",
+        "Priority support & optimization",
+        "Advanced analytics & reporting"
+      ],
+      ideal: "Growing businesses, content agencies, SaaS",
+      timeline: "3-4 weeks",
+      popular: true,
+      roi: "10-15x ROI in first 90 days", 
+      savings: "Save $8,000+/month vs content team"
+    },
+    {
+      name: "Enterprise Content Engine",
+      price: "Custom Quote",
+      description: "Full-scale AI content generation ecosystem",
+      features: [
+        "1000+ AI-generated pages per month",
+        "Custom AI content models",
+        "Multi-language content generation",
+        "Advanced automation workflows",
+        "Enterprise integrations & API access",
+        "Dedicated content strategist",
+        "White-label content solutions",
+        "24/7 monitoring & optimization"
+      ],
+      ideal: "Large enterprises, media companies",
+      timeline: "4-6 weeks",
+      popular: false,
+      roi: "20-30x ROI in first year",
+      savings: "Save $25,000+/month vs content team"
+    }
+  ];
 
   // SEO Process Steps
   const seoProcessSteps = [
     {
       step: "01",
-      title: "Keyword Research",
-      description: "Discover thousands of profitable, low-competition keywords in your niche",
+      title: "AI Keyword Research",
+      description: "AI discovers thousands of profitable, low-competition keywords in your niche",
       icon: Search,
       details: ["Competitor analysis", "Search volume research", "Keyword difficulty scoring", "Long-tail opportunities"]
     },
     {
       step: "02", 
-      title: "Content Strategy",
-      description: "Create scalable content templates and optimization frameworks",
+      title: "Content Strategy & Templates",
+      description: "Create scalable content templates and AI generation frameworks",
       icon: FileText,
       details: ["Template design", "Content structure", "SEO best practices", "User intent mapping"]
     },
     {
       step: "03",
-      title: "Automated Generation", 
+      title: "AI Content Generation", 
       description: "AI generates hundreds of unique, SEO-optimized pages automatically",
       icon: Zap,
       details: ["AI content creation", "Dynamic optimization", "Quality assurance", "Duplicate content prevention"]
     },
     {
       step: "04",
-      title: "Publishing & Indexing",
+      title: "Automated Publishing",
       description: "Automatically publish content and ensure proper search engine indexing",
       icon: Globe,
       details: ["Automated publishing", "Sitemap updates", "Search console submission", "Index monitoring"]
     },
     {
       step: "05",
-      title: "Performance Tracking",
+      title: "Performance Optimization",
       description: "Monitor rankings, traffic, and conversions with automated reporting",
       icon: BarChart3,
       details: ["Ranking monitoring", "Traffic analysis", "Conversion tracking", "ROI measurement"]
@@ -122,7 +209,7 @@ const ProgrammaticSEOSection = () => {
   const successStory = {
     company: "SaaS Platform",
     challenge: "Needed to rank for 500+ software comparison keywords but creating individual pages manually would take years",
-    solution: "Programmatic SEO system that generates comparison pages, feature comparisons, and alternative pages automatically with unique, SEO-optimized content",
+    solution: "AI Content Generation System that creates comparison pages, feature comparisons, and alternative pages automatically with unique, SEO-optimized content",
     results: [
       { metric: "Pages Created", before: "12/month", after: "200/month" },
       { metric: "Organic Traffic", before: "5K/month", after: "45K/month" },
@@ -131,14 +218,204 @@ const ProgrammaticSEOSection = () => {
     ]
   };
 
+  const tabContent = {
+    'how-it-works': (
+      <div className="space-y-8">
+        {/* Generative AI Positioning Banner */}
+        <div className="bg-gradient-to-r from-yellow-100 to-orange-100 rounded-2xl p-8 border border-yellow-200 mb-12">
+          <div className="text-center">
+            <div className="inline-flex items-center px-4 py-2 bg-yellow-500 text-white rounded-full text-sm font-medium mb-4">
+              <Sparkles className="w-4 h-4 mr-2" />
+              Premium Generative AI Service
+            </div>
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">
+              AI Content Factory That Creates at Scale
+            </h3>
+            <p className="text-slate-600 max-w-3xl mx-auto">
+              Unlike basic SEO tools, our AI Content Generation System creates thousands of unique, optimized pages automatically. It's like having a 24/7 content team that never runs out of ideas.
+            </p>
+            <Button 
+              onClick={() => navigate('/generative-ai')} 
+              className="mt-6 bg-yellow-500 hover:bg-yellow-600"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              View All Generative AI Services
+            </Button>
+          </div>
+        </div>
+
+        {/* Process Steps */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-16">
+          {seoProcessSteps.map((step, index) => {
+            const Icon = step.icon;
+            return (
+              <div key={index} className="relative">
+                <div className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-yellow-300 hover:shadow-lg transition-all duration-300">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-600 rounded-xl flex items-center justify-center">
+                      <Icon className="w-6 h-6 text-white" />
+                    </div>
+                    <span className="text-2xl font-bold text-yellow-200">{step.step}</span>
+                  </div>
+                  <h4 className="font-semibold text-slate-900 mb-2">{step.title}</h4>
+                  <p className="text-sm text-slate-600 mb-4">{step.description}</p>
+                  <ul className="space-y-1">
+                    {step.details.map((detail, i) => (
+                      <li key={i} className="text-xs text-slate-500 flex items-center">
+                        <CheckCircle className="w-3 h-3 text-yellow-500 mr-1 flex-shrink-0" />
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                {index < seoProcessSteps.length - 1 && (
+                  <ArrowRight className="absolute -right-4 top-1/2 transform -translate-y-1/2 text-yellow-300 w-6 h-6 hidden lg:block" />
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Content Platforms */}
+        <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-2xl p-8 border border-yellow-100">
+          <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">Content Management Platforms We Support</h3>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+            {contentPlatforms.map((platform, index) => (
+              <div key={index} className="text-center p-4 bg-white rounded-xl hover:shadow-md transition-all duration-200">
+                <div className="text-3xl mb-2">{platform.logo}</div>
+                <div className="font-semibold text-slate-900 text-sm">{platform.name}</div>
+                <div className="text-xs text-slate-600">{platform.description}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Success Story */}
+        <div className="bg-white border border-slate-200 rounded-2xl p-8">
+          <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">Real Results: {successStory.company}</h3>
+          <div className="grid lg:grid-cols-2 gap-8">
+            <div>
+              <h4 className="font-semibold text-slate-900 mb-3">Challenge</h4>
+              <p className="text-slate-600 mb-4">{successStory.challenge}</p>
+              <h4 className="font-semibold text-slate-900 mb-3">Solution</h4>
+              <p className="text-slate-600">{successStory.solution}</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-slate-900 mb-4">Results</h4>
+              <div className="grid grid-cols-2 gap-4">
+                {successStory.results.map((result, index) => (
+                  <div key={index} className="bg-green-50 p-4 rounded-xl">
+                    <div className="text-green-600 font-semibold text-sm">{result.metric}</div>
+                    <div className="text-red-500 text-xs">Before: {result.before}</div>
+                    <div className="text-green-600 text-sm font-bold">After: {result.after}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
+
+    'use-cases': (
+      <div className="space-y-8">
+        <div className="grid md:grid-cols-3 gap-8">
+          {Object.entries(seoTabs).map(([key, tab]) => (
+            <div key={key} className="bg-white border border-slate-200 rounded-2xl p-8 hover:border-yellow-300 hover:shadow-lg transition-all duration-300">
+              <h4 className="text-xl font-semibold text-slate-900 mb-4">{tab.title}</h4>
+              <ul className="space-y-3 mb-6">
+                {tab.features.map((feature, i) => (
+                  <li key={i} className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-yellow-500 mr-3 mt-0.5 flex-shrink-0" />
+                    <span className="text-slate-700 text-sm">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="space-y-3">
+                <div className="flex items-center text-sm">
+                  <Clock className="w-4 h-4 text-yellow-500 mr-2" />
+                  <span className="text-slate-600">{tab.timeline}</span>
+                </div>
+                <div className="flex items-center text-sm">
+                  <DollarSign className="w-4 h-4 text-green-500 mr-2" />
+                  <span className="text-slate-600">{tab.price}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    ),
+
+    'pricing': (
+      <div className="space-y-8">
+        <div className="grid lg:grid-cols-3 gap-8">
+          {pricingTiers.map((tier, index) => (
+            <div key={index} className={`relative rounded-2xl p-8 border-2 transition-all duration-300 hover:shadow-xl ${
+              tier.popular 
+                ? 'border-yellow-500 bg-white transform scale-105' 
+                : 'border-slate-200 bg-white hover:border-yellow-300'
+            }`}>
+              {tier.popular && (
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <span className="bg-yellow-500 text-white px-4 py-1 rounded-full text-sm font-medium">
+                    Most Popular
+                  </span>
+                </div>
+              )}
+              
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">{tier.name}</h3>
+                <div className="text-4xl font-bold text-yellow-600 mb-2">{tier.price}</div>
+                <p className="text-slate-600">{tier.description}</p>
+              </div>
+
+              <ul className="space-y-3 mb-8">
+                {tier.features.map((feature, i) => (
+                  <li key={i} className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-yellow-600 mr-3 mt-0.5 flex-shrink-0" />
+                    <span className="text-slate-800">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="space-y-4 mb-8">
+                <div className="bg-green-50 border border-green-200 p-3 rounded-lg">
+                  <div className="text-green-700 font-semibold text-sm">Expected ROI</div>
+                  <div className="text-green-800">{tier.roi}</div>
+                </div>
+                <div className="bg-blue-50 border border-blue-200 p-3 rounded-lg">
+                  <div className="text-blue-700 font-semibold text-sm">Cost Savings</div>
+                  <div className="text-blue-800">{tier.savings}</div>
+                </div>
+              </div>
+
+              <Button 
+                className={`w-full py-3 ${
+                  tier.popular 
+                    ? 'bg-yellow-500 hover:bg-yellow-600 text-white' 
+                    : 'bg-white border-2 border-yellow-500 text-yellow-600 hover:bg-yellow-50'
+                }`}
+                onClick={() => navigate('/contact')}
+              >
+                {tier.price === 'Custom Quote' ? 'Get Custom Quote' : 'Start Project'}
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  };
+
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-6">
-        {/* Hero Section */}
+        {/* Hero Section - Updated for Generative AI */}
         <div className="text-center mb-20">
           <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-100 to-orange-200 text-yellow-700 rounded-full text-sm font-medium mb-6">
-            <Search className="w-4 h-4 mr-2" />
-            Programmatic SEO & Content Automation
+            <Sparkles className="w-4 h-4 mr-2" />
+            AI Content Generation System - Premium Generative AI Service
           </div>
           
           <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
@@ -146,237 +423,113 @@ const ProgrammaticSEOSection = () => {
           </h1>
           
           <p className="text-xl md:text-2xl text-slate-600 mb-8 max-w-4xl mx-auto leading-relaxed">
-            Stop creating content one page at a time. Our AI-powered programmatic SEO system generates hundreds of optimized pages automatically, targeting thousands of keywords.
+            Deploy an AI Content Factory that generates hundreds of SEO-optimized pages automatically. Stop creating content one page at a time - start scaling content that converts.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <PrimaryCTA 
-              label="Get SEO Audit + Strategy" 
-              icon="search"
-              className="text-lg px-8 py-4"
-            />
-            <button className="flex items-center justify-center px-8 py-4 border-2 border-slate-300 text-slate-700 rounded-lg font-semibold hover:border-yellow-500 hover:text-yellow-600 transition-all duration-200">
-              <Play className="w-5 h-5 mr-2" />
-              See Results (2 min)
-            </button>
-          </div>
+          <Button 
+            onClick={() => navigate('/generative-ai')} 
+            className="bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-yellow-600 hover:to-orange-700 text-white text-lg px-8 py-4 mb-12"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Explore All Generative AI Services
+          </Button>
         </div>
 
-        {/* SEO Process Steps */}
-        <div className="mb-24">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-              Our Programmatic SEO Process
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              From keyword research to automated publishing - here's how we scale your content and rankings systematically.
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-5 gap-8">
-            {seoProcessSteps.map((step, index) => {
-              const IconComponent = step.icon;
-              return (
-                <div key={index} className="relative">
-                  {/* Step Number */}
-                  <div className="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-600 text-white rounded-2xl flex items-center justify-center mx-auto mb-4 text-xl font-bold">
-                    {step.step}
-                  </div>
-
-                  {/* Content Card */}
-                  <div className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-yellow-300 hover:shadow-lg transition-all duration-300 h-full">
-                    <IconComponent className="w-8 h-8 text-yellow-500 mx-auto mb-4" />
-                    <h3 className="text-lg font-bold text-slate-900 mb-3 text-center">{step.title}</h3>
-                    <p className="text-slate-600 text-sm text-center mb-4">{step.description}</p>
-                    
-                    {/* Details */}
-                    <div className="space-y-2">
-                      {step.details.map((detail, idx) => (
-                        <div key={idx} className="flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full flex-shrink-0"></div>
-                          <span className="text-xs text-slate-600">{detail}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Arrow for larger screens */}
-                  {index < seoProcessSteps.length - 1 && (
-                    <ArrowRight className="hidden lg:block w-6 h-6 text-yellow-400 absolute top-8 -right-4 transform" />
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Benefits Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
-          {seoBenefits.map((benefit, index) => {
-            const IconComponent = benefit.icon;
+        {/* Core Features - Matching Voice AI Structure */}
+        <div className="grid md:grid-cols-4 gap-8 mb-20">
+          {coreFeatures.map((feature, index) => {
+            const Icon = feature.icon;
             return (
-              <div key={index} className="text-center group">
-                <div className="w-16 h-16 bg-gradient-to-br from-yellow-100 to-orange-200 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <IconComponent className="w-8 h-8 text-yellow-600" />
+              <div key={index} className="text-center">
+                <div className="w-16 h-16 mx-auto bg-gradient-to-r from-yellow-100 to-orange-100 rounded-2xl flex items-center justify-center mb-4">
+                  <Icon className="w-8 h-8 text-yellow-600" />
                 </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-2">{benefit.title}</h3>
-                <p className="text-slate-600 text-sm">{benefit.description}</p>
+                <h3 className="text-xl font-semibold text-slate-900 mb-2">{feature.title}</h3>
+                <p className="text-slate-600 text-sm mb-3">{feature.description}</p>
+                <p className="text-xs text-yellow-600 font-medium">{feature.benefit}</p>
               </div>
             );
           })}
         </div>
 
-        {/* Platform Integration */}
-        <div className="text-center mb-20">
-          <h3 className="text-3xl font-bold text-slate-900 mb-12">
-            Platforms We Scale Content On
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {seoPlatforms.map((platform, index) => (
-              <div key={index} className="p-4 bg-slate-50 rounded-xl hover:bg-yellow-50 hover:border-yellow-200 border border-slate-200 transition-all group">
-                <div className="text-3xl mb-2">{platform.logo}</div>
-                <h4 className="font-semibold text-slate-900 text-sm mb-1">{platform.name}</h4>
-                <p className="text-xs text-slate-600">{platform.description}</p>
-              </div>
-            ))}
+        {/* Tab Navigation */}
+        <div className="flex justify-center mb-16">
+          <div className="bg-white rounded-xl p-2 shadow-lg border border-gray-100">
+            {[
+              { key: 'how-it-works', label: 'How It Works', icon: PenTool },
+              { key: 'use-cases', label: 'Use Cases', icon: Target },
+              { key: 'pricing', label: 'Pricing', icon: DollarSign }
+            ].map((tab) => {
+              const TabIcon = tab.icon;
+              return (
+                <button
+                  key={tab.key}
+                  onClick={() => setActiveTab(tab.key)}
+                  className={`px-6 py-3 rounded-lg font-semibold transition-all flex items-center space-x-2 ${
+                    activeTab === tab.key
+                      ? 'bg-yellow-500 text-white shadow-lg'
+                      : 'text-slate-600 hover:text-yellow-600 hover:bg-yellow-50'
+                  }`}
+                >
+                  <TabIcon className="w-4 h-4" />
+                  <span>{tab.label}</span>
+                </button>
+              );
+            })}
           </div>
         </div>
 
-        {/* Service Tabs */}
-        <div className="mb-20">
-          <h3 className="text-3xl font-bold text-slate-900 mb-8 text-center">
-            Choose Your SEO Automation Solution
-          </h3>
-          
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            {Object.keys(seoTabs).map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-6 py-3 rounded-lg font-medium transition-all ${
-                  activeTab === tab
-                    ? 'bg-yellow-500 text-white'
-                    : 'bg-slate-100 text-slate-700 hover:bg-yellow-100 hover:text-yellow-700'
-                }`}
-              >
-                {seoTabs[tab as keyof typeof seoTabs].title}
-              </button>
-            ))}
-          </div>
-
-          <div className="bg-white border border-slate-200 rounded-2xl p-8">
-            <div className="grid lg:grid-cols-2 gap-8">
-              <div>
-                <h4 className="text-2xl font-bold text-slate-900 mb-6">
-                  {seoTabs[activeTab as keyof typeof seoTabs].title}
-                </h4>
-                <ul className="space-y-4">
-                  {seoTabs[activeTab as keyof typeof seoTabs].features.map((feature, index) => (
-                    <li key={index} className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-yellow-500 mr-3 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-700">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              
-              <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl p-6">
-                <div className="text-center mb-6">
-                  <div className="text-3xl font-bold text-yellow-600 mb-2">
-                    {seoTabs[activeTab as keyof typeof seoTabs].price}
-                  </div>
-                  <div className="text-slate-600">
-                    Timeline: {seoTabs[activeTab as keyof typeof seoTabs].timeline}
-                  </div>
-                </div>
-                
-                <div className="space-y-4">
-                  <div className="flex items-center text-yellow-700">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span className="text-sm">Keyword research included</span>
-                  </div>
-                  <div className="flex items-center text-yellow-700">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span className="text-sm">90-day optimization support</span>
-                  </div>
-                  <div className="flex items-center text-yellow-700">
-                    <CheckCircle className="w-4 h-4 mr-2" />
-                    <span className="text-sm">Ranking guarantees</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Success Story */}
-        <div className="bg-gradient-to-r from-yellow-500 to-orange-600 rounded-2xl p-12 text-white mb-20">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h3 className="text-3xl font-bold mb-6">SEO Success Story: {successStory.company}</h3>
-              <div className="space-y-6">
-                <div>
-                  <h4 className="text-xl font-bold mb-2 text-yellow-100">The Challenge:</h4>
-                  <p className="text-yellow-50">{successStory.challenge}</p>
-                </div>
-                <div>
-                  <h4 className="text-xl font-bold mb-2 text-yellow-100">Our SEO Solution:</h4>
-                  <p className="text-yellow-50">{successStory.solution}</p>
-                </div>
-              </div>
-              <button className="mt-6 flex items-center text-white hover:text-yellow-200 transition-colors">
-                Read Full SEO Case Study <ArrowRight className="w-4 h-4 ml-2" />
-              </button>
-            </div>
-            
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <h4 className="text-xl font-bold mb-4">SEO Results Achieved:</h4>
-              <div className="space-y-4">
-                {successStory.results.map((result, index) => (
-                  <div key={index} className="flex justify-between items-center">
-                    <span className="text-yellow-100">{result.metric}</span>
-                    <div className="text-right">
-                      <div className="text-sm text-yellow-200 line-through">{result.before}</div>
-                      <div className="font-bold text-white">{result.after}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+        {/* Tab Content */}
+        <div className="max-w-7xl mx-auto">
+          {tabContent[activeTab]}
         </div>
 
         {/* CTA Section */}
-        <div className="text-center bg-gradient-to-r from-yellow-500 to-orange-600 rounded-2xl p-12 text-white">
-          <h3 className="text-3xl font-bold mb-4">Ready to Scale Your SEO Content?</h3>
-          <p className="text-xl text-yellow-100 mb-8 max-w-2xl mx-auto">
-            Stop creating content one page at a time. Let us build a programmatic SEO system that ranks for thousands of keywords automatically.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-yellow-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-50 transition-all flex items-center justify-center">
-              <Calendar className="w-5 h-5 mr-2" />
-              Book SEO Strategy Call
-            </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-yellow-600 transition-all flex items-center justify-center">
-              <Phone className="w-5 h-5 mr-2" />
-              Call Now: +91-XXXXX-XXXXX
-            </button>
-          </div>
-          
-          <div className="flex flex-wrap justify-center gap-6 mt-8 text-sm text-yellow-200">
-            <span className="flex items-center">
-              <CheckCircle className="w-4 h-4 mr-1" />
-              Free SEO audit
-            </span>
-            <span className="flex items-center">
-              <CheckCircle className="w-4 h-4 mr-1" />
-              Custom content strategy
-            </span>
-            <span className="flex items-center">
-              <CheckCircle className="w-4 h-4 mr-1" />
-              Ranking guarantees
-            </span>
-          </div>
+        <div className="mt-20">
+          <section className="py-20 bg-gradient-to-br from-yellow-600 via-orange-500 to-orange-600">
+            <div className="container mx-auto px-6">
+              <div className="max-w-4xl mx-auto text-center">
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                  Ready to Launch Your AI Content Factory?
+                </h2>
+                <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+                  Join 150+ businesses using AI to generate thousands of SEO pages automatically and dominate search rankings.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                  <Button 
+                    size="lg" 
+                    className="bg-white text-orange-600 hover:bg-gray-100 text-lg px-8 py-4 shadow-lg hover:shadow-xl transition-all duration-300"
+                    onClick={() => navigate('/workflow-audit')}
+                  >
+                    <CheckCircle className="w-5 h-5 mr-2" />
+                    Free SEO Content Audit
+                  </Button>
+                  <Button 
+                    size="lg" 
+                    className="bg-white/10 border-white/30 text-white hover:bg-white hover:text-orange-600 text-lg px-8 py-4 border-2"
+                    onClick={() => navigate('/contact')}
+                  >
+                    <Play className="w-5 h-5 mr-2" />
+                    See Content Demo
+                  </Button>
+                </div>
+                <div className="flex flex-col sm:flex-row gap-6 justify-center items-center text-sm text-white/80">
+                  <div className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-green-300 mr-2" />
+                    No long-term contracts
+                  </div>
+                  <div className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-green-300 mr-2" />
+                    30-day content guarantee
+                  </div>
+                  <div className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-green-300 mr-2" />
+                    Live in 3-4 weeks
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </section>
