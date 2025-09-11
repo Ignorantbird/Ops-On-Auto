@@ -1,6 +1,7 @@
-// src/pages/BusinessAutomation.tsx - COMPLETE NEW PAGE
+// src/pages/BusinessAutomation.tsx - FIXED IMPORTS
 import Navigation from "@/components/Navigation";
-import BusinessAutomationSection from "@/components/BusinessAutomationSection";
+import BusinessAutomationHero from "@/components/BusinessAutomationHero";
+import BusinessAutomationServices from "@/components/BusinessAutomationServices";
 import Footer from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 
@@ -14,7 +15,8 @@ const BusinessAutomation = () => {
         canonical="/business-automation"
       />
       <Navigation />
-      <BusinessAutomationSection />
+      <BusinessAutomationHero />
+      <BusinessAutomationServices />
       <Footer />
     </div>
   );
