@@ -1,201 +1,185 @@
-// src/components/AISolutions.tsx - FIXED WITH WORKING BUTTON LINKS
+// src/components/AISolutions.tsx - UPDATED WITH 2x2 GRID AND BORDERED BOX
 import { Button } from "@/components/ui/button";
-import { Phone, Bot, UserCheck, TrendingUp, ArrowRight, Brain, Database, FileText, Cog, Wand2, Calendar, MessageCircle} from "lucide-react";
+import { Phone, Bot, UserCheck, TrendingUp, ArrowRight, Brain } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const AISolutions = () => {
   const navigate = useNavigate();
 
-  // Enhanced solutions with proper routing
+  // AGENTIC AI SERVICES ONLY - AI That Thinks & Acts Autonomously
   const solutions = [
     {
-      icon: Phone,
-      title: "Voice AI Bots",
-      description: "Call new leads within 2 minutes of enquiry submission, answer their questions naturally, qualify them, and schedule meetings directly in your calendar.",
-      benefits: [
-        "Instant lead response (within 2 minutes)",
-        "Natural conversation flow", 
-        "Automatic meeting scheduling",
-        "24/7 availability"
-      ],
-      pricing: "₹65,000 - ₹180,000",
-      timeline: "2-4 weeks",
-      gradient: "from-pink-500 to-rose-600",
-      badge: "🎯 High Converting",
-      link: "/voice-ai"
-    },
-    {
       icon: Bot,
-      title: "AI Sales Person", 
-      description: "Complete AI sales team that handles objection management, lead qualification, and automated follow-up sequences — your 24/7 sales workforce.",
+      title: "AI Sales Person",
+      badge: "💰 Revenue Multiplier",
+      description: "Autonomous AI sales agents that handle intelligent objection management, advanced lead qualification, and strategic follow-up sequences — your 24/7 sales workforce.",
       benefits: [
-        "24/7 sales conversations",
+        "24/7 autonomous sales conversations",
         "Intelligent objection handling",
-        "Automated pipeline management", 
-        "3-5x ROI in 90 days"
+        "Strategic pipeline management",
+        "5-8x ROI in 90 days"
       ],
-      pricing: "₹55,000 - ₹180,000",
+      investmentRange: "$1,100 - $2,800+",
       timeline: "2-4 weeks",
       gradient: "from-blue-500 to-indigo-600",
-      badge: "💰 Revenue Multiplier",
+      iconBg: "bg-gradient-to-br from-blue-500 to-indigo-600",
       link: "/sales-ai"
     },
     {
-      icon: UserCheck,
-      title: "Interview AI",
-      description: "Pre-screen candidates with conversational AI that asks relevant questions, assesses answers, and generates structured reports for your hiring team.",
+      icon: Phone,
+      title: "Voice AI Agents",
+      badge: "🎯 High Converting",
+      description: "Intelligent AI agents that call new leads within 2 minutes, have natural conversations, qualify prospects, and schedule meetings automatically in your calendar.",
       benefits: [
-        "Automated candidate screening",
-        "Consistent interview process",
-        "Detailed assessment reports",
-        "Time-saving recruitment"
+        "Instant lead response (within 2 minutes)",
+        "Natural conversation intelligence",
+        "Autonomous meeting scheduling",
+        "24/7 intelligent availability"
       ],
-      pricing: "₹45,000 - ₹120,000",
+      investmentRange: "$800 - $2,800+",
       timeline: "2-4 weeks",
-      gradient: "from-green-500 to-blue-600",
-      badge: "🎨 HR Automation",
-      link: "/agentic-ai"
+      gradient: "from-pink-500 to-rose-600",
+      iconBg: "bg-gradient-to-br from-pink-500 to-rose-600",
+      link: "/voice-ai"
     },
     {
       icon: TrendingUp,
-      title: "Lead Analysis & Reporting",
-      description: "AI-generated insights that show which campaigns, keywords, and channels drive the best ROI — essential for PPC and high-volume lead-gen industries.",
+      title: "AI Data Analytics Agents",
+      badge: "📊 Intelligence Engine",
+      description: "Intelligent AI agents that analyze data patterns, generate strategic insights, and provide predictive recommendations — essential for data-driven decision making.",
       benefits: [
-        "Real-time campaign analysis",
-        "ROI optimization insights",
-        "Automated reporting",
-        "Performance predictions"
+        "Autonomous data pattern analysis",
+        "Strategic insight generation",
+        "Predictive intelligence recommendations",
+        "Real-time decision support"
       ],
-      pricing: "₹75,000 - ₹250,000",
-      timeline: "3-6 weeks",
-      gradient: "from-orange-500 to-red-600",
-      badge: "📊 Analytics Engine",
-      link: "/data-analytics"
-    },
-    {
-      icon: Database,
-      title: "AI Data Processing & Analytics",
-      description: "Transform raw business data into actionable insights with advanced AI analysis, predictive modeling, and automated reporting systems.",
-      benefits: [
-        "Predictive business insights",
-        "Automated data processing",
-        "Real-time dashboards",
-        "Custom AI models"
-      ],
-      pricing: "₹80,000 - ₹300,000",
-      timeline: "4-8 weeks",
-      gradient: "from-blue-500 to-purple-600",
-      badge: "🔥 Most Advanced",
-      link: "/data-analytics"
-    },
-    {
-      icon: Wand2,
-      title: "Generative AI Content Factory",
-      description: "Custom AI that creates brand-consistent content, proposals, marketing materials, and creative assets at scale - your 24/7 creative team.",
-      benefits: [
-        "Brand-consistent content creation",
-        "500% increase in content output",
-        "Multi-format creative generation",
-        "Automated content optimization"
-      ],
-      pricing: "₹45,000 - ₹150,000",
-      timeline: "2-4 weeks", 
+      investmentRange: "$1,500 - $3,500+",
+      timeline: "3-5 weeks",
       gradient: "from-purple-500 to-pink-600",
-      badge: "🎨 Creative Power",
-      link: "/generative-ai"
+      iconBg: "bg-gradient-to-br from-purple-500 to-pink-600",
+      link: "/data-analytics"
+    },
+    {
+      icon: UserCheck,
+      title: "Interview AI Agents",
+      badge: "🎨 HR Intelligence",
+      description: "Intelligent AI agents that pre-screen candidates with sophisticated conversations, assess qualifications autonomously, and generate detailed reports for your hiring team.",
+      benefits: [
+        "Autonomous candidate screening",
+        "Consistent intelligent interviews",
+        "Detailed assessment intelligence",
+        "Strategic recruitment automation"
+      ],
+      investmentRange: "$900 - $2,400+",
+      timeline: "2-4 weeks",
+      gradient: "from-green-500 to-blue-600",
+      iconBg: "bg-gradient-to-br from-green-500 to-blue-600",
+      link: "/agentic-ai"
     }
   ];
 
-  // Handler functions for button clicks
-  const handleLearnMore = (solutionLink: string) => {
-    navigate(solutionLink);
-  };
-
-  const handleBookConsultation = () => {
-    navigate('/workflow-audit');
-  };
-
-  const handleContactUs = () => {
-    navigate('/contact');
-  };
-
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-slate-50">
+    <section className="py-20 bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-            Our Advanced AI Solutions
+            Our Advanced 
+            <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent"> Agentic AI Solutions</span>
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Choose from our comprehensive suite of AI automation solutions designed to transform your business operations.
+            Deploy intelligent AI agents that think, decide, and act autonomously to grow your business 24/7. 
+            Each agent is trained specifically for your industry and business goals.
           </p>
         </div>
 
-        <div className="max-w-7xl mx-auto space-y-16">
+        {/* Service Cards Stack - Updated Layout */}
+        <div className="max-w-6xl mx-auto space-y-8">
           {solutions.map((solution, index) => {
-            const Icon = solution.icon;
+            const IconComponent = solution.icon;
             const isEven = index % 2 === 0;
             
             return (
-              <div key={index} className={`flex items-center gap-12 ${!isEven ? 'flex-row-reverse' : ''}`}>
-                {/* Content Side */}
-                <div className="flex-1">
-                  {/* Badge */}
-                  <div className="inline-flex items-center px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">
-                    {solution.badge}
-                  </div>
-
-                  <h3 className="text-3xl font-bold text-slate-900 mb-4">
-                    {solution.title}
-                  </h3>
+              <div 
+                key={index}
+                className="bg-white rounded-3xl p-8 border border-slate-200 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden"
+              >
+                {/* Background gradient effect */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${solution.gradient} opacity-0 hover:opacity-5 transition-opacity duration-500`}></div>
+                
+                <div className={`grid lg:grid-cols-2 gap-8 items-center ${!isEven ? 'lg:grid-flow-col-dense' : ''}`}>
                   
-                  <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                    {solution.description}
-                  </p>
-
-                  {/* Benefits */}
-                  <div className="mb-8">
-                    <h4 className="text-lg font-semibold text-slate-900 mb-4">What You Get:</h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                      {solution.benefits.map((benefit, benefitIndex) => (
-                        <div key={benefitIndex} className="flex items-start">
-                          <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                          <span className="text-slate-700">{benefit}</span>
+                  {/* Icon Side */}
+                  <div className={`text-center ${!isEven ? 'lg:order-2' : ''}`}>
+                    <div className="relative inline-block">
+                      {/* Badge positioned outside the tilted container */}
+                      <div className="absolute -top-6 -right-2 z-20">
+                        <span className="text-sm font-semibold text-orange-600 bg-orange-100 px-3 py-1 rounded-full shadow-md">
+                          {solution.badge}
+                        </span>
+                      </div>
+                      
+                      {/* 3D Icon Container - Tilted Style */}
+                      <div className="relative">
+                        <div className={`w-48 h-48 rounded-3xl ${solution.iconBg} flex items-center justify-center shadow-2xl transform rotate-6 hover:rotate-3 transition-all duration-500 relative`}>
+                          {/* Orange accent dot - top right */}
+                          <div className="absolute -top-4 -right-4 w-12 h-12 bg-orange-500 rounded-full shadow-lg"></div>
+                          <IconComponent className="w-20 h-20 text-white" />
                         </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Enhanced Pricing & Timeline */}
-                  <div className="bg-white rounded-xl p-6 shadow-lg border border-slate-200 mb-6">
-                    <div className="grid grid-cols-2 gap-6">
-                      <div>
-                        <div className="text-sm text-slate-500 mb-1">Investment Range</div>
-                        <div className="text-2xl font-bold text-blue-600">{solution.pricing}</div>
-                      </div>
-                      <div>
-                        <div className="text-sm text-slate-500 mb-1">Delivery Timeline</div>
-                        <div className="text-xl font-semibold text-slate-900">{solution.timeline}</div>
                       </div>
                     </div>
                   </div>
 
-                  {/* FIXED: CTA Button with proper onClick handler and correct text */}
-                  <Button
-                    size="lg"
-                    onClick={() => handleLearnMore(solution.link)}
-                    className={`bg-gradient-to-r ${solution.gradient} text-white hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl px-8 py-6 text-lg`}
-                  >
-                    Learn More About {solution.title.replace(/ AI$/, '')}
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
-                </div>
+                  {/* Content Side */}
+                  <div className={`space-y-6 ${!isEven ? 'lg:order-1' : ''}`}>
+                    <div>
+                      <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                        {solution.title}
+                      </h3>
+                      
+                      <p className="text-lg text-slate-600 leading-relaxed mb-6">
+                        {solution.description}
+                      </p>
 
-                {/* Icon Side */}
-                <div className="flex-1 flex justify-center">
-                  <div className={`relative w-64 h-64 rounded-2xl bg-gradient-to-r ${solution.gradient} flex items-center justify-center shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-300`}>
-                    <Icon className="w-32 h-32 text-white" />
-                    <div className="absolute -top-4 -right-4 w-8 h-8 bg-orange-500 rounded-full animate-bounce"></div>
+                      {/* What You Get - 2x2 Grid Layout */}
+                      <div className="mb-6">
+                        <h4 className="text-lg font-bold text-slate-900 mb-4">What You Get:</h4>
+                        <div className="grid grid-cols-2 gap-x-8 gap-y-3">
+                          {solution.benefits.map((benefit, benefitIndex) => (
+                            <div key={benefitIndex} className="flex items-start gap-3">
+                              <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
+                              <span className="text-slate-700 text-sm">{benefit}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Investment & Timeline - Bordered Box */}
+                      <div className="mb-6 p-6 bg-slate-50 rounded-xl border border-slate-200">
+                        <div className="grid md:grid-cols-2 gap-6">
+                          <div>
+                            <div className="text-sm text-slate-500 mb-2">Investment Range</div>
+                            <div className="text-2xl font-bold text-blue-600">
+                              {solution.investmentRange}
+                            </div>
+                          </div>
+                          <div>
+                            <div className="text-sm text-slate-500 mb-2">Delivery Timeline</div>
+                            <div className="text-2xl font-bold text-slate-900">
+                              {solution.timeline}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* CTA Button */}
+                      <Button 
+                        onClick={() => navigate(solution.link)}
+                        className={`w-full bg-gradient-to-r ${solution.gradient} hover:opacity-90 text-white border-0 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300`}
+                      >
+                        Learn More About {solution.title}
+                        <ArrowRight className="w-5 h-5 ml-2" />
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -203,32 +187,19 @@ const AISolutions = () => {
           })}
         </div>
 
-        {/* FIXED: Enhanced CTA Section with working buttons */}
-        <div className="mt-20 text-center bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-12 text-white">
-          <h3 className="text-3xl font-bold mb-4">Ready to Scale with AI?</h3>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Transform your business operations with intelligent automation. Start with a free consultation to discover your AI opportunities.
+        {/* Bottom CTA */}
+        <div className="text-center mt-16">
+          <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
+            Not sure which AI agent is right for your business? Get a personalized recommendation.
           </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              size="lg" 
-              onClick={handleBookConsultation}
-              className="bg-orange-500 hover:bg-orange-600 text-white text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-            >
-              <Calendar className="w-5 h-5 mr-2" />
-              Book Free AI Consultation
-            </Button>
-            
-            <Button 
-              size="lg" 
-              onClick={handleContactUs}
-              className="bg-white/20 backdrop-blur-sm border-2 border-white/30 text-white hover:bg-white hover:text-blue-600 text-lg px-8 py-6 transition-all duration-300 transform hover:scale-105"
-            >
-              <MessageCircle className="w-5 h-5 mr-2" />
-              Contact AI Specialists
-            </Button>
-          </div>
+          <Button 
+            onClick={() => navigate('/workflow-audit')}
+            size="lg"
+            className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-lg px-8 py-6 shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105 border-0 font-bold"
+          >
+            <Brain className="w-6 h-6 mr-3" />
+            Get AI Strategy Consultation
+          </Button>
         </div>
       </div>
     </section>

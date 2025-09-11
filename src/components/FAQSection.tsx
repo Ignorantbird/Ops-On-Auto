@@ -1,18 +1,18 @@
-// src/components/FAQSection.tsx - SIMPLIFIED STABLE VERSION
+// src/components/FAQSection.tsx - FINAL USD PRICING FIX
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Card, CardContent } from "@/components/ui/card";
-import { HelpCircle, Settings, Zap, DollarSign } from "lucide-react";
+import { Search, TrendingUp, DollarSign, MessageCircle } from "lucide-react";
 
 const FAQSection = () => {
   const faqCategories = [
     {
       title: "General",
-      icon: HelpCircle,
+      icon: Search,
       questions: [
         {
           question: "What is OpsOnAuto?",
@@ -20,7 +20,7 @@ const FAQSection = () => {
         },
         {
           question: "Who do you work with?",
-          answer: "We work with small—mid businesses, startups, consultants, PPC agencies, real estate teams, and service-based businesses looking to remove repetitive tasks."
+          answer: "We work with small–mid businesses, startups, consultants, PPC agencies, real estate teams, and service-based businesses looking to remove repetitive tasks."
         },
         {
           question: "What's the difference between automation and agentic AI?",
@@ -30,11 +30,11 @@ const FAQSection = () => {
     },
     {
       title: "Services & Process",
-      icon: Settings,
+      icon: TrendingUp,
       questions: [
         {
           question: "How long does it take to implement automation?",
-          answer: "Most projects launch in 1—3 weeks, depending on complexity."
+          answer: "Most projects launch in 1–3 weeks, depending on complexity."
         },
         {
           question: "Can you customize workflows for my business?",
@@ -48,7 +48,7 @@ const FAQSection = () => {
     },
     {
       title: "Technical & Integrations",
-      icon: Zap,
+      icon: MessageCircle,
       questions: [
         {
           question: "Will automation work with my existing tools?",
@@ -70,7 +70,7 @@ const FAQSection = () => {
       questions: [
         {
           question: "How much does automation cost?",
-          answer: "Packages start from $4,997 for our Automation Accelerator. Enterprise solutions up to $49,997+ for complete AI transformation in 2 weeks.. Complex agentic AI implementations are quoted based on scope."
+          answer: "Packages start from $500 for Starter plans. Complex agentic AI implementations are quoted based on scope."
         },
         {
           question: "Are there ongoing fees?",
