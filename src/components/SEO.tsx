@@ -24,13 +24,13 @@ export const SEO = ({
   return (
     <Helmet>
       {/* Google Analytics 4 */}
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-015E16B3Q0"></script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-015E16BJ8Q"></script>
       <script>
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-015E16B3Q0', {
+          gtag('config', 'G-015E16BJ8Q', {
             page_title: '${fullTitle}',
             page_location: '${fullCanonical}',
             custom_map: {
