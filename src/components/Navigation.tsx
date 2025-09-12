@@ -258,6 +258,13 @@ const Navigation = () => {
     {
       category: "⚙️ Business Automation",
       services: [
+        // 🔧 FIXED: Added missing "Business Automation" main category page as first item
+        { 
+          title: "Business Automation", 
+          path: "/business-automation", 
+          description: "Smart workflows & process optimization", 
+          badge: "🏆 Core" 
+        },
         { 
           title: "CRM Automation", 
           path: "/crm-automation", 
@@ -276,7 +283,6 @@ const Navigation = () => {
       ]
     }
   ];
-  
 
   // FINAL USD PRICING FIX
   return (
@@ -305,14 +311,18 @@ const Navigation = () => {
           <div className="hidden lg:flex items-center space-x-1">
             
             {/* Services Mega Menu - Only serviceCategories array changed */}
-            <div className="relative" ref={megaMenuRef}>
+            <div className="relative" ref={megaMenuRef}
+            onMouseEnter={() => setIsMegaMenuOpen(true)}
+            onMouseLeave={() => setIsMegaMenuOpen(false)}
+            onClick={() => setIsMegaMenuOpen(!isMegaMenuOpen)}>
+            
               <button
                 className={`relative flex items-center px-4 py-3 font-semibold text-base transition-all duration-200 rounded-lg group ${
                   isActiveRoute('/services') || isActiveRoute('/agentic-ai') || isActiveRoute('/crm-automation') || isActiveRoute('/sales-ai') || isActiveRoute('/generative-ai')
                     ? 'bg-blue-50 text-blue-600' 
                     : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50'
                 }`}
-                onClick={() => setIsMegaMenuOpen(!isMegaMenuOpen)}
+                
               >
                 Services
                 <ChevronDown className={`ml-1 w-4 h-4 transition-transform duration-200 ${isMegaMenuOpen ? 'rotate-180' : ''}`} />
@@ -320,7 +330,9 @@ const Navigation = () => {
 
               {/* Mega Menu - UPDATED TO 3-COLUMN LAYOUT */}
               {isMegaMenuOpen && (
-                <div className="absolute top-full left-0 mt-2 w-[800px] bg-white rounded-xl shadow-2xl border border-gray-200 p-6 z-50">
+                <div className="absolute top-full left-0 mt-2 w-[800px] bg-white rounded-xl shadow-2xl border border-gray-200 p-6 z-50"
+                onMouseEnter={() => setIsMegaMenuOpen(true)}
+                onMouseLeave={() => setIsMegaMenuOpen(false)}>
                   <div className="grid grid-cols-3 gap-6">
                     {serviceCategories.map((category, categoryIndex) => (
                       <div key={categoryIndex}>
