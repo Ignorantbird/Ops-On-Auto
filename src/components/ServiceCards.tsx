@@ -20,7 +20,14 @@ import { CTA_ACTIONS } from '@/lib/BookingLinks';
 
 const ServiceCards = () => {
   const handleGetStarted = (service: any) => {
-    CTA_ACTIONS.GET_WORKFLOW_AUDIT();
+    window.open(service.link, '_blank');
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'get_started_clicked', {
+        event_category: 'service_engagement',
+        event_label: service.shortTitle || service.title,
+        service_path: service.link
+      });
+    }
   };
 
   const handleViewDetails = (service: any) => {
