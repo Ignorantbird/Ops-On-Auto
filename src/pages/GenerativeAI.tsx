@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Clock, TrendingUp, Target, Brain } from "lucide-react";
+import CTA_ACTIONS from "@/lib/BookingLinks";
 
 const GenerativeAI = () => {
   return (
@@ -138,36 +139,9 @@ const GenerativeAI = () => {
         </div>
       </section>
 
-      {/* Real Results Section */}
-      <section className="py-20 bg-gradient-to-r from-purple-500 to-purple-600">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Real Results: CreativeFlow Agency
-            </h2>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Watch how implementing AI content generation helped one agency like yours achieve tangible ROI through automated content creation.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto text-center">
-            {[
-              { metric: "After: 2 weeks", description: "AI content system fully deployed" },
-              { metric: "After: 10x", description: "Content production volume increase" },
-              { metric: "After: 60%", description: "Content creation cost reduction" },
-              { metric: "After: 500%", description: "SEO traffic growth achieved" }
-            ].map((result, index) => (
-              <div key={index} className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-                <div className="text-3xl font-bold text-white mb-2">{result.metric}</div>
-                <p className="text-white/80 text-sm">{result.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Final CTA */}
-      <section className="py-20 bg-gradient-to-br from-purple-600 via-purple-500 to-pink-600">
+      <section className="py-20 bg-gradient-to-br from-purple-600 via-purple-500 to-pink-600 relative overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
@@ -179,7 +153,7 @@ const GenerativeAI = () => {
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center mb-8">
               <Button 
-                onClick={() => window.location.href = '/workflow-audit'}
+                onClick={() => CTA_ACTIONS.BOOK_STRATEGY_SESSION()}
                 size="lg"
                 className="bg-orange-500 hover:bg-orange-600 text-white text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all duration-300"
               >

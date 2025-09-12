@@ -19,6 +19,8 @@ import {
   DollarSign
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import CTA_ACTIONS from "@/lib/BookingLinks";
+import { Calendar } from "lucide-react";
 
 const ProgrammaticSEOSection = () => {
   const [activeTab, setActiveTab] = useState('content-generation');
@@ -396,7 +398,7 @@ const ProgrammaticSEOSection = () => {
                     ? 'bg-yellow-500 hover:bg-yellow-600 text-white' 
                     : 'bg-white border-2 border-yellow-500 text-yellow-600 hover:bg-yellow-50'
                 }`}
-                onClick={() => navigate('/contact')}
+                onClick={() => CTA_ACTIONS.BOOK_STRATEGY_SESSION()}
               >
                 {tier.price === 'Custom Quote' ? 'Get Custom Quote' : 'Start Project'}
                 <ArrowRight className="w-4 h-4 ml-2" />
@@ -413,7 +415,7 @@ const ProgrammaticSEOSection = () => {
       <div className="container mx-auto px-6">
         {/* Hero Section - Updated for Generative AI */}
         <div className="text-center mb-20">
-          <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-100 to-orange-200 text-yellow-700 rounded-full text-sm font-medium mb-6">
+          <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-100 to-orange-200 text-black-700 rounded-full text-sm font-medium mb-6">
             <Sparkles className="w-4 h-4 mr-2" />
             AI Content Generation System - Premium Generative AI Service
           </div>
@@ -485,45 +487,38 @@ const ProgrammaticSEOSection = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="mt-20">
-          <section className="py-20 bg-gradient-to-br from-yellow-600 via-orange-500 to-orange-600">
+        <div className="mt-10">
+          <section className="py-20 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-2xl p-12 text-brown">
             <div className="container mx-auto px-6">
               <div className="max-w-4xl mx-auto text-center">
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                <h2 className="text-4xl md:text-5xl font-bold text-brown mb-6">
                   Ready to Launch Your AI Content Factory?
                 </h2>
-                <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+                <p className="text-xl text-brown/90 mb-8 max-w-2xl mx-auto leading-relaxed">
                   Join 150+ businesses using AI to generate thousands of SEO pages automatically and dominate search rankings.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                  
                   <Button 
                     size="lg" 
-                    className="bg-white text-orange-600 hover:bg-gray-100 text-lg px-8 py-4 shadow-lg hover:shadow-xl transition-all duration-300"
-                    onClick={() => navigate('/workflow-audit')}
+                    className="bg-orange-500 hover:bg-orange-600 text-white text-lg px-8 py-4 shadow-lg hover:shadow-xl transition-all duration-300"
+                    onClick={() => CTA_ACTIONS.BOOK_STRATEGY_SESSION()}
                   >
-                    <CheckCircle className="w-5 h-5 mr-2" />
-                    Free SEO Content Audit
-                  </Button>
-                  <Button 
-                    size="lg" 
-                    className="bg-white/10 border-white/30 text-white hover:bg-white hover:text-orange-600 text-lg px-8 py-4 border-2"
-                    onClick={() => navigate('/contact')}
-                  >
-                    <Play className="w-5 h-5 mr-2" />
-                    See Content Demo
+                    <Calendar className="w-5 h-5 mr-2" />
+                    Book Strategy Call
                   </Button>
                 </div>
-                <div className="flex flex-col sm:flex-row gap-6 justify-center items-center text-sm text-white/80">
+                <div className="flex flex-col sm:flex-row gap-6 justify-center items-center text-sm text-brown/80">
                   <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-300 mr-2" />
+                    <CheckCircle className="w-4 h-4 text-brown-400 mr-2" />
                     No long-term contracts
                   </div>
                   <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-300 mr-2" />
+                    <CheckCircle className="w-4 h-4 text-brown-400 mr-2" />
                     30-day content guarantee
                   </div>
                   <div className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-300 mr-2" />
+                    <CheckCircle className="w-4 h-4 text-brown-400 mr-2" />
                     Live in 3-4 weeks
                   </div>
                 </div>

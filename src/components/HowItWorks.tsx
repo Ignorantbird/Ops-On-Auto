@@ -2,6 +2,7 @@
 import { FileText, Settings, Rocket, ArrowRight, Calendar } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import CTA_ACTIONS from "@/lib/BookingLinks";
 
 const HowItWorks = () => {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ const HowItWorks = () => {
     {
       number: "01",
       icon: FileText,
-      title: "Book a Free Workflow Audit",
+      title: "Book 30-Min Strategy Call",
       description: "Schedule a 30-minute call where we analyze your current processes and identify automation opportunities."
     },
     {
@@ -71,11 +72,11 @@ const HowItWorks = () => {
           <div className="text-center space-y-6">
             {/* Primary CTA Button */}
             <Button 
-              onClick={handleWorkflowAudit}
+              onClick={() => CTA_ACTIONS.BOOK_STRATEGY_SESSION()}
               className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-lg text-lg font-semibold bg-orange-500 text-white shadow-lg hover:shadow-xl hover:-translate-y-1 hover:scale-105 transition-all duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-orange-500/20"
             >
               <Calendar className="w-5 h-5" />
-              Book My Free Workflow Audit
+              Book 30-Min Strategy Call
             </Button>
             
             {/* Secondary Link */}

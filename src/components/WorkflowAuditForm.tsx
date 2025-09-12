@@ -195,7 +195,7 @@ const WorkflowAuditForm = () => {
             <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-200">
               <h4 className="text-lg font-bold text-blue-900 mb-3">Audit Process:</h4>
               <ul className="space-y-2 text-blue-800">
-                <li className="flex items-center"><span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>15-minute discovery call</li>
+                <li className="flex items-center"><span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>30-minute discovery call</li>
                 <li className="flex items-center"><span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>Workflow analysis & mapping</li>
                 <li className="flex items-center"><span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>Custom automation recommendations</li>
                 <li className="flex items-center"><span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>ROI projections & timeline</li>

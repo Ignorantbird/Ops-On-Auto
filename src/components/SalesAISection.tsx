@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { CheckCircle, Clock, TrendingUp, Users, Zap, ArrowRight, Play, Calendar, MessageSquare, Bot, Target, Shield, DollarSign, Phone, Mail, User, BarChart3, Handshake, Brain, Lightbulb } from "lucide-react";
 import { CTA_ACTIONS } from "@/lib/BookingLinks";
+import { Button } from "./ui/button";
 
 const SalesAISection = () => {
   const [activeTab, setActiveTab] = useState('how-it-works');
@@ -272,7 +273,7 @@ const SalesAISection = () => {
             </div>
             
             <button 
-              onClick={() => CTA_ACTIONS.GET_WORKFLOW_AUDIT()}
+              onClick={() => CTA_ACTIONS.BOOK_STRATEGY_SESSION()}
               className={`w-full mt-6 py-3 px-4 rounded-lg font-bold transition-all duration-300 ${
                 tier.popular 
                   ? 'bg-purple-500 text-white hover:bg-purple-600 shadow-lg hover:shadow-xl'
@@ -366,44 +367,45 @@ const SalesAISection = () => {
         </div>
 
         {/* Final CTA Section */}
-        <div className="text-center mt-16 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-2xl p-12 text-white">
-          <h3 className="text-3xl font-bold mb-4">Ready to Deploy Your AI Sales Agent?</h3>
-          <p className="text-xl text-purple-100 mb-8 max-w-2xl mx-auto">
-            Join 180+ sales teams who've automated their processes with intelligent AI agents. 
-            Start with a free sales process audit and see how AI can transform your revenue.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button 
-              onClick={() => CTA_ACTIONS.GET_WORKFLOW_AUDIT()}
-              className="bg-orange-500 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-orange-600 transition-all flex items-center justify-center"
-            >
-              <MessageSquare className="w-5 h-5 mr-2" />
-              Free AI Sales Audit
-            </button>
-            <button 
-              onClick={() => CTA_ACTIONS.BOOK_STRATEGY_CALL()}
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-purple-600 transition-all flex items-center justify-center"
-            >
-              <Calendar className="w-5 h-5 mr-2" />
-              Book Strategy Call
-            </button>
-          </div>
-          
-          {/* Trust Indicators */}
-          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-6 mt-8 text-sm text-purple-200">
-            <span className="flex items-center">
-              <CheckCircle className="w-4 h-4 mr-1" />
-              Free AI sales audit & strategy session
-            </span>
-            <span className="flex items-center">
-              <CheckCircle className="w-4 h-4 mr-1" />
-              4-10x ROI guaranteed in 90 days
-            </span>
-            <span className="flex items-center">
-              <CheckCircle className="w-4 h-4 mr-1" />
-              Money-back guarantee if not satisfied
-            </span>
-          </div>
+        <div className="mt-10">
+          <section className="py-20 bg-gradient-to-r  from-purple-500 to-indigo-600 rounded-2xl p-12 text-white">
+            <div className="container mx-auto px-6">
+              <div className="max-w-4xl mx-auto text-center">
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                  Ready to Deploy Your AI Sales Agent?
+                </h2>
+                <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+                  Join 180+ sales teams who've automated their processes with intelligent AI agents. 
+                  Start with a free strategy call and see how AI can transform your revenue.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                  
+                  <Button 
+                    size="lg" 
+                    className="bg-orange-500 hover:bg-orange-600 text-white text-lg px-8 py-4 shadow-lg hover:shadow-xl transition-all duration-300"
+                    onClick={() => CTA_ACTIONS.BOOK_STRATEGY_SESSION()}
+                  >
+                    <Calendar className="w-5 h-5 mr-2" />
+                    Book Strategy Call
+                  </Button>
+                </div>
+                <div className="flex flex-col sm:flex-row gap-6 justify-center items-center text-sm text-white/80">
+                  <div className="flex items-center">
+                  <CheckCircle className="w-4 h-4 mr-1" />
+                  Free AI sales audit & strategy call
+                  </div>
+                  <div className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-1" />
+                    Money-back guarantee if not satisfied
+                  </div>
+                  <div className="flex items-center">
+                    <CheckCircle className="w-4 h-4 mr-1" />
+                    4-10x ROI guaranteed in 90 days
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </section>

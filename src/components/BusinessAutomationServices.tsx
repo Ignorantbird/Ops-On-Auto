@@ -1,6 +1,7 @@
 // src/components/BusinessAutomationServices.tsx - EXACT AISOLUTIONS STRUCTURE
 import { Button } from "@/components/ui/button";
-import { Settings, Workflow, BarChart3, ArrowRight, Brain } from "lucide-react";
+import CTA_ACTIONS from "@/lib/BookingLinks";
+import { Settings, Workflow, BarChart3, ArrowRight, Brain, CheckCircle, Calendar, MessageCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const BusinessAutomationServices = () => {
@@ -181,14 +182,16 @@ const BusinessAutomationServices = () => {
           </p>
           {/* Bottom CTA - Working Div-Based Button */}
           <div 
-            onClick={() => window.location.href = '/workflow-audit'}
+            onClick={() => CTA_ACTIONS.BOOK_STRATEGY_SESSION()}
             className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer inline-flex items-center gap-2"
           >
             <Brain className="w-5 h-5" />
-            Get Free Business Automation Audit
+            Book 30-Min Strategy Call
           </div>
         </div>
       </div>
+      
+      
     </section>
   );
 };

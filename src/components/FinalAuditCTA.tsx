@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Calendar, MessageCircle } from "lucide-react";
+import { Calendar, CheckCircle } from "lucide-react";
 
 const FinalAuditCTA = () => {
   return (
@@ -26,13 +26,13 @@ const FinalAuditCTA = () => {
               variant="outline"
               className="border-white/30 text-white hover:bg-white hover:text-blue-600 text-lg px-8 py-6"
             >
-              <MessageCircle className="mr-2 h-5 w-5" />
+              <CheckCircle className="mr-2 h-5 w-5" />
               Contact Us
             </Button>
           </div>
           
           <div className="mt-8 text-sm text-white/80">
-            <p>✓ 30-minute consultation ✓ Custom automation plan ✓ No obligation ✓ Response within 24 hours</p>
+            <p>✓30-minute consultation ✓ Custom automation plan ✓ No obligation ✓ Response within 24 hours</p>
           </div>
         </div>
       </div>

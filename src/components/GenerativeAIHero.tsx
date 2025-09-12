@@ -1,5 +1,6 @@
 // src/components/GenerativeAIHero.tsx
 import { Button } from "@/components/ui/button";
+import CTA_ACTIONS from "@/lib/BookingLinks";
 import { CheckCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -19,10 +20,10 @@ const GenerativeAIHero = () => {
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
             <div 
-              onClick={() => window.location.href = '/workflow-audit'}
-              className="bg-orange-500 hover:bg-orange-600 text-white text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer rounded-lg text-center"
-            >
-              Get Free Content Audit
+                onClick={() => CTA_ACTIONS.BOOK_STRATEGY_SESSION()}
+                className="bg-orange-500 hover:bg-orange-600 text-white text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer rounded-lg text-center"
+                >
+                Book 30-Min Strategy Call
             </div>
             <div 
               onClick={() => window.location.href = '/pricing'}

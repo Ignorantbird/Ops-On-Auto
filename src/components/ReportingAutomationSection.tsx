@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { BarChart3, Users, Target, TrendingUp, Zap, CheckCircle, ArrowRight, Play, Clock, MessageCircle, Calendar, Settings, Filter, Mail, Phone, DollarSign, Activity, RefreshCw, PieChart, FileText } from "lucide-react";
 import { CTA_ACTIONS } from "@/lib/BookingLinks";
+import { Button } from "./ui/button";
 
 const ReportingAutomationSection = () => {
   const [activeTab, setActiveTab] = useState('how-it-works');
@@ -268,28 +269,44 @@ const ReportingAutomationSection = () => {
         </div>
 
         {/* Final CTA */}
-        <div className="text-center bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl p-12 text-white">
-          <h3 className="text-3xl font-bold mb-4">Ready to Automate Your Reporting?</h3>
-          <p className="text-xl text-green-100 mb-8 max-w-2xl mx-auto">
-            Stop spending hours on manual reports. Get real-time insights that help 
-            you make faster, better decisions.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button 
-              onClick={() => CTA_ACTIONS.GET_WORKFLOW_AUDIT()}
-              className="bg-yellow-500 text-green-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-400 transition-all flex items-center justify-center"
-            >
-              <BarChart3 className="w-5 h-5 mr-2" />
-              Book Free Dashboard Audit
-            </button>
-            <button 
-              onClick={() => CTA_ACTIONS.BOOK_STRATEGY_CALL()}
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-green-600 transition-all flex items-center justify-center"
-            >
-              <Phone className="w-5 h-5 mr-2" />
-              Book a Strategy Call
-            </button>
-          </div>
+        <div className="mt-10">
+          <section className="py-20 bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl p-12 text-white">
+            <div className="container mx-auto px-6">
+              <div className="max-w-4xl mx-auto text-center">
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                  Ready to Deploy Your Reporting Automation?
+                </h2>
+                <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+                  Join 200+ businesses using smart reporting automation to generate insights, automate dashboards, and streamline reporting processes.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                  
+                  <Button 
+                    size="lg" 
+                    className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-green-600 transition-all flex items-center justify-center"
+                    onClick={() => CTA_ACTIONS.BOOK_STRATEGY_SESSION()}
+                  >
+                    <Calendar className="w-5 h-5 mr-2" />
+                    Book Strategy Call
+                  </Button>
+                </div>
+                <div className="flex flex-col sm:flex-row gap-6 justify-center items-center text-sm text-white/80">
+                  <div className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-white-400 mr-2" />
+                    No long-term contracts
+                  </div>
+                  <div className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-white-400 mr-2" />
+                    30-day money-back guarantee
+                  </div>
+                  <div className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-white-400 mr-2" />
+                    Setup in 3-4 weeks
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </section>

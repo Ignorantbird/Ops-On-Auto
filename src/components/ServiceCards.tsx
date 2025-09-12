@@ -336,11 +336,11 @@ const ServiceCards = () => {
             Get a free consultation to discover the perfect automation strategy for your specific needs
           </p>
           <button
-            onClick={() => CTA_ACTIONS.GET_WORKFLOW_AUDIT()}
+            onClick={() => CTA_ACTIONS.BOOK_STRATEGY_SESSION()}
             className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold text-lg px-8 py-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex items-center gap-3 mx-auto"
           >
             <ArrowRight className="w-5 h-5" />
-            Book Free Strategy Session
+            Book 30-Min Strategy Call
           </button>
         </div>
       </div>

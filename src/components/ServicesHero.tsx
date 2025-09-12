@@ -27,7 +27,7 @@ const ServicesHero = () => {
           </p>
           
           <div className="mb-8">
-            <PrimaryCTA label="Book AI Demo" icon="calendar" />
+            <PrimaryCTA label="Book 30-Min Strategy Call" icon="calendar" />
           </div>
           
           <div className="text-sm text-white/80 flex flex-wrap justify-center gap-6">

@@ -2,12 +2,13 @@
 import { Button } from "@/components/ui/button";
 import { Bot, Brain, Zap } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { CTA_ACTIONS } from "@/lib/BookingLinks";
 
 const AgenticAIHero = () => {
   const navigate = useNavigate();
 
   const handleBookDemo = () => {
-    navigate('/workflow-audit');
+    CTA_ACTIONS.BOOK_STRATEGY_SESSION();
   };
 
   const handleWatchDemo = () => {

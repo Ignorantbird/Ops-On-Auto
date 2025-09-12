@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Workflow, Users, Target, BarChart3, Zap, CheckCircle, ArrowRight, Play, Clock, TrendingUp, MessageCircle, Calendar, Settings, Filter, Mail, Phone, DollarSign, Activity, RefreshCw, GitBranch } from "lucide-react";
 import { CTA_ACTIONS } from "@/lib/BookingLinks";
+import { Button } from "./ui/button";
 
 const WorkflowAutomationSection = () => {
   const [activeTab, setActiveTab] = useState('how-it-works');
@@ -268,28 +269,44 @@ const WorkflowAutomationSection = () => {
         </div>
 
         {/* Final CTA */}
-        <div className="text-center bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl p-12 text-white">
-          <h3 className="text-3xl font-bold mb-4">Ready to Automate Your Workflows?</h3>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Stop wasting time on repetitive tasks. Get a custom workflow automation 
-            strategy in just one week.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button 
-              onClick={() => CTA_ACTIONS.GET_WORKFLOW_AUDIT()}
-              className="bg-yellow-500 text-blue-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-400 transition-all flex items-center justify-center"
-            >
-              <Workflow className="w-5 h-5 mr-2" />
-              Get Free Workflow Audit
-            </button>
-            <button 
-              onClick={() => CTA_ACTIONS.BOOK_STRATEGY_CALL()}
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-blue-600 transition-all flex items-center justify-center"
-            >
-              <RefreshCw className="w-5 h-5 mr-2" />
-              Book Strategy Session
-            </button>
-          </div>
+        <div className="mt-10">
+          <section className="py-20 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl p-12 text-white">
+            <div className="container mx-auto px-6">
+              <div className="max-w-4xl mx-auto text-center">
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                  Ready to Deploy Your Workflow Automation?
+                </h2>
+                <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+                  Join 200+ businesses using smart workflow automation to eliminate manual tasks, streamline processes, and boost efficiency.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                  
+                  <Button 
+                    size="lg" 
+                    className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-blue-600 transition-all flex items-center justify-center"
+                    onClick={() => CTA_ACTIONS.BOOK_STRATEGY_SESSION()}
+                  >
+                    <Calendar className="w-5 h-5 mr-2" />
+                    Book Strategy Call
+                  </Button>
+                </div>
+                <div className="flex flex-col sm:flex-row gap-6 justify-center items-center text-sm text-white/80">
+                  <div className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-white-400 mr-2" />
+                    No long-term contracts
+                  </div>
+                  <div className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-white-400 mr-2" />
+                    30-day money-back guarantee
+                  </div>
+                  <div className="flex items-center">
+                    <CheckCircle className="w-4 h-4 text-white-400 mr-2" />
+                    Setup in 3-4 weeks
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </section>

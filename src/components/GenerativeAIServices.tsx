@@ -21,8 +21,8 @@ const GenerativeAIServices = () => {
       ],
       investmentRange: "$1,200 - $2,500",
       timeline: "3-5 weeks",
-      gradient: "from-blue-500 to-indigo-600",
-      iconBg: "bg-gradient-to-br from-blue-500 to-indigo-600",
+      gradient: "from-yellow-500 to-orange-600",
+      iconBg: "bg-gradient-to-br from-yellow-500 to-orange-600",
       link: "/data-analytics"
     },
     {

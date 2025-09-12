@@ -17,9 +17,11 @@ import {
   Users,
   ArrowLeft,
   Activity,
-  PieChart
+  PieChart,
+  Calendar
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import CTA_ACTIONS from "@/lib/BookingLinks";
 
 const DataAnalyticsSection = () => {
   const [activeTab, setActiveTab] = useState('how-it-works');
@@ -343,7 +345,7 @@ const DataAnalyticsSection = () => {
                     ? 'bg-purple-500 hover:bg-purple-600 text-white' 
                     : 'bg-white border-2 border-purple-500 text-purple-600 hover:bg-purple-50'
                 }`}
-                onClick={() => navigate('/contact')}
+                onClick={() => CTA_ACTIONS.BOOK_STRATEGY_SESSION()}
               >
                 {tier.price === 'Custom Quote' ? 'Get Custom Quote' : 'Start Project'}
                 <ArrowRight className="w-4 h-4 ml-2" />
@@ -431,8 +433,8 @@ const DataAnalyticsSection = () => {
         </div>
 
         {/* CTA Section - Self-contained to avoid import issues */}
-        <div className="mt-20">
-          <section className="py-20 bg-gradient-to-br from-purple-600 via-pink-500 to-pink-600">
+        <div className="mt-10">
+          <section className="py-20 bg-gradient-to-r from-indigo-600 to-pink-600 rounded-2xl p-12 text-white">
             <div className="container mx-auto px-6">
               <div className="max-w-4xl mx-auto text-center">
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
@@ -442,20 +444,13 @@ const DataAnalyticsSection = () => {
                   Join 200+ businesses using intelligent AI to analyze data, generate insights, and automate strategic decisions.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                  
                   <Button 
                     size="lg" 
                     className="bg-orange-500 hover:bg-orange-600 text-white text-lg px-8 py-4 shadow-lg hover:shadow-xl transition-all duration-300"
-                    onClick={() => navigate('/workflow-audit')}
+                    onClick={() => CTA_ACTIONS.BOOK_STRATEGY_SESSION()}
                   >
-                    <CheckCircle className="w-5 h-5 mr-2" />
-                    Free Data AI Demo
-                  </Button>
-                  <Button 
-                    size="lg" 
-                    className="bg-white/10 border-white/30 text-white hover:bg-white hover:text-purple-600 text-lg px-8 py-4 border-2"
-                    onClick={() => navigate('/contact')}
-                  >
-                    <MessageCircle className="w-5 h-5 mr-2" />
+                    <Calendar className="w-5 h-5 mr-2" />
                     Book Strategy Call
                   </Button>
                 </div>

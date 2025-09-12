@@ -28,17 +28,17 @@ const iconMap = {
 const getDefaultAction = (actionType: OptimizedCTAProps['actionType']) => {
   switch (actionType) {
     case 'demo':
-      return CTA_ACTIONS.BOOK_DEMO;
+      return CTA_ACTIONS.BOOK_STRATEGY_SESSION; // New primary for service pages
     case 'audit':
-      return CTA_ACTIONS.GET_WORKFLOW_AUDIT;
+      return CTA_ACTIONS.GET_WORKFLOW_AUDIT; // Keep for homepage
     case 'consultation':
-      return CTA_ACTIONS.SCHEDULE_CONSULTATION;
+      return CTA_ACTIONS.TALK_TO_EXPERT; // New primary for pricing
     case 'contact':
       return CTA_ACTIONS.CONTACT_US;
     case 'pricing':
       return CTA_ACTIONS.VIEW_PRICING;
     default:
-      return CTA_ACTIONS.BOOK_DEMO;
+      return CTA_ACTIONS.BOOK_STRATEGY_SESSION; // New default
   }
 };
 

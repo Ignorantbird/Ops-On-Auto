@@ -4,6 +4,7 @@ import BusinessAutomationHero from "@/components/BusinessAutomationHero";
 import BusinessAutomationServices from "@/components/BusinessAutomationServices";
 import Footer from "@/components/Footer";
 import { SEO } from "@/components/SEO";
+import FinalCTA from "@/components/FinalCTA";
 
 const BusinessAutomation = () => {
   return (
@@ -17,6 +18,7 @@ const BusinessAutomation = () => {
       <Navigation />
       <BusinessAutomationHero />
       <BusinessAutomationServices />
+      <FinalCTA />
       <Footer />
     </div>
   );
