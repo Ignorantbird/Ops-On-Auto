@@ -272,6 +272,16 @@ const ServiceIconsSection = () => {
   return (
     <section id="services-section" className="py-20 bg-white">
       <div className="container mx-auto px-6">
+        {/* Debug info - remove after testing */}
+        {typeof window !== 'undefined' && (
+          <div className="fixed top-20 left-4 bg-black text-white text-xs p-2 rounded z-50 sm:hidden">
+            Mobile: {isMobile ? 'YES' : 'NO'}<br/>
+            Touch: {'ontouchstart' in window ? 'YES' : 'NO'}<br/>
+            Width: {typeof window !== 'undefined' ? window.innerWidth : 'unknown'}<br/>
+            Popup: {hoveredService ? hoveredService.title : 'None'}
+          </div>
+        )}
+        
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
