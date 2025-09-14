@@ -1,7 +1,8 @@
-// New Enhanced ServiceIconsSection.tsx - All Subcategory Services with Hover Popups
-// Replace the entire ServiceIconsSection.tsx component
+// ServiceIconsSection.tsx - FINAL MOBILE-FIXED VERSION
+// Replace your current ServiceIconsSection.tsx with this enhanced version
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
+import { useIsMobile } from '@/hooks/use-mobile';
 import { 
   Users, 
   Phone, 
@@ -22,6 +23,9 @@ import {
 const ServiceIconsSection = () => {
   const [hoveredService, setHoveredService] = useState(null);
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
+  const isMobile = useIsMobile();
+  const touchTimeoutRef = useRef(null);
+  const isTouch = useRef(false);
 
   // Complete list of all subcategory services with detailed popup information
   const allServices = [
@@ -67,174 +71,174 @@ const ServiceIconsSection = () => {
       timeline: "2-3 weeks",
       description: "Human-like AI calling bot that makes calls, books appointments, and handles customer service",
       whyBeneficial: "Human receptionists cost $30K+/year and make mistakes. AI Voice Agents cost less, never miss calls, work 24/7, and provide consistent service quality. They can handle unlimited concurrent calls.",
-      howItWorks: "The AI voice system connects to your phone lines, understands natural speech, and responds intelligently. It can book appointments in your calendar, qualify leads, answer FAQs, and transfer complex calls to humans.",
+      howItWorks: "The AI voice system connects to your phone lines, understands natural speech, and responds intelligently. It can take appointments, qualify leads, answer FAQs, and transfer complex issues to humans.",
       perfectFor: [
-        "Dental/medical practices with high call volume",
-        "Service businesses needing appointment booking",
-        "Companies with repetitive customer inquiries",
-        "Businesses losing leads to missed calls"
+        "Service businesses with high call volume",
+        "Medical practices handling appointments",
+        "Sales teams needing lead qualification calls",
+        "Support teams overwhelmed with repetitive calls"
       ],
       keyBenefits: [
-        "Natural conversation flow",
-        "Appointment scheduling automation",
-        "Lead qualification calls", 
-        "Customer service & support"
+        "24/7 phone coverage & appointment booking",
+        "Natural conversation & appointment scheduling",
+        "Call routing & lead qualification",
+        "Integration with calendars & CRMs"
       ]
     },
     {
       icon: BarChart3,
       title: "AI Data Analytics",
-      shortTitle: "Data Analytics", 
+      shortTitle: "Data AI",
       category: "🤖 Agentic AI",
-      categoryColor: "from-green-500 to-emerald-500",
-      iconBg: "from-green-100 to-emerald-100",
-      iconColor: "text-green-600", 
-      badge: "📊 Premium",
-      link: "/data-analytics",
+      categoryColor: "from-purple-500 to-indigo-500",
+      iconBg: "from-purple-100 to-indigo-100",
+      iconColor: "text-purple-600",
+      badge: "💼 Enterprise",
+      link: "/data-analytics-ai",
       pricing: "$1,200+",
-      timeline: "3-4 weeks",
-      description: "AI agent that analyzes data, generates insights, and provides predictive recommendations",
-      whyBeneficial: "Manual data analysis takes hours and often misses patterns. AI Analytics agents process massive datasets in minutes, spot trends humans miss, and predict future outcomes with 85%+ accuracy.",
-      howItWorks: "The AI connects to your data sources (CRM, analytics, sales platforms), processes information continuously, and generates automated reports with actionable insights. It alerts you to anomalies and opportunities in real-time.",
+      timeline: "2-4 weeks",
+      description: "AI agent that analyzes your data, generates insights, creates reports, and answers business questions",
+      whyBeneficial: "Data analysts cost $70K+/year and take days to generate reports. AI Data Analytics provides instant insights 24/7, identifies trends humans miss, and scales infinitely without additional headcount costs.",
+      howItWorks: "The AI connects to your data sources (CRM, analytics, databases), learns your business metrics, and provides real-time insights through natural language queries. It generates automated reports and proactive alerts.",
       perfectFor: [
-        "E-commerce businesses tracking performance",
-        "Marketing agencies managing client data", 
-        "SaaS companies monitoring user behavior",
-        "Any business drowning in spreadsheets"
+        "Companies drowning in data but lacking insights",
+        "Executives needing instant business intelligence",
+        "Teams spending hours creating reports manually",
+        "Businesses wanting predictive analytics"
       ],
       keyBenefits: [
-        "Automated data analysis & reporting",
-        "Predictive insights & forecasting",
-        "Custom dashboard creation", 
-        "Real-time performance monitoring"
+        "Natural language data queries",
+        "Automated insight generation",
+        "Predictive trend analysis", 
+        "Real-time business intelligence dashboards"
       ]
     },
     {
       icon: Search,
       title: "Programmatic SEO",
-      shortTitle: "SEO Automation",
-      category: "✨ Generative AI", 
-      categoryColor: "from-yellow-500 to-orange-500",
-      iconBg: "from-yellow-100 to-orange-100",
-      iconColor: "text-yellow-600",
-      badge: "📈 Growth Focused", 
+      shortTitle: "Auto SEO",
+      category: "✨ Generative AI",
+      categoryColor: "from-green-500 to-teal-500",
+      iconBg: "from-green-100 to-teal-100",
+      iconColor: "text-green-600",
+      badge: "🚀 Fast Growth",
       link: "/programmatic-seo",
       pricing: "$700+",
-      timeline: "3-4 weeks",
-      description: "AI-powered content generation system that creates SEO-optimized pages and content at scale",
-      whyBeneficial: "Manual content creation costs $100+/article and takes days. Programmatic SEO creates hundreds of pages automatically, targeting thousands of keywords simultaneously for exponential traffic growth.",
-      howItWorks: "The AI analyzes your industry keywords, creates content templates, and generates unique pages for each target keyword. It optimizes meta tags, internal linking, and content structure for maximum SEO impact.",
+      timeline: "1-2 weeks",
+      description: "AI creates hundreds of SEO-optimized pages automatically, targeting every profitable keyword in your niche",
+      whyBeneficial: "Manual content creation costs $100+ per page and takes weeks. Programmatic SEO creates hundreds of pages for the cost of 10 manual pages, ranks faster, and scales infinitely.",
+      howItWorks: "AI analyzes your niche, identifies thousands of profitable keywords, generates unique optimized content for each, and publishes automatically. Built-in tracking monitors rankings and traffic.",
       perfectFor: [
-        "SaaS companies targeting feature keywords",
-        "Local businesses needing location pages",
-        "E-commerce sites with large product catalogs", 
-        "Content marketers scaling their efforts"
+        "SaaS companies wanting to dominate search results",
+        "Service businesses targeting local markets",
+        "E-commerce brands with large product catalogs",
+        "Content companies needing scale"
       ],
       keyBenefits: [
-        "Automated content generation",
-        "SEO optimization & keyword targeting",
-        "Bulk page creation & management",
+        "Automated content generation at scale",
+        "Advanced keyword research & targeting",
+        "Built-in SEO optimization",
         "Performance tracking & analytics"
       ]
     },
     {
       icon: Sparkles,
       title: "Custom AI Content",
-      shortTitle: "Generative AI",
+      shortTitle: "Content AI",
       category: "✨ Generative AI",
-      categoryColor: "from-purple-500 to-indigo-500", 
-      iconBg: "from-purple-100 to-indigo-100",
-      iconColor: "text-purple-600",
-      badge: "✨ Custom",
-      link: "/generative-ai", 
+      categoryColor: "from-violet-500 to-purple-500",
+      iconBg: "from-violet-100 to-purple-100",
+      iconColor: "text-violet-600",
+      badge: "🎨 Creative",
+      link: "/custom-ai-content",
       pricing: "$900+",
-      timeline: "3-5 weeks",
-      description: "Tailored AI systems for creating marketing content, proposals, and brand-consistent materials",
-      whyBeneficial: "Generic AI tools create generic content. Custom AI Content systems learn your brand voice, industry terminology, and style preferences to create content that sounds authentically you at scale.",
-      howItWorks: "We train AI models on your best content, brand guidelines, and industry knowledge. The system then generates proposals, marketing materials, and content that maintains your unique voice and expertise.",
+      timeline: "2-3 weeks",
+      description: "AI content creation system that produces blogs, social media, emails, and marketing copy in your brand voice",
+      whyBeneficial: "Content writers cost $50K+/year and create 2-3 pieces daily. Custom AI Content creates unlimited content 24/7, maintains consistent brand voice, and adapts to any format or platform instantly.",
+      howItWorks: "AI learns your brand voice, target audience, and content strategy. It then creates unlimited content across all channels - blogs, social posts, emails, ads - all optimized for engagement and conversions.",
       perfectFor: [
-        "Agencies creating client proposals",
-        "Consulting firms with thought leadership",
-        "SaaS companies needing technical content", 
-        "Service businesses with custom offerings"
+        "Marketing teams needing consistent content",
+        "Agencies managing multiple client brands",
+        "Solo entrepreneurs wearing many hats",
+        "Businesses struggling with content calendar consistency"
       ],
       keyBenefits: [
-        "Custom AI model training", 
-        "Brand-consistent content creation",
-        "Multi-format content generation",
-        "Integration with existing workflows"
+        "Brand voice consistency across all content",
+        "Multi-platform content optimization",
+        "Automated content scheduling",
+        "Performance-based content optimization"
       ]
     },
     {
       icon: Database,
-      title: "CRM Automation", 
-      shortTitle: "CRM Setup",
+      title: "CRM Automation",
+      shortTitle: "Smart CRM",
       category: "⚙️ Business Automation",
-      categoryColor: "from-teal-500 to-cyan-500",
-      iconBg: "from-teal-100 to-cyan-100", 
-      iconColor: "text-teal-600",
-      badge: "⚡ Quick Setup",
+      categoryColor: "from-blue-500 to-cyan-500",
+      iconBg: "from-blue-100 to-cyan-100",
+      iconColor: "text-blue-600",
+      badge: "💎 Essential",
       link: "/crm-automation",
-      pricing: "$500+", 
+      pricing: "$500+",
       timeline: "1-2 weeks",
-      description: "Complete CRM optimization with automated pipelines, lead scoring, and workflow management",
-      whyBeneficial: "Manual CRM management leads to missed follow-ups, data inconsistencies, and lost deals. CRM Automation ensures no lead falls through cracks, maintains data quality, and provides sales team visibility.",
-      howItWorks: "We configure your CRM with automated workflows, lead scoring rules, and pipeline stages. The system automatically assigns leads, triggers follow-ups, and updates deal stages based on prospect actions.",
+      description: "Complete CRM automation that manages leads, nurtures prospects, and tracks sales pipeline automatically",
+      whyBeneficial: "Sales reps spend 65% of time on admin tasks instead of selling. CRM Automation eliminates data entry, ensures no leads fall through cracks, and provides perfect follow-up timing every time.",
+      howItWorks: "Automatically captures leads from all sources, scores and routes them, triggers personalized follow-up sequences, updates deal stages, and provides real-time pipeline insights.",
       perfectFor: [
-        "Sales teams with inconsistent processes", 
-        "Growing businesses managing more leads",
-        "Companies with poor lead visibility",
-        "Teams wasting time on data entry"
+        "Sales teams losing leads to poor follow-up",
+        "Growing businesses outgrowing spreadsheets",
+        "Companies wanting predictable sales pipeline",
+        "Teams spending too much time on data entry"
       ],
       keyBenefits: [
-        "CRM setup & configuration",
-        "Automated lead scoring & routing", 
-        "Pipeline optimization",
-        "Integration with existing tools"
+        "Automated lead capture & scoring",
+        "Smart follow-up sequences",
+        "Pipeline management & forecasting",
+        "Sales performance analytics"
       ]
     },
     {
       icon: Workflow,
       title: "Workflow Automation",
-      shortTitle: "Workflow Automation", 
+      shortTitle: "Smart Workflows",
       category: "⚙️ Business Automation",
-      categoryColor: "from-slate-500 to-gray-500",
-      iconBg: "from-slate-100 to-gray-100",
-      iconColor: "text-slate-600",
-      badge: "⚙️ Efficiency Boost", 
+      categoryColor: "from-orange-500 to-red-500",
+      iconBg: "from-orange-100 to-red-100",
+      iconColor: "text-orange-600",
+      badge: "⚡ Efficiency Boost",
       link: "/workflow-automation",
       pricing: "$600+",
-      timeline: "2-4 weeks", 
-      description: "Streamline business processes with smart automation that eliminates manual bottlenecks",
-      whyBeneficial: "Manual processes are slow, error-prone, and prevent scaling. Workflow Automation eliminates repetitive tasks, reduces errors by 90%+, and frees your team for high-value work.",
-      howItWorks: "We map your current processes, identify bottlenecks, and create automated workflows using tools like Zapier, Make, or custom solutions. Tasks trigger automatically based on conditions you define.",
+      timeline: "1-3 weeks",
+      description: "Custom workflow automation that connects all your tools and eliminates repetitive manual tasks",
+      whyBeneficial: "Employees spend 40% of time on repetitive tasks that could be automated. Workflow Automation eliminates human error, works 24/7, and scales infinitely without hiring.",
+      howItWorks: "We map your current processes, identify automation opportunities, build custom workflows that connect your tools, and create intelligent triggers that handle tasks automatically.",
       perfectFor: [
-        "Teams doing repetitive manual tasks",
-        "Businesses with disconnected tools", 
-        "Companies struggling to scale operations",
-        "Organizations wanting process consistency"
+        "Teams doing repetitive manual work",
+        "Growing businesses needing scalable processes", 
+        "Companies with disconnected tool stacks",
+        "Operations managers wanting consistency"
       ],
       keyBenefits: [
-        "Process mapping & optimization",
-        "Cross-platform integrations",
-        "Task automation & routing", 
-        "Performance monitoring"
+        "Custom process automation design",
+        "Multi-tool integration & data sync",
+        "Intelligent triggers & conditional logic",
+        "Process optimization & monitoring"
       ]
     },
     {
       icon: Settings,
       title: "Reporting Automation",
-      shortTitle: "Reporting", 
-      category: "⚙️ Business Automation",
-      categoryColor: "from-indigo-500 to-purple-500",
-      iconBg: "from-indigo-100 to-purple-100",
-      iconColor: "text-indigo-600",
-      badge: "📊 Insights", 
+      shortTitle: "Auto Reports",
+      category: "⚙️ Business Automation", 
+      categoryColor: "from-teal-500 to-green-500",
+      iconBg: "from-teal-100 to-green-100",
+      iconColor: "text-teal-600",
+      badge: "📊 Insights",
       link: "/reporting-automation",
       pricing: "$400+",
-      timeline: "1-3 weeks",
-      description: "Automated dashboards and real-time reporting systems that provide actionable insights",
-      whyBeneficial: "Manual reporting consumes 10+ hours weekly and data is always outdated. Automated Reporting delivers real-time insights, saves massive time, and enables data-driven decision making.",
+      timeline: "1-2 weeks",
+      description: "Automated reporting system that generates and distributes business insights, KPI dashboards, and performance reports",
+      whyBeneficial: "Manual reporting takes 8+ hours weekly and is often outdated by the time it's shared. Automated Reporting delivers real-time insights, saves massive time, and enables data-driven decision making.",
       howItWorks: "We connect your data sources to automated dashboards that update in real-time. Reports are generated and distributed automatically on schedules you define, with alerts for important metrics.",
       perfectFor: [
         "Agencies reporting to clients",
@@ -251,37 +255,125 @@ const ServiceIconsSection = () => {
     }
   ];
 
-  const handleMouseEnter = (service, event) => {
+  // Enhanced position calculation for mobile
+  const calculatePopupPosition = useCallback((rect, isMobileDevice) => {
+    if (isMobileDevice) {
+      // Center popup horizontally on mobile, position above the card
+      const viewportWidth = window.innerWidth;
+      const popupWidth = 288; // w-72 = 288px
+      
+      return {
+        x: Math.max(16, Math.min(viewportWidth - popupWidth - 16, rect.left + rect.width / 2 - popupWidth / 2)),
+        y: Math.max(16, rect.top - 10)
+      };
+    } else {
+      // Desktop positioning (existing logic)
+      return {
+        x: rect.left + rect.width / 2,
+        y: rect.top - 10
+      };
+    }
+  }, []);
+
+  // Enhanced mouse enter handler
+  const handleMouseEnter = useCallback((service, event) => {
+    // Don't trigger on mobile if it was a touch event
+    if (isMobile && isTouch.current) {
+      return;
+    }
+
     const rect = event.currentTarget.getBoundingClientRect();
-    const popup = {
-      x: rect.left + rect.width / 2,
-      y: rect.top - 10
-    };
+    const popup = calculatePopupPosition(rect, isMobile);
+    
     setPopupPosition(popup);
     setHoveredService(service);
-  };
+  }, [isMobile, calculatePopupPosition]);
 
-  const handleMouseLeave = () => {
+  // Enhanced mouse leave handler  
+  const handleMouseLeave = useCallback(() => {
+    // Don't hide immediately on mobile (let touch handle it)
+    if (isMobile && isTouch.current) {
+      return;
+    }
+    
     setHoveredService(null);
-  };
+  }, [isMobile]);
 
-  const navigateToService = (link) => {
+  // Touch start handler for mobile
+  const handleTouchStart = useCallback((service, event) => {
+    isTouch.current = true;
+    
+    // Clear any existing timeout
+    if (touchTimeoutRef.current) {
+      clearTimeout(touchTimeoutRef.current);
+    }
+
+    const rect = event.currentTarget.getBoundingClientRect();
+    const popup = calculatePopupPosition(rect, true);
+    
+    setPopupPosition(popup);
+    setHoveredService(service);
+
+    // Auto-hide popup after 4 seconds on mobile
+    touchTimeoutRef.current = setTimeout(() => {
+      setHoveredService(null);
+      isTouch.current = false;
+    }, 4000);
+
+    // Prevent default to avoid triggering mouse events
+    event.preventDefault();
+  }, [calculatePopupPosition]);
+
+  // Touch end handler
+  const handleTouchEnd = useCallback(() => {
+    // Small delay to distinguish between tap-to-show-popup vs tap-to-navigate
+    setTimeout(() => {
+      isTouch.current = false;
+    }, 100);
+  }, []);
+
+  // Handle popup touch (prevent auto-hide when interacting with popup)
+  const handlePopupTouch = useCallback(() => {
+    if (touchTimeoutRef.current) {
+      clearTimeout(touchTimeoutRef.current);
+      // Reset the auto-hide timer
+      touchTimeoutRef.current = setTimeout(() => {
+        setHoveredService(null);
+        isTouch.current = false;
+      }, 4000);
+    }
+  }, []);
+
+  // Enhanced click handler
+  const handleCardClick = useCallback((service, event) => {
+    // On mobile, if popup is already shown, navigate. If not shown, show popup first
+    if (isMobile && hoveredService && hoveredService.link === service.link) {
+      navigateToService(service.link);
+    } else if (isMobile && !hoveredService) {
+      // Show popup first on mobile
+      handleTouchStart(service, event);
+    } else {
+      // Desktop behavior - navigate immediately
+      navigateToService(service.link);
+    }
+  }, [isMobile, hoveredService, handleTouchStart]);
+
+  const navigateToService = useCallback((link) => {
     window.open(link, '_blank');
-  };
+  }, []);
+
+  // Cleanup timeout on unmount
+  React.useEffect(() => {
+    return () => {
+      if (touchTimeoutRef.current) {
+        clearTimeout(touchTimeoutRef.current);
+      }
+    };
+  }, []);
 
   return (
     <section id="services-section" className="py-20 bg-white">
       <div className="container mx-auto px-6">
-        {/* Debug info - remove after testing */}
-        {typeof window !== 'undefined' && (
-          <div className="fixed top-20 left-4 bg-black text-white text-xs p-2 rounded z-50 sm:hidden">
-            Mobile: {isMobile ? 'YES' : 'NO'}<br/>
-            Touch: {'ontouchstart' in window ? 'YES' : 'NO'}<br/>
-            Width: {typeof window !== 'undefined' ? window.innerWidth : 'unknown'}<br/>
-            Popup: {hoveredService ? hoveredService.title : 'None'}
-          </div>
-        )}
-        
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
@@ -296,7 +388,7 @@ const ServiceIconsSection = () => {
         <div className="max-w-7xl mx-auto">
           <div className="bg-gradient-to-br from-slate-50 via-white to-blue-50/30 rounded-3xl shadow-2xl border border-slate-200 p-8 md:p-12">
             
-            {/* Services Grid - Compact Layout */}
+            {/* Services Grid - Enhanced with touch events */}
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-4 md:gap-6">
               {allServices.map((service, index) => {
                 const IconComponent = service.icon;
@@ -304,10 +396,25 @@ const ServiceIconsSection = () => {
                 return (
                   <div
                     key={index}
-                    className="group relative cursor-pointer transform transition-all duration-300 hover:scale-105"
+                    className="group relative cursor-pointer transform transition-all duration-300 hover:scale-105 touch-manipulation"
+                    // Desktop events
                     onMouseEnter={(e) => handleMouseEnter(service, e)}
                     onMouseLeave={handleMouseLeave}
-                    onClick={() => navigateToService(service.link)}
+                    // Mobile touch events
+                    onTouchStart={(e) => handleTouchStart(service, e)}
+                    onTouchEnd={handleTouchEnd}
+                    // Click handler for both desktop and mobile
+                    onClick={(e) => handleCardClick(service, e)}
+                    // Accessibility
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`Learn more about ${service.title}`}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        navigateToService(service.link);
+                      }
+                    }}
                   >
                     {/* Service Box */}
                     <div className="bg-white rounded-2xl p-4 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-100 h-full min-h-[140px] md:min-h-[160px] flex flex-col items-center justify-center text-center group-hover:border-slate-300">
@@ -354,7 +461,7 @@ const ServiceIconsSection = () => {
               </p>
               <button
                 onClick={() => window.open('/workflow-audit', '_blank')}
-                className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold text-lg px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl flex items-center gap-3 mx-auto"
+                className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold text-lg px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl flex items-center gap-3 mx-auto touch-manipulation"
               >
                 <ArrowRight className="w-5 h-5" />
                 Get Free Strategy Session
@@ -363,18 +470,38 @@ const ServiceIconsSection = () => {
           </div>
         </div>
         
-        {/* Hover Popup - Fully Responsive */}
+        {/* Enhanced Popup with Mobile Touch Support */}
         {hoveredService && (
           <div 
-            className="fixed z-50 pointer-events-none"
+            className="fixed z-50"
             style={{ 
               left: `${popupPosition.x}px`, 
-              top: `${popupPosition.y}px`
+              top: `${popupPosition.y}px`,
+              pointerEvents: isMobile ? 'auto' : 'none'
             }}
+            onTouchStart={isMobile ? handlePopupTouch : undefined}
           >
-            <div className="bg-white rounded-xl sm:rounded-2xl shadow-2xl border border-slate-200 p-4 sm:p-6 w-72 sm:w-80 animate-fade-in max-h-[80vh] overflow-y-auto">
+            <div className="bg-white rounded-xl sm:rounded-2xl shadow-2xl border border-slate-200 p-4 sm:p-6 w-72 sm:w-80 animate-fade-in max-h-[80vh] overflow-y-auto relative">
+              
+              {/* Mobile Close Button */}
+              {isMobile && (
+                <button
+                  onClick={() => {
+                    setHoveredService(null);
+                    if (touchTimeoutRef.current) {
+                      clearTimeout(touchTimeoutRef.current);
+                    }
+                    isTouch.current = false;
+                  }}
+                  className="absolute top-2 right-2 p-1 rounded-full bg-slate-100 hover:bg-slate-200 transition-colors z-10"
+                  aria-label="Close popup"
+                >
+                  <X className="w-4 h-4 text-slate-600" />
+                </button>
+              )}
+
               {/* Header - Mobile Optimized */}
-              <div className="flex items-start justify-between mb-3 sm:mb-4">
+              <div className="flex items-start justify-between mb-3 sm:mb-4 pr-8 sm:pr-2">
                 <div className="flex-1">
                   <h4 className="text-base sm:text-lg font-bold text-slate-900 mb-1 pr-2 leading-tight">
                     {hoveredService.title}
@@ -425,16 +552,15 @@ const ServiceIconsSection = () => {
                   🎯 Perfect For:
                 </h5>
                 <ul className="text-xs text-slate-600 space-y-1">
-                  {/* Show only 2 items on mobile, 3 on desktop */}
-                  {hoveredService.perfectFor.slice(0, window.innerWidth < 640 ? 2 : 3).map((item, idx) => (
+                  {hoveredService.perfectFor.slice(0, isMobile ? 2 : 3).map((item, idx) => (
                     <li key={idx} className="flex items-start gap-2">
                       <CheckCircle className="w-3 h-3 text-green-500 mt-0.5 flex-shrink-0" />
                       <span className="leading-tight">{item}</span>
                     </li>
                   ))}
-                  {hoveredService.perfectFor.length > (window.innerWidth < 640 ? 2 : 3) && (
+                  {hoveredService.perfectFor.length > (isMobile ? 2 : 3) && (
                     <li className="text-xs text-slate-400 italic">
-                      +{hoveredService.perfectFor.length - (window.innerWidth < 640 ? 2 : 3)} more use cases
+                      +{hoveredService.perfectFor.length - (isMobile ? 2 : 3)} more use cases
                     </li>
                   )}
                 </ul>
