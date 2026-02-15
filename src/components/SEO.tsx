@@ -81,7 +81,7 @@ export const SEO = ({
           "@type": "Organization",
           "name": "OpsOnAuto",
           "url": siteUrl,
-          "logo": `${siteUrl}/src/assets/opsonauto-logo.png`,
+          "logo": `${siteUrl}/opsonauto-logo.png`,
           "contactPoint": {
             "@type": "ContactPoint",
             "email": "info@opsonauto.com",
