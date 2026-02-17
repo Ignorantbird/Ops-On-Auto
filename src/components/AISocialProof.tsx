@@ -1,17 +1,19 @@
+'use client';
+
 // src/components/AISocialProof.tsx - FIXED WITH WORKING BUTTON LINKS
 import { CheckCircle, ArrowRight } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 const AISocialProof = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   // Button click handlers
   const handleViewCaseStudies = () => {
-    navigate('/case-studies');
+    router.push('/case-studies');
   };
 
   const handleScheduleDemo = () => {
-    navigate('/workflow-audit');
+    router.push('/workflow-audit');
   };
 
   const testimonials = [

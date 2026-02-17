@@ -1,11 +1,13 @@
+'use client';
+
 // src/components/GenerativeAIHero.tsx
 import { Button } from "@/components/ui/button";
 import CTA_ACTIONS from "@/lib/BookingLinks";
 import { CheckCircle } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 const GenerativeAIHero = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   return (
     <section className="py-20 bg-gradient-to-br from-purple-600 via-purple-500 to-pink-600 relative overflow-hidden">

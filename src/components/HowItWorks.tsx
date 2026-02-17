@@ -1,11 +1,14 @@
+'use client';
+
 // src/components/HowItWorks.tsx - ENHANCED WITH PROPER BUTTON LINKING
 import { FileText, Settings, Rocket, ArrowRight, Calendar } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import CTA_ACTIONS from "@/lib/BookingLinks";
 
 const HowItWorks = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const steps = [
     {
@@ -29,7 +32,7 @@ const HowItWorks = () => {
   ];
 
   const handleWorkflowAudit = () => {
-    navigate('/workflow-audit');
+    router.push('/workflow-audit');
   };
 
   return (
@@ -81,8 +84,8 @@ const HowItWorks = () => {
             
             {/* Secondary Link */}
             <div className="mt-4">
-              <Link 
-                to="/use-cases" 
+              <Link
+                href="/use-cases"
                 className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold text-lg transition-colors group"
               >
                 See Real Use Cases & Results

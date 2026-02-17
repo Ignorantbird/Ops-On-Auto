@@ -1,11 +1,13 @@
+'use client';
+
 // src/components/BusinessAutomationServices.tsx - EXACT AISOLUTIONS STRUCTURE
 import { Button } from "@/components/ui/button";
 import CTA_ACTIONS from "@/lib/BookingLinks";
 import { Settings, Workflow, BarChart3, ArrowRight, Brain, CheckCircle, Calendar, MessageCircle } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 const BusinessAutomationServices = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   // BUSINESS AUTOMATION SERVICES - EXACT SAME STRUCTURE AS AISOLUTIONS
   const solutions = [

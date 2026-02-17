@@ -1,11 +1,13 @@
+'use client';
+
 // src/components/BusinessAutomationHero.tsx
 import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import CTA_ACTIONS from "@/lib/BookingLinks";
 
 const BusinessAutomationHero = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   return (
     <section className="py-20 bg-gradient-to-br from-blue-600 via-blue-500 to-purple-600 relative overflow-hidden">

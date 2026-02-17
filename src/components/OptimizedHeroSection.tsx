@@ -1,3 +1,5 @@
+'use client';
+
 // STEP 1: Fix OptimizedHeroSection.tsx - Layout and Z-index Issues
 // Replace the entire OptimizedHeroSection.tsx component
 
@@ -5,11 +7,11 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, Calendar } from "lucide-react";
 import { PrimaryCTA, SecondaryCTA } from "@/components/cta/StandardizedCTA";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 const OptimizedHeroSection = () => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   // Delay animations until after initial render for better Core Web Vitals
   useEffect(() => {
@@ -19,11 +21,11 @@ const OptimizedHeroSection = () => {
 
   // Button click handlers with proper routing
   const handleWorkflowAudit = () => {
-    navigate('/workflow-audit');
+    router.push('/workflow-audit');
   };
 
   const handleExploreServices = () => {
-    navigate('/services');
+    router.push('/services');
   };
 
   const scrollToServices = () => {

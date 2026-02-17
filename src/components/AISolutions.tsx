@@ -1,10 +1,12 @@
+'use client';
+
 // src/components/AISolutions.tsx - UPDATED WITH 2x2 GRID AND BORDERED BOX
 import { Button } from "@/components/ui/button";
 import { Phone, Bot, UserCheck, TrendingUp, ArrowRight, Brain } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 const AISolutions = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   // AGENTIC AI SERVICES ONLY - AI That Thinks & Acts Autonomously
   const solutions = [
@@ -173,7 +175,7 @@ const AISolutions = () => {
 
                       {/* CTA Button */}
                       <Button 
-                        onClick={() => navigate(solution.link)}
+                        onClick={() => router.push(solution.link)}
                         className={`w-full bg-gradient-to-r ${solution.gradient} hover:opacity-90 text-white border-0 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300`}
                       >
                         Learn More About {solution.title}
@@ -193,7 +195,7 @@ const AISolutions = () => {
             Not sure which AI agent is right for your business? Get a personalized recommendation.
           </p>
           <Button 
-            onClick={() => navigate('/workflow-audit')}
+            onClick={() => router.push('/workflow-audit')}
             size="lg"
             className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-lg px-8 py-6 shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105 border-0 font-bold"
           >

@@ -1,6 +1,8 @@
+'use client';
+
 // src/components/DataAnalyticsSection.tsx - RESTRUCTURED TO MATCH VOICE AI LAYOUT
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import { 
   Brain, 
   BarChart3, 
@@ -25,7 +27,7 @@ import CTA_ACTIONS from "@/lib/BookingLinks";
 
 const DataAnalyticsSection = () => {
   const [activeTab, setActiveTab] = useState('how-it-works');
-  const navigate = useNavigate();
+  const router = useRouter();
 
   // Simple benefit icons (matching Voice AI structure)
   const benefitIcons = [
@@ -207,7 +209,7 @@ const DataAnalyticsSection = () => {
               Unlike basic analytics tools, our Analytical AI Agent uses advanced reasoning to understand your data context, identify patterns humans miss, and provide strategic recommendations for business growth.
             </p>
             <Button 
-              onClick={() => navigate('/agentic-ai')} 
+              onClick={() => router.push('/agentic-ai')} 
               className="mt-6 bg-purple-500 hover:bg-purple-600"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
@@ -376,7 +378,7 @@ const DataAnalyticsSection = () => {
           </p>
           
           <Button 
-            onClick={() => navigate('/agentic-ai')} 
+            onClick={() => router.push('/agentic-ai')} 
             className="bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white text-lg px-8 py-4 mb-12"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />

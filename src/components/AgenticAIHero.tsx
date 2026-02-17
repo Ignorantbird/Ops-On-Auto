@@ -1,11 +1,13 @@
+'use client';
+
 // src/components/AgenticAIHero.tsx - FIXED WITH PROPER BUTTON LINKS
 import { Button } from "@/components/ui/button";
 import { Bot, Brain, Zap } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import { CTA_ACTIONS } from "@/lib/BookingLinks";
 
 const AgenticAIHero = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleBookDemo = () => {
     CTA_ACTIONS.BOOK_STRATEGY_SESSION();

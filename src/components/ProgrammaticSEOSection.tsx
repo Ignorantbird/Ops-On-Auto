@@ -1,6 +1,8 @@
+'use client';
+
 // src/components/ProgrammaticSEOSection.tsx - COMPLETE WITH CONTRAST FIXES
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import { 
   Search, 
   FileText, 
@@ -24,7 +26,7 @@ import { Calendar } from "lucide-react";
 
 const ProgrammaticSEOSection = () => {
   const [activeTab, setActiveTab] = useState('content-generation');
-  const navigate = useNavigate();
+  const router = useRouter();
 
   // Core benefits for Generative AI positioning
   const coreFeatures = [
@@ -237,7 +239,7 @@ const ProgrammaticSEOSection = () => {
               Unlike basic SEO tools, our AI Content Generation System creates thousands of unique, optimized pages automatically. It's like having a 24/7 content team that never runs out of ideas.
             </p>
             <Button 
-              onClick={() => navigate('/generative-ai')} 
+              onClick={() => router.push('/generative-ai')} 
               className="mt-6 bg-yellow-500 hover:bg-yellow-600"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
@@ -429,7 +431,7 @@ const ProgrammaticSEOSection = () => {
           </p>
           
           <Button 
-            onClick={() => navigate('/generative-ai')} 
+            onClick={() => router.push('/generative-ai')} 
             className="bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-yellow-600 hover:to-orange-700 text-white text-lg px-8 py-4 mb-12"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />

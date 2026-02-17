@@ -1,10 +1,12 @@
+'use client';
+
 // src/components/GenerativeAIServices.tsx - EXACT SAME STRUCTURE AS BUSINESS AUTOMATION
 import { Button } from "@/components/ui/button";
 import { Database, Search, ArrowRight, Brain } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 const GenerativeAIServices = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   // GENERATIVE AI SERVICES - EXACT SAME STRUCTURE AS BUSINESS AUTOMATION
   const solutions = [

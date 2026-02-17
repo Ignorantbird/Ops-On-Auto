@@ -1,18 +1,20 @@
+'use client';
+
 // src/components/AIFinalCTA.tsx - FIXED WITH WORKING BUTTON LINKS
 import { PrimaryCTA, SecondaryCTA } from "@/components/cta/StandardizedCTA";
 import { CheckCircle, Bot, MessageCircle, Calendar } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 const AIFinalCTA = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   // Button click handlers
   const handleBookDemo = () => {
-    navigate('/workflow-audit');
+    router.push('/workflow-audit');
   };
 
   const handleContactUs = () => {
-    navigate('/contact');
+    router.push('/contact');
   };
 
   return (

@@ -1,17 +1,19 @@
+'use client';
+
 // src/components/AITargetAudience.tsx - FIXED WITH WORKING BUTTON LINKS
 import { Users, TrendingUp, Building2, ArrowRight } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 const AITargetAudience = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   // Button click handlers
   const handleScheduleConsultation = () => {
-    navigate('/workflow-audit');
+    router.push('/workflow-audit');
   };
 
   const handleViewCaseStudies = () => {
-    navigate('/case-studies');
+    router.push('/case-studies');
   };
 
   const audiences = [

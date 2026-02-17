@@ -1,6 +1,7 @@
+'use client';
+
 import { Mail, MapPin, Shield, Lock, Globe, Linkedin, Youtube } from "lucide-react";
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { PrimaryCTA } from "@/components/cta/StandardizedCTA";
 
 const Footer = () => {
@@ -36,41 +37,13 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-white/80 hover:text-white transition-colors text-sm">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-white/80 hover:text-white transition-colors text-sm">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link to="/pricing" className="text-white/80 hover:text-white transition-colors text-sm">
-                  Pricing
-                </Link>
-              </li>
-              <li>
-                <Link to="/industries" className="text-white/80 hover:text-white transition-colors text-sm">
-                  Industries
-                </Link>
-              </li>
-              <li>
-                <Link to="/case-studies" className="text-white/80 hover:text-white transition-colors text-sm">
-                  Case Studies
-                </Link>
-              </li>
-              <li>
-                <Link to="/resources" className="text-white/80 hover:text-white transition-colors text-sm">
-                  Resources
-                </Link>
-              </li>
-              <li>
-                <Link to="/faq" className="text-white/80 hover:text-white transition-colors text-sm">
-                  FAQ
-                </Link>
-              </li>
+              <li><Link href="/" className="text-white/80 hover:text-white transition-colors text-sm">Home</Link></li>
+              <li><Link href="/services" className="text-white/80 hover:text-white transition-colors text-sm">Services</Link></li>
+              <li><Link href="/pricing" className="text-white/80 hover:text-white transition-colors text-sm">Pricing</Link></li>
+              <li><Link href="/industries" className="text-white/80 hover:text-white transition-colors text-sm">Industries</Link></li>
+              <li><Link href="/case-studies" className="text-white/80 hover:text-white transition-colors text-sm">Case Studies</Link></li>
+              <li><Link href="/resources" className="text-white/80 hover:text-white transition-colors text-sm">Resources</Link></li>
+              <li><Link href="/faq" className="text-white/80 hover:text-white transition-colors text-sm">FAQ</Link></li>
             </ul>
           </div>
 
@@ -78,31 +51,11 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold text-white mb-4">Solutions</h4>
             <ul className="space-y-2">
-              <li>
-                <Link to="/agentic-ai" className="text-white/80 hover:text-white transition-colors text-sm">
-                  Agentic AI
-                </Link>
-              </li>
-              <li>
-                <Link to="/integrations" className="text-white/80 hover:text-white transition-colors text-sm">
-                  Integrations
-                </Link>
-              </li>
-              <li>
-                <Link to="/use-cases" className="text-white/80 hover:text-white transition-colors text-sm">
-                  Use Cases
-                </Link>
-              </li>
-              <li>
-                <Link to="/partnerships" className="text-white/80 hover:text-white transition-colors text-sm">
-                  Partnerships
-                </Link>
-              </li>
-              <li>
-                <Link to="/privacy-policy" className="text-white/80 hover:text-white transition-colors text-sm">
-                  Privacy Policy
-                </Link>
-              </li>
+              <li><Link href="/agentic-ai" className="text-white/80 hover:text-white transition-colors text-sm">Agentic AI</Link></li>
+              <li><Link href="/integrations" className="text-white/80 hover:text-white transition-colors text-sm">Integrations</Link></li>
+              <li><Link href="/use-cases" className="text-white/80 hover:text-white transition-colors text-sm">Use Cases</Link></li>
+              <li><Link href="/partnerships" className="text-white/80 hover:text-white transition-colors text-sm">Partnerships</Link></li>
+              <li><Link href="/privacy-policy" className="text-white/80 hover:text-white transition-colors text-sm">Privacy Policy</Link></li>
             </ul>
           </div>
 
@@ -121,11 +74,11 @@ const Footer = () => {
                 <span>Based in India, serving clients worldwide</span>
               </div>
             </div>
-            
+
             <div className="mb-6">
               <PrimaryCTA label="Get Started" icon="calendar" className="w-full" />
             </div>
-            
+
             <div className="flex space-x-4">
               <a href="#" className="text-white/80 hover:text-white transition-colors">
                 <Linkedin className="w-5 h-5" />
@@ -136,7 +89,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        
+
         <div className="border-t border-white/20 mt-12 pt-8">
           <p className="text-white/60 text-sm">
             © 2025 OpsOnAuto. All rights reserved.
@@ -148,34 +101,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-// Add this to your Footer component (src/components/Footer.tsx)
-
-const CopyrightNotice = () => {
-  const currentYear = new Date().getFullYear();
-  
-  return (
-    <div className="border-t border-gray-200 mt-8 pt-8 text-center">
-      <p className="text-sm text-gray-600 mb-2">
-        © {currentYear} Ops On Auto. All rights reserved.
-      </p>
-      <p className="text-xs text-gray-500">
-        Unauthorized copying, distribution, or use of this content is strictly prohibited.
-      </p>
-      <div className="flex justify-center space-x-4 mt-3 text-xs">
-        <a href="/privacy-policy" className="text-gray-500 hover:text-gray-700">
-          Privacy Policy
-        </a>
-        <span className="text-gray-300">•</span>
-        <a href="/terms-of-service" className="text-gray-500 hover:text-gray-700">
-          Terms of Service
-        </a>
-        <span className="text-gray-300">•</span>
-        <span className="text-gray-500">
-          Made with ❤️ at <a href="https://opsonauto.com" className="hover:text-gray-700">opsonauto.com</a>
-        </span>
-      </div>
-    </div>
-  );
-};
-
