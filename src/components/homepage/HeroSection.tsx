@@ -5,28 +5,33 @@ import { BOOKING_LINKS } from '@/lib/BookingLinks';
 
 export default function HeroSection() {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
+    <section
+      id="hero"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      style={{ backgroundColor: '#0e6a7b' }}
+    >
+      {/* Background Image — small source, scale to fill */}
       <Image
         src="/hero-ai-image.png"
         alt="AI-powered business operations"
         fill
         priority
-        className="object-cover"
+        className="object-cover scale-150 origin-center"
         sizes="100vw"
+        quality={90}
       />
 
-      {/* Gradient Overlay */}
+      {/* Gradient Overlay — fully covers any gaps */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            'linear-gradient(135deg, rgba(23,162,184,0.85), rgba(255,107,53,0.82))',
+            'linear-gradient(135deg, rgba(23,162,184,0.88), rgba(255,107,53,0.85))',
         }}
       />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center text-white">
+      {/* Content — pt-20 clears the fixed navbar */}
+      <div className="relative z-10 max-w-4xl mx-auto px-6 pt-20 text-center text-white">
         <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-800 leading-tight mb-6 drop-shadow-lg">
           Your Business Is Growing.{' '}
           <span className="block">Your Operations Aren&apos;t Keeping Up.</span>

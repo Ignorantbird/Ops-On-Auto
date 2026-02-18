@@ -207,6 +207,11 @@ const Navigation = () => {
     return pathname === path || pathname.startsWith(path);
   };
 
+  // Dynamic text colors: white on transparent hero, dark when scrolled
+  const navText = isScrolled ? 'text-slate-700' : 'text-white';
+  const navTextHover = isScrolled ? 'hover:text-blue-600 hover:bg-blue-50' : 'hover:text-white/80 hover:bg-white/10';
+  const navTextActive = isScrolled ? 'bg-blue-50 text-blue-600' : 'bg-white/15 text-white';
+
   const serviceCategories = [
     {
       category: "🤖 Agentic AI",
@@ -240,7 +245,7 @@ const Navigation = () => {
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
       isScrolled
         ? 'bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm'
-        : 'bg-white/90 backdrop-blur-sm'
+        : 'bg-transparent'
     }`}>
       <div className={`container mx-auto px-4 transition-all duration-300 ${
         isScrolled ? 'h-16' : 'h-20'
@@ -266,8 +271,8 @@ const Navigation = () => {
               <button
                 className={`relative flex items-center px-4 py-3 font-semibold text-base transition-all duration-200 rounded-lg group ${
                   isActiveRoute('/services') || isActiveRoute('/agentic-ai') || isActiveRoute('/crm-automation') || isActiveRoute('/sales-ai') || isActiveRoute('/generative-ai')
-                    ? 'bg-blue-50 text-blue-600'
-                    : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50'
+                    ? navTextActive
+                    : `${navText} ${navTextHover}`
                 }`}
               >
                 Services
@@ -335,8 +340,8 @@ const Navigation = () => {
               href="/use-cases"
               className={`px-4 py-3 font-semibold text-base transition-all duration-200 rounded-lg ${
                 isActiveRoute('/use-cases')
-                  ? 'bg-blue-50 text-blue-600'
-                  : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50'
+                  ? navTextActive
+                  : `${navText} ${navTextHover}`
               }`}
             >
               Use Cases
@@ -346,8 +351,8 @@ const Navigation = () => {
               href="/pricing"
               className={`px-4 py-3 font-semibold text-base transition-all duration-200 rounded-lg ${
                 isActiveRoute('/pricing')
-                  ? 'bg-blue-50 text-blue-600'
-                  : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50'
+                  ? navTextActive
+                  : `${navText} ${navTextHover}`
               }`}
             >
               Pricing
@@ -357,15 +362,15 @@ const Navigation = () => {
               href="/industries"
               className={`px-4 py-3 font-semibold text-base transition-all duration-200 rounded-lg ${
                 isActiveRoute('/industries')
-                  ? 'bg-blue-50 text-blue-600'
-                  : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50'
+                  ? navTextActive
+                  : `${navText} ${navTextHover}`
               }`}
             >
               Industries
             </Link>
 
             <div className="relative group">
-              <button className="relative flex items-center px-4 py-3 font-semibold text-base transition-all duration-200 rounded-lg text-slate-700 hover:text-blue-600 hover:bg-blue-50">
+              <button className={`relative flex items-center px-4 py-3 font-semibold text-base transition-all duration-200 rounded-lg ${navText} ${navTextHover}`}>
                 More
                 <ChevronDown className="ml-1 w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
               </button>
@@ -391,7 +396,7 @@ const Navigation = () => {
           </div>
 
           <button
-            className="lg:hidden p-2 text-slate-700 hover:text-blue-600 transition-colors duration-200"
+            className={`lg:hidden p-2 ${navText} transition-colors duration-200`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
