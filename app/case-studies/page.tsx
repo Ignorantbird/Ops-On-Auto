@@ -2,11 +2,11 @@ import { pageMeta } from '@/lib/metadata';
 import CaseStudies from '@/views/CaseStudies';
 
 export const metadata = pageMeta({
-  title: 'Case Studies - AI Automation Success Stories',
+  title: 'Case Studies — Real AI Automation Results for Indian SMBs',
   description:
-    'Real results from real businesses. See how our AI automation solutions helped companies save time, reduce costs, and scale operations.',
+    'See how manufacturing firms, lead gen agencies, and real estate developers in India save 40+ hours a week with custom AI automation from OpsOnAuto.',
   keywords:
-    'AI automation case studies, business automation results, workflow automation success stories',
+    'AI automation case studies India, business automation results, workflow automation SMB, manufacturing automation, lead generation AI',
   canonical: '/case-studies',
 });
 

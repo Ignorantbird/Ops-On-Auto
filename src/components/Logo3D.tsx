@@ -228,6 +228,7 @@ const Logo3D = ({ width = 400, height = 400, gearColor = "#3b82f6", accentColor 
     <div className="relative" style={{ width, height }}>
       <Canvas
         camera={{ position: [0, 0, 8], fov: 45 }}
+        gl={{ alpha: true }}
         style={{ background: 'transparent' }}
       >
         <Logo3DScene gearColor={gearColor} accentColor={accentColor} />

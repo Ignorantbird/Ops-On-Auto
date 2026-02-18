@@ -12,11 +12,13 @@ const Logo3D = dynamic(() => import('./Logo3D'), { ssr: false });
 const OpsOnAuto3DLogo = ({
   size = 64,
   showText = true,
-  className = ""
+  className = "",
+  isScrolled = true,
 }: {
   size?: number;
   showText?: boolean;
   className?: string;
+  isScrolled?: boolean;
 }) => {
   return (
     <div className={`flex items-center gap-0 ${className}`}>
@@ -35,10 +37,16 @@ const OpsOnAuto3DLogo = ({
             fontSize: `${size * 0.4}px`,
             fontFamily: "'Montserrat', 'Poppins', 'Inter', sans-serif",
             fontWeight: '800',
-            background: 'linear-gradient(135deg, #0f6674 0%, #17a2b8 50%, #20c997 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
+            ...(isScrolled
+              ? {
+                  background: 'linear-gradient(135deg, #0f6674 0%, #17a2b8 50%, #20c997 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }
+              : {
+                  color: 'white',
+                }),
             textShadow: 'none',
             marginLeft: `${-size * 0.08}px`,
             letterSpacing: '-0.5px',
@@ -55,11 +63,13 @@ const OpsOnAuto3DLogo = ({
 const FallbackLogo = ({
   size = 64,
   showText = true,
-  className = ""
+  className = "",
+  isScrolled = true,
 }: {
   size?: number;
   showText?: boolean;
   className?: string;
+  isScrolled?: boolean;
 }) => {
   return (
     <div className={`flex items-center gap-0 ${className}`}>
@@ -105,10 +115,16 @@ const FallbackLogo = ({
             fontSize: `${size * 0.35}px`,
             fontFamily: "'Montserrat', 'Poppins', 'Inter', sans-serif",
             fontWeight: '800',
-            background: 'linear-gradient(135deg, #0f6674 0%, #17a2b8 50%, #20c997 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
+            ...(isScrolled
+              ? {
+                  background: 'linear-gradient(135deg, #0f6674 0%, #17a2b8 50%, #20c997 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }
+              : {
+                  color: 'white',
+                }),
             marginLeft: `${size * 0.05}px`,
             letterSpacing: '-0.5px',
             lineHeight: '1',
@@ -121,7 +137,7 @@ const FallbackLogo = ({
   );
 };
 
-const SafeLogo = (props: { size?: number; showText?: boolean; className?: string }) => {
+const SafeLogo = (props: { size?: number; showText?: boolean; className?: string; isScrolled?: boolean }) => {
   const [hasError, setHasError] = useState(false);
 
   if (hasError) {
@@ -258,6 +274,7 @@ const Navigation = () => {
             <SafeLogo
               size={isScrolled ? 64 : 72}
               showText={true}
+              isScrolled={isScrolled}
               className="group-hover:scale-105 transition-transform duration-300"
             />
           </Link>
@@ -348,14 +365,14 @@ const Navigation = () => {
             </Link>
 
             <Link
-              href="/pricing"
+              href="/case-studies"
               className={`px-4 py-3 font-semibold text-base transition-all duration-200 rounded-lg ${
-                isActiveRoute('/pricing')
+                isActiveRoute('/case-studies')
                   ? navTextActive
                   : `${navText} ${navTextHover}`
               }`}
             >
-              Pricing
+              Case Studies
             </Link>
 
             <Link
@@ -430,11 +447,11 @@ const Navigation = () => {
                 Use Cases
               </Link>
               <Link
-                href="/pricing"
+                href="/case-studies"
                 className="block px-6 py-3 text-slate-700 hover:text-blue-600 hover:bg-blue-50 font-medium transition-colors duration-200"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Pricing
+                Case Studies
               </Link>
               <Link
                 href="/industries"
