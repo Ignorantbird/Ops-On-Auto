@@ -8,16 +8,26 @@
 @layer base {
   :root {
     /* === PROFESSIONAL COLOR PALETTE === */
-    
-    /* Brand Colors - AI/Tech Company */
-    --brand-primary: 59 130 246;     /* Blue-500 - Trust & Technology */
-    --brand-primary-light: 96 165 250; /* Blue-400 */
-    --brand-primary-dark: 37 99 235;   /* Blue-600 */
-    
+
+    /* NEW Brand Colors - Teal/Orange for Indian SMB */
+    --brand-teal: 23 162 184;         /* #17a2b8 - Primary brand */
+    --brand-teal-light: 77 208 225;   /* #4dd0e1 */
+    --brand-teal-dark: 13 110 126;    /* #0d6e7e */
+    --accent-orange: 255 107 53;      /* #ff6b35 - CTA accent */
+    --accent-orange-light: 255 174 126; /* #ffae7e */
+    --accent-orange-dark: 204 74 34;  /* #cc4a22 */
+    --dark-navy: 10 22 40;            /* #0a1628 - Dark backgrounds */
+    --light-cyan: 224 247 250;        /* #e0f7fa - Light backgrounds */
+
+    /* Legacy Brand Colors - AI/Tech Company */
+    --brand-primary: 23 162 184;      /* Mapped to teal */
+    --brand-primary-light: 77 208 225;
+    --brand-primary-dark: 13 110 126;
+
     /* High-Converting CTA Colors */
-    --cta-primary: 249 115 22;        /* Orange-500 - Impossible to miss */
-    --cta-primary-light: 251 146 60;  /* Orange-400 */
-    --cta-primary-dark: 234 88 12;    /* Orange-600 */
+    --cta-primary: 255 107 53;        /* Mapped to accent-orange */
+    --cta-primary-light: 255 174 126;
+    --cta-primary-dark: 204 74 34;
     
     /* Base Colors - Perfect Contrast */
     --background: 255 255 255;        /* Pure white */

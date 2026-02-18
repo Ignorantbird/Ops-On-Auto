@@ -2,11 +2,11 @@ import { pageMeta } from '@/lib/metadata';
 import OptimizedIndex from '@/views/OptimizedIndex';
 
 export const metadata = pageMeta({
-  title: 'AI Automation Services - 2 Week Setup | OpsOnAuto',
+  title: 'AI Business Automation for Indian SMBs | OpsOnAuto',
   description:
-    'Launch & scale faster with AI automation. CRM setup, voice AI bots, workflow optimization at 50-80% less cost. 2-week delivery, not 2-3 months. Free audit!',
+    'Save 5-10 hours/week with custom AI workflows for real estate, manufacturing, textile, automotive & lead gen businesses. Free business audit — results in 2 weeks.',
   keywords:
-    'AI automation for startups, entrepreneur automation, CRM setup, voice AI bots, business automation, workflow optimization, startup tools, small business AI',
+    'business automation India, SMB automation, real estate CRM, manufacturing workflow, WhatsApp automation, lead management, AI operations, OpsOnAuto',
   canonical: '/',
 });
 

@@ -1,10 +1,25 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
+import { Plus_Jakarta_Sans, DM_Sans } from 'next/font/google';
 import Providers from './providers';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import '@/index.css';
 import '@/styles/performance.css';
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-heading',
+  display: 'swap',
+  weight: ['600', '700', '800'],
+});
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  variable: '--font-body',
+  display: 'swap',
+  weight: ['400', '500', '700'],
+});
 
 const siteUrl = 'https://opsonauto.com';
 
@@ -76,7 +91,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${plusJakarta.variable} ${dmSans.variable}`}>
       <head>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-015E16BJ8Q"

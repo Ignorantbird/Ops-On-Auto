@@ -12,6 +12,7 @@ export const BOOKING_LINKS = {
   
   // WhatsApp Integration
   WHATSAPP: 'https://wa.me/918777671056',
+  WHATSAPP_AUDIT: 'https://wa.me/918777671056?text=Hi%20OpsOnAuto%2C%20I%27d%20like%20a%20free%20business%20audit%20for%20my%20company.',
   
   // Phone Number
   PHONE: 'tel:+918777671056'
