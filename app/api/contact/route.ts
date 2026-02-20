@@ -3,8 +3,12 @@ import { z } from 'zod';
 
 const contactSchema = z.object({
   name: z.string().min(2),
+  business: z.string().min(1),
+  email: z.string().email(),
   phone: z.string().min(10).regex(/^[+\d\s()-]+$/),
-  problem: z.string().min(10),
+  interest: z.string().min(1),
+  message: z.string().optional(),
+  source: z.string().optional(),
 });
 
 export async function POST(request: Request) {
@@ -12,11 +16,8 @@ export async function POST(request: Request) {
     const body = await request.json();
     const data = contactSchema.parse(body);
 
-    // MVP: log to server console — email delivery to be wired later
     console.log('📩 New contact form submission:', {
-      name: data.name,
-      phone: data.phone,
-      problem: data.problem,
+      ...data,
       timestamp: new Date().toISOString(),
     });
 
