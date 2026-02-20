@@ -4,8 +4,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ChevronDown, Menu, X } from 'lucide-react';
-import { toast } from 'sonner';
 import dynamic from 'next/dynamic';
+import { BOOKING_LINKS } from '@/lib/BookingLinks';
 
 const Logo3D = dynamic(() => import('./Logo3D'), { ssr: false });
 
@@ -91,7 +91,7 @@ const FallbackLogo = ({
             style={{
               width: `${size * 0.4}px`,
               height: `${size * 0.4}px`,
-              background: `linear-gradient(145deg, #4169E1 0%, #1E3A8A 100%)`
+              background: `linear-gradient(145deg, #17a2b8 0%, #0e8fa3 100%)`
             }}
           >
             <div
@@ -146,7 +146,7 @@ const SafeLogo = (props: { size?: number; showText?: boolean; className?: string
 
   try {
     return <OpsOnAuto3DLogo {...props} />;
-  } catch (error) {
+  } catch {
     setHasError(true);
     return <FallbackLogo {...props} />;
   }
@@ -159,51 +159,8 @@ const Navigation = () => {
   const pathname = usePathname();
   const megaMenuRef = useRef<HTMLDivElement>(null);
 
-  const handleBookDemo = async () => {
-    try {
-      const response = await fetch('https://formspree.io/f/xvgblgdn', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          source: 'navigation_cta',
-          message: 'User clicked "Book Free Demo" from navigation',
-          page: window.location.pathname,
-          timestamp: new Date().toISOString(),
-          action: 'book_demo_request'
-        }),
-      });
-
-      if (response.ok) {
-        toast.success("Demo request submitted! We'll contact you within 24 hours.");
-
-        if (typeof window !== 'undefined' && window.gtag) {
-          window.gtag('event', 'book_demo_nav', {
-            event_category: 'conversion',
-            event_label: 'header_cta_success'
-          });
-        }
-      } else {
-        throw new Error('Failed to submit');
-      }
-    } catch (error) {
-      console.error('Demo request failed:', error);
-      toast.error("Request failed. Please contact hello@opsonauto.com directly.");
-
-      if (typeof window !== 'undefined' && window.gtag) {
-        window.gtag('event', 'book_demo_nav_failed', {
-          event_category: 'error',
-          event_label: 'header_cta_error'
-        });
-      }
-    }
-  };
-
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -214,62 +171,63 @@ const Navigation = () => {
         setIsMegaMenuOpen(false);
       }
     };
-
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const isActiveRoute = (path: string) => {
-    return pathname === path || pathname.startsWith(path);
-  };
+  const isActiveRoute = (path: string) =>
+    pathname === path || pathname.startsWith(path);
 
-  // Dynamic text colors: white on transparent hero, dark when scrolled
-  const navText = isScrolled ? 'text-slate-700' : 'text-white';
-  const navTextHover = isScrolled ? 'hover:text-blue-600 hover:bg-blue-50' : 'hover:text-white/80 hover:bg-white/10';
-  const navTextActive = isScrolled ? 'bg-blue-50 text-blue-600' : 'bg-white/15 text-white';
+  // Text colours: white over hero, dark-navy when scrolled
+  const navText = isScrolled ? 'text-dark-navy' : 'text-white';
+  const navTextHover = isScrolled
+    ? 'hover:text-brand-teal hover:bg-brand-teal-50'
+    : 'hover:text-white/80 hover:bg-white/10';
+  const navTextActive = isScrolled
+    ? 'bg-brand-teal-50 text-brand-teal'
+    : 'bg-white/15 text-white';
 
   const serviceCategories = [
     {
-      category: "🤖 Agentic AI",
+      category: '🤖 Agentic AI',
       services: [
-        { title: "Agentic AI", path: "/agentic-ai", description: "AI that thinks, plans & acts independently", badge: "🔥 Popular" },
-        { title: "AI Sales Person", path: "/sales-ai", description: "24/7 AI sales team that never sleeps", badge: "💰 High ROI" },
-        { title: "Voice AI", path: "/voice-ai", description: "AI phone calls & customer service" },
-        { title: "Data Analytics", path: "/data-analytics", description: "AI-driven insights & predictions", badge: "📊 Premium" }
-      ]
+        { title: 'Agentic AI', path: '/agentic-ai', description: 'AI that thinks, plans & acts independently', badge: '🔥 Popular' },
+        { title: 'AI Sales Person', path: '/sales-ai', description: '24/7 AI sales team that never sleeps', badge: '💰 High ROI' },
+        { title: 'Voice AI', path: '/voice-ai', description: 'AI phone calls & customer service' },
+        { title: 'Data Analytics', path: '/data-analytics', description: 'AI-driven insights & predictions', badge: '📊 Premium' },
+      ],
     },
     {
-      category: "✨ Generative AI",
+      category: '✨ Generative AI',
       services: [
-        { title: "Generative AI", path: "/generative-ai", description: "Custom AI that creates content & designs", badge: "✨ New" },
-        { title: "AI Data Processing", path: "/data-analytics", description: "Custom ML models & AI integrations" },
-        { title: "Programmatic SEO", path: "/programmatic-seo", description: "AI-generated SEO content at scale" }
-      ]
+        { title: 'Generative AI', path: '/generative-ai', description: 'Custom AI that creates content & designs', badge: '✨ New' },
+        { title: 'AI Data Processing', path: '/data-analytics', description: 'Custom ML models & AI integrations' },
+        { title: 'Programmatic SEO', path: '/programmatic-seo', description: 'AI-generated SEO content at scale' },
+      ],
     },
     {
-      category: "⚙️ Business Automation",
+      category: '⚙️ Business Automation',
       services: [
-        { title: "Business Automation", path: "/business-automation", description: "Smart workflows & process optimization", badge: "🏆 Core" },
-        { title: "CRM Automation", path: "/crm-automation", description: "Smart pipelines & lead scoring" },
-        { title: "Workflow Automation", path: "/workflow-automation", description: "Process optimization & task automation" },
-        { title: "Reporting Automation", path: "/reporting-automation", description: "Automated dashboards & real-time insights" }
-      ]
-    }
+        { title: 'Business Automation', path: '/business-automation', description: 'Smart workflows & process optimisation', badge: '🏆 Core' },
+        { title: 'CRM Automation', path: '/crm-automation', description: 'Smart pipelines & lead scoring' },
+        { title: 'Workflow Automation', path: '/workflow-automation', description: 'Process optimisation & task automation' },
+        { title: 'Reporting Automation', path: '/reporting-automation', description: 'Automated dashboards & real-time insights' },
+      ],
+    },
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled
-        ? 'bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm'
-        : 'bg-transparent'
-    }`}>
-      <div className={`container mx-auto px-4 transition-all duration-300 ${
-        isScrolled ? 'h-16' : 'h-20'
-      }`}>
-        <div className={`flex items-center justify-between transition-all duration-300 ${
-          isScrolled ? 'h-16' : 'h-20'
-        }`}>
+    <nav
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm'
+          : 'bg-transparent'
+      }`}
+    >
+      <div className={`container mx-auto px-4 transition-all duration-300 ${isScrolled ? 'h-16' : 'h-20'}`}>
+        <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-16' : 'h-20'}`}>
 
+          {/* Logo */}
           <Link href="/" className="flex items-center group">
             <SafeLogo
               size={isScrolled ? 64 : 72}
@@ -279,12 +237,17 @@ const Navigation = () => {
             />
           </Link>
 
+          {/* Desktop nav */}
           <div className="hidden lg:flex items-center space-x-1">
-            <div className="relative" ref={megaMenuRef}
-            onMouseEnter={() => setIsMegaMenuOpen(true)}
-            onMouseLeave={() => setIsMegaMenuOpen(false)}
-            onClick={() => setIsMegaMenuOpen(!isMegaMenuOpen)}>
 
+            {/* Services mega-menu */}
+            <div
+              className="relative"
+              ref={megaMenuRef}
+              onMouseEnter={() => setIsMegaMenuOpen(true)}
+              onMouseLeave={() => setIsMegaMenuOpen(false)}
+              onClick={() => setIsMegaMenuOpen(!isMegaMenuOpen)}
+            >
               <button
                 className={`relative flex items-center px-4 py-3 font-semibold text-base transition-all duration-200 rounded-lg group ${
                   isActiveRoute('/services') || isActiveRoute('/agentic-ai') || isActiveRoute('/crm-automation') || isActiveRoute('/sales-ai') || isActiveRoute('/generative-ai')
@@ -297,34 +260,36 @@ const Navigation = () => {
               </button>
 
               {isMegaMenuOpen && (
-                <div className="absolute top-full left-0 mt-2 w-[800px] bg-white rounded-xl shadow-2xl border border-gray-200 p-6 z-50"
-                onMouseEnter={() => setIsMegaMenuOpen(true)}
-                onMouseLeave={() => setIsMegaMenuOpen(false)}>
+                <div
+                  className="absolute top-full left-0 mt-2 w-[800px] bg-white rounded-xl shadow-2xl border border-gray-100 p-6 z-50"
+                  onMouseEnter={() => setIsMegaMenuOpen(true)}
+                  onMouseLeave={() => setIsMegaMenuOpen(false)}
+                >
                   <div className="grid grid-cols-3 gap-6">
-                    {serviceCategories.map((category, categoryIndex) => (
-                      <div key={categoryIndex}>
-                        <h3 className="font-bold text-slate-900 mb-4 text-sm uppercase tracking-wide">
+                    {serviceCategories.map((category, ci) => (
+                      <div key={ci}>
+                        <h3 className="font-heading font-bold text-dark-navy mb-4 text-xs uppercase tracking-wide">
                           {category.category}
                         </h3>
-                        <div className="space-y-2">
-                          {category.services.map((service, serviceIndex) => (
+                        <div className="space-y-1">
+                          {category.services.map((service, si) => (
                             <Link
-                              key={serviceIndex}
+                              key={si}
                               href={service.path}
-                              className="block p-3 rounded-lg hover:bg-blue-50 transition-colors duration-200 group"
+                              className="block p-3 rounded-lg hover:bg-brand-teal-50 transition-colors duration-200 group"
                               onClick={() => setIsMegaMenuOpen(false)}
                             >
-                              <div className="flex items-center justify-between mb-1">
-                                <div className="font-medium text-slate-900 group-hover:text-blue-600">
+                              <div className="flex items-center justify-between mb-0.5">
+                                <div className="font-heading font-semibold text-sm text-dark-navy group-hover:text-brand-teal">
                                   {service.title}
                                 </div>
                                 {service.badge && (
-                                  <span className="text-xs bg-orange-100 text-orange-600 px-2 py-1 rounded-full">
+                                  <span className="text-xs bg-accent-orange-50 text-accent-orange px-2 py-0.5 rounded-full">
                                     {service.badge}
                                   </span>
                                 )}
                               </div>
-                              <div className="text-sm text-slate-600">
+                              <div className="font-body text-xs text-dark-navy-300">
                                 {service.description}
                               </div>
                             </Link>
@@ -334,84 +299,85 @@ const Navigation = () => {
                     ))}
                   </div>
 
-                  <div className="border-t border-gray-100 mt-6 pt-4">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="font-medium text-slate-900">Not sure which service you need?</div>
-                        <div className="text-sm text-slate-600">Get a free consultation to find the perfect solution</div>
-                      </div>
-                      <Link
-                        href="/workflow-audit"
-                        className="bg-orange-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-orange-600 transition-colors duration-200"
-                        onClick={() => setIsMegaMenuOpen(false)}
-                      >
-                        Free Audit
-                      </Link>
+                  <div className="border-t border-gray-100 mt-6 pt-4 flex items-center justify-between">
+                    <div>
+                      <p className="font-heading font-semibold text-sm text-dark-navy">Not sure which service you need?</p>
+                      <p className="font-body text-xs text-dark-navy-300">Get a free consultation to find the perfect solution</p>
                     </div>
+                    <Link
+                      href="/workflow-audit"
+                      className="text-white px-4 py-2 rounded-lg font-heading font-semibold text-sm hover:opacity-90 transition-opacity"
+                      style={{ backgroundColor: '#ff6b35' }}
+                      onClick={() => setIsMegaMenuOpen(false)}
+                    >
+                      Free Audit
+                    </Link>
                   </div>
                 </div>
               )}
             </div>
 
-            <Link
-              href="/use-cases"
-              className={`px-4 py-3 font-semibold text-base transition-all duration-200 rounded-lg ${
-                isActiveRoute('/use-cases')
-                  ? navTextActive
-                  : `${navText} ${navTextHover}`
-              }`}
-            >
-              Use Cases
-            </Link>
+            {[
+              { label: 'About', path: '/about' },
+              { label: 'Case Studies', path: '/case-studies' },
+              { label: 'Pricing', path: '/pricing' },
+              { label: 'Industries', path: '/industries' },
+            ].map((item) => (
+              <Link
+                key={item.path}
+                href={item.path}
+                className={`px-4 py-3 font-heading font-semibold text-base transition-all duration-200 rounded-lg ${
+                  isActiveRoute(item.path) ? navTextActive : `${navText} ${navTextHover}`
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
 
-            <Link
-              href="/case-studies"
-              className={`px-4 py-3 font-semibold text-base transition-all duration-200 rounded-lg ${
-                isActiveRoute('/case-studies')
-                  ? navTextActive
-                  : `${navText} ${navTextHover}`
-              }`}
-            >
-              Case Studies
-            </Link>
-
-            <Link
-              href="/industries"
-              className={`px-4 py-3 font-semibold text-base transition-all duration-200 rounded-lg ${
-                isActiveRoute('/industries')
-                  ? navTextActive
-                  : `${navText} ${navTextHover}`
-              }`}
-            >
-              Industries
-            </Link>
-
+            {/* More dropdown */}
             <div className="relative group">
-              <button className={`relative flex items-center px-4 py-3 font-semibold text-base transition-all duration-200 rounded-lg ${navText} ${navTextHover}`}>
+              <button className={`flex items-center px-4 py-3 font-heading font-semibold text-base transition-all duration-200 rounded-lg ${navText} ${navTextHover}`}>
                 More
                 <ChevronDown className="ml-1 w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
               </button>
-
-              <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-xl shadow-2xl border border-gray-200 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <Link href="/about" className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 text-sm transition-colors duration-200">About</Link>
-                <Link href="/integrations" className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 text-sm transition-colors duration-200">Integrations</Link>
-                <Link href="/case-studies" className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 text-sm transition-colors duration-200">Case Studies</Link>
-                <Link href="/resources" className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 text-sm transition-colors duration-200">Resources</Link>
-                <Link href="/partnerships" className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 text-sm transition-colors duration-200">Partnerships</Link>
-                <Link href="/contact" className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 text-sm transition-colors duration-200">Contact</Link>
+              <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-xl shadow-2xl border border-gray-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                {[
+                  { label: 'Use Cases', path: '/use-cases' },
+                  { label: 'Integrations', path: '/integrations' },
+                  { label: 'Resources', path: '/resources' },
+                  { label: 'Partnerships', path: '/partnerships' },
+                  { label: 'Contact', path: '/contact' },
+                ].map((item) => (
+                  <Link
+                    key={item.path}
+                    href={item.path}
+                    className="block px-4 py-2.5 font-body text-sm text-dark-navy-300 hover:text-brand-teal hover:bg-brand-teal-50 transition-colors duration-200"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
 
-          <div className="hidden lg:flex items-center space-x-4">
-            <button
-              onClick={handleBookDemo}
-              className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:scale-105 hover:shadow-lg"
+          {/* Desktop CTA */}
+          <div className="hidden lg:flex items-center">
+            <a
+              href={BOOKING_LINKS.WHATSAPP_AUDIT}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-xl font-heading font-semibold text-sm transition-all hover:opacity-90 hover:shadow-lg hover:-translate-y-0.5"
+              style={{ backgroundColor: '#ff6b35' }}
             >
-              Book Free Demo
-            </button>
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.12 1.52 5.855L0 24l6.335-1.652A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.82a9.78 9.78 0 01-5.29-1.545l-.38-.225-3.937 1.028 1.052-3.828-.249-.394A9.78 9.78 0 012.18 12c0-5.422 4.398-9.82 9.82-9.82 5.422 0 9.82 4.398 9.82 9.82 0 5.422-4.398 9.82-9.82 9.82z" />
+              </svg>
+              Book Free Business Audit
+            </a>
           </div>
 
+          {/* Mobile hamburger */}
           <button
             className={`lg:hidden p-2 ${navText} transition-colors duration-200`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -420,17 +386,20 @@ const Navigation = () => {
           </button>
         </div>
 
+        {/* Mobile menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 w-full bg-white border-t border-gray-200 shadow-lg max-h-96 overflow-y-auto">
-            <div className="py-4 space-y-2">
-              <div className="px-6 py-2">
-                <div className="font-semibold text-slate-900 mb-3">Services</div>
+          <div className="lg:hidden absolute top-full left-0 w-full bg-white border-t border-gray-100 shadow-lg max-h-[80vh] overflow-y-auto">
+            <div className="py-4 space-y-1">
+
+              {/* Services */}
+              <div className="px-6 pb-2">
+                <p className="font-heading font-bold text-dark-navy text-sm uppercase tracking-wide mb-3">Services</p>
                 {serviceCategories.map((category) =>
-                  category.services.map((service, index) => (
+                  category.services.map((service, i) => (
                     <Link
-                      key={index}
+                      key={i}
                       href={service.path}
-                      className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 text-sm transition-colors duration-200"
+                      className="block px-3 py-2 font-body text-sm text-dark-navy-300 hover:text-brand-teal hover:bg-brand-teal-50 rounded-lg transition-colors duration-200"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {service.title}
@@ -439,45 +408,44 @@ const Navigation = () => {
                 )}
               </div>
 
-              <Link
-                href="/use-cases"
-                className="block px-6 py-3 text-slate-700 hover:text-blue-600 hover:bg-blue-50 font-medium transition-colors duration-200"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Use Cases
-              </Link>
-              <Link
-                href="/case-studies"
-                className="block px-6 py-3 text-slate-700 hover:text-blue-600 hover:bg-blue-50 font-medium transition-colors duration-200"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Case Studies
-              </Link>
-              <Link
-                href="/industries"
-                className="block px-6 py-3 text-slate-700 hover:text-blue-600 hover:bg-blue-50 font-medium transition-colors duration-200"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Industries
-              </Link>
+              <div className="h-px bg-gray-100 mx-6" />
 
-              <div className="px-6 py-2">
-                <div className="font-semibold text-slate-900 mb-3">More</div>
-                <Link href="/about" className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 text-sm transition-colors duration-200" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
-                <Link href="/integrations" className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 text-sm transition-colors duration-200" onClick={() => setIsMobileMenuOpen(false)}>Integrations</Link>
-                <Link href="/case-studies" className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 text-sm transition-colors duration-200" onClick={() => setIsMobileMenuOpen(false)}>Case Studies</Link>
-                <Link href="/resources" className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 text-sm transition-colors duration-200" onClick={() => setIsMobileMenuOpen(false)}>Resources</Link>
-                <Link href="/partnerships" className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 text-sm transition-colors duration-200" onClick={() => setIsMobileMenuOpen(false)}>Partnerships</Link>
-                <Link href="/contact" className="block px-4 py-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 text-sm transition-colors duration-200" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link>
-              </div>
-
-              <div className="px-6 pt-4 border-t border-gray-200">
-                <button
-                  onClick={handleBookDemo}
-                  className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white py-3 px-4 rounded-lg font-semibold transition-all duration-200"
+              {[
+                { label: 'About', path: '/about' },
+                { label: 'Case Studies', path: '/case-studies' },
+                { label: 'Pricing', path: '/pricing' },
+                { label: 'Industries', path: '/industries' },
+                { label: 'Use Cases', path: '/use-cases' },
+                { label: 'Integrations', path: '/integrations' },
+                { label: 'Resources', path: '/resources' },
+                { label: 'Partnerships', path: '/partnerships' },
+                { label: 'Contact', path: '/contact' },
+              ].map((item) => (
+                <Link
+                  key={item.path}
+                  href={item.path}
+                  className="block px-6 py-3 font-heading font-semibold text-dark-navy hover:text-brand-teal hover:bg-brand-teal-50 transition-colors duration-200"
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Book Free Demo
-                </button>
+                  {item.label}
+                </Link>
+              ))}
+
+              <div className="px-6 pt-3 pb-4 border-t border-gray-100">
+                <a
+                  href={BOOKING_LINKS.WHATSAPP_AUDIT}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 w-full text-white py-3 px-4 rounded-xl font-heading font-semibold transition-all"
+                  style={{ backgroundColor: '#ff6b35' }}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.12 1.52 5.855L0 24l6.335-1.652A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.82a9.78 9.78 0 01-5.29-1.545l-.38-.225-3.937 1.028 1.052-3.828-.249-.394A9.78 9.78 0 012.18 12c0-5.422 4.398-9.82 9.82-9.82 5.422 0 9.82 4.398 9.82 9.82 0 5.422-4.398 9.82-9.82 9.82z" />
+                  </svg>
+                  Book Free Business Audit
+                </a>
               </div>
             </div>
           </div>

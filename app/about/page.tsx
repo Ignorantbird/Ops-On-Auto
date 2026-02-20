@@ -2,11 +2,11 @@ import { pageMeta } from '@/lib/metadata';
 import About from '@/views/About';
 
 export const metadata = pageMeta({
-  title: 'About OpsOnAuto - AI Automation Experts',
+  title: 'About Us — Founders Behind OpsOnAuto | Yash & Sarmistha',
   description:
-    "Learn about OpsOnAuto's mission to streamline business operations through AI automation. Our story, values, and commitment to innovation.",
+    'Meet the founders of OpsOnAuto — Yash Bali (15+ years at SAP, Microsoft) and Sarmistha (BTech AI/ML, CTO). We build honest, affordable automation for Indian SMBs.',
   keywords:
-    'about OpsOnAuto, AI automation company, business automation experts, workflow optimization team',
+    'OpsOnAuto founders, about OpsOnAuto, AI automation team India, Yash Bali, Sarmistha CTO, affordable business automation founders',
   canonical: '/about',
 });
 
