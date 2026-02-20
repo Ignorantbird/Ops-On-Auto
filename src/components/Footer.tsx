@@ -92,7 +92,7 @@ const Footer = () => {
 
         <div className="border-t border-white/20 mt-12 pt-8">
           <p className="text-white/60 text-sm">
-            © 2025 OpsOnAuto. All rights reserved.
+            © 2026 OpsOnAuto. All rights reserved.
           </p>
         </div>
       </div>

@@ -1,19 +1,41 @@
 'use client';
 
 import { BOOKING_LINKS } from '@/lib/BookingLinks';
-import ContactForm from './ContactForm';
+import ContactForm from '@/components/homepage/ContactForm';
 
-export default function FinalCTANew() {
+export default function PricingCTANew() {
   return (
-    <section id="contact" className="py-20 bg-dark-navy text-white">
+    <section className="py-20 bg-dark-navy text-white">
       <div className="max-w-5xl mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            Still Running Your Business on WhatsApp and Excel?
+            Stop Overpaying for Automation.
           </h2>
           <p className="font-body text-lg text-white/70 max-w-2xl mx-auto">
-            Let&apos;s fix that. Get a free audit call — we&apos;ll show you
-            exactly where you&apos;re losing time and money.
+            You&apos;ve seen the pricing. You know what you get. Now let&apos;s talk about your business.
+          </p>
+        </div>
+
+        {/* What the audit covers */}
+        <div className="bg-white/5 border border-white/10 rounded-2xl p-6 mb-12 max-w-2xl mx-auto">
+          <p className="font-body text-sm text-white/70 mb-3">
+            The <strong className="text-white">Free Business Audit</strong> is a 45-minute call where we:
+          </p>
+          <ul className="space-y-2">
+            {[
+              'Map out your current manual processes',
+              'Identify what\'s costing you time and money',
+              'Show you exactly what automation would look like for you',
+              'Give you a fixed-price quote (no pressure, no obligation)',
+            ].map((point) => (
+              <li key={point} className="flex items-start gap-2 font-body text-sm text-white/80">
+                <span className="font-bold mt-0.5" style={{ color: '#17a2b8' }}>✓</span>
+                {point}
+              </li>
+            ))}
+          </ul>
+          <p className="font-body text-xs text-white/50 mt-4">
+            If it makes sense, we move forward. If not, you walk away with a clear automation roadmap — completely free.
           </p>
         </div>
 
@@ -57,6 +79,10 @@ export default function FinalCTANew() {
             <ContactForm />
           </div>
         </div>
+
+        <p className="font-body text-center text-white/40 text-xs mt-12">
+          Trusted by JSS Structures, lead gen agencies, real estate developers, and growing businesses across NCR.
+        </p>
       </div>
     </section>
   );
